@@ -5,15 +5,13 @@ angular.module('starkAPP', [
     .config(['$compileProvider', '$routeProvider', '$locationProvider',
         function($compileProvider, $routeProvider, $locationProvider) {
             $routeProvider
-            //话题审核
-                .when('/topic/', {
+                .when('/main/', {
                     templateUrl: './html/a.html',
                     controller: '',
                     reloadOnSearch: false
                 })
-                //重定向到club入口页面
                 .otherwise({
-                    redirectTo: '/topic/'
+                    redirectTo: '/main/'
                 });
         }
     ])
