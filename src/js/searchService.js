@@ -2,7 +2,7 @@ angular.module('searchService', [])
     .factory('SearchService', function() {
         var a = {
             
-        }
+        };
         function matchCourse(){
 
         }
@@ -10,5 +10,5 @@ angular.module('searchService', [])
             search : function(specification){
 
             }
-        }
-    })
+        };
+    });

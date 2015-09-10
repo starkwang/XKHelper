@@ -1,6 +1,6 @@
-//课表
+//搜索结果
 angular.module('starkAPP')
-    .controller('tableController',['$scope', 'searchService', 
+    .controller('resultController',['$scope', 'searchService', 
         function ($scope, searchService) {
         // body...
-    }])
+    }]);

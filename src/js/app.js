@@ -13,4 +13,4 @@ angular.module('starkAPP', [
                     redirectTo: '/main/'
                 });
         }
-    ])
+    ]);
