@@ -12,7 +12,7 @@ var gulp = require('gulp'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
     connect = require('gulp-connect');;
-gulp.task('default', ['clean', 'scripts','libs','webserver']);
+gulp.task('default', ['clean', 'scripts', 'libs', 'watch', 'webserver']);
 gulp.task('scripts', function() {
     return gulp.src('src/js/*.js')
         .pipe(jshint())
@@ -29,7 +29,7 @@ gulp.task('scripts', function() {
         }));
 });
 gulp.task('libs', function() {
-    return gulp.src(['src/lib/*.js','src/lib/*.min.js'])
+    return gulp.src(['src/lib/*.js', 'src/lib/*.min.js'])
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
         .pipe(concat('lib.js'))
@@ -43,7 +43,7 @@ gulp.task('libs', function() {
             message: 'Libs task complete'
         }));
 });
-gulp.task('webserver', function () {
+gulp.task('webserver', function() {
     connect.server();
 });
 gulp.task('clean', function() {
@@ -51,4 +51,8 @@ gulp.task('clean', function() {
             read: false
         })
         .pipe(clean());
+});
+
+gulp.task('watch', function() {
+    gulp.watch('src/js/*.js', ['scripts']);
 });
