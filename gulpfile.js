@@ -1,5 +1,5 @@
 var gulp = require('gulp'),
-    //sass = require('gulp-ruby-sass'),
+    sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
     jshint = require('gulp-jshint'),
@@ -12,7 +12,7 @@ var gulp = require('gulp'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
     connect = require('gulp-connect');;
-gulp.task('default', ['clean', 'scripts', 'libs', 'watch', 'webserver']);
+gulp.task('default', ['clean', 'scripts', 'libs','sass','sass:watch','watch', 'webserver']);
 gulp.task('scripts', function() {
     return gulp.src(['src/js/*Service.js','src/js/app.js','src/js/*Controller.js'])
         .pipe(jshint())
@@ -42,6 +42,16 @@ gulp.task('libs', function() {
         .pipe(notify({
             message: 'Libs task complete'
         }));
+});
+
+gulp.task('sass', function () {
+  gulp.src('src/style/*.scss')
+    .pipe(sass.sync().on('error', sass.logError))
+    .pipe(gulp.dest('build/css'));
+});
+ 
+gulp.task('sass:watch', function () {
+  gulp.watch('src/style/*.scss', ['sass']);
 });
 gulp.task('webserver', function() {
     connect.server();
