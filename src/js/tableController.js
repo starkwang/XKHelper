@@ -1,6 +1,6 @@
 //课表
 angular.module('starkAPP')
-    .controller('tableController',['$scope', 'searchService', 
-        function ($scope, searchService) {
+    .controller('tableController',['$scope', 'SearchService', 
+        function ($scope, SearchService) {
         // body...
     }]);

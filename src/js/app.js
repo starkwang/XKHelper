@@ -1,5 +1,5 @@
 'use strict';
-angular.module('starkAPP', [
+var starkAPP = angular.module('starkAPP', [
         'ngRoute',
         'searchService'
     ])

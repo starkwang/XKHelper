@@ -1,4 +1,4 @@
-angular.module('searchService', [])
+angular.module('searchService',[])
     .factory('SearchService', function() {
         String.prototype.trim = function() {　　
             return this.replace(/(^\s*)|(\s*$)/g, "");　　
@@ -51,4 +51,5 @@ angular.module('searchService', [])
                 return result;
             }
         };
+        return service;
     });

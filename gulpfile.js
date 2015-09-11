@@ -14,7 +14,7 @@ var gulp = require('gulp'),
     connect = require('gulp-connect');;
 gulp.task('default', ['clean', 'scripts', 'libs', 'watch', 'webserver']);
 gulp.task('scripts', function() {
-    return gulp.src('src/js/*.js')
+    return gulp.src(['src/js/*Service.js','src/js/app.js','src/js/*Controller.js'])
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
         .pipe(concat('main.js'))
@@ -29,7 +29,7 @@ gulp.task('scripts', function() {
         }));
 });
 gulp.task('libs', function() {
-    return gulp.src(['src/lib/*.js', 'src/lib/*.min.js'])
+    return gulp.src(['src/lib/csv.min.js','src/lib/data.js', 'src/lib/angular.min.js','src/lib/angular-route.min.js'])
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
         .pipe(concat('lib.js'))

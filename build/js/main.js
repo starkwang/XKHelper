@@ -1,27 +1,4 @@
-'use strict';
-angular.module('starkAPP', [
-        'ngRoute',
-        'searchService'
-    ])
-    .config(['$compileProvider', '$routeProvider', '$locationProvider',
-        function($compileProvider, $routeProvider, $locationProvider) {
-            $routeProvider
-                .when('/main/', {
-                    templateUrl: './html/a.html'
-                })
-                .otherwise({
-                    redirectTo: '/main/'
-                });
-        }
-    ]);
-
-//搜索结果
-angular.module('starkAPP')
-    .controller('resultController',['$scope', 'searchService', 
-        function ($scope, searchService) {
-        // body...
-    }]);
-angular.module('searchService', [])
+angular.module('searchService',[])
     .factory('SearchService', function() {
         String.prototype.trim = function() {　　
             return this.replace(/(^\s*)|(\s*$)/g, "");　　
@@ -74,18 +51,58 @@ angular.module('searchService', [])
                 return result;
             }
         };
+        return service;
     });
+
+'use strict';
+var starkAPP = angular.module('starkAPP', [
+        'ngRoute',
+        'searchService'
+    ])
+    .config(['$compileProvider', '$routeProvider', '$locationProvider',
+        function($compileProvider, $routeProvider, $locationProvider) {
+            $routeProvider
+                .when('/main/', {
+                    templateUrl: './html/a.html'
+                })
+                .otherwise({
+                    redirectTo: '/main/'
+                });
+        }
+    ]);
+
+//搜索结果
+angular.module('starkAPP')
+    .controller('resultController', ['$scope', 'SearchService',
+        function($scope, SearchService) {
+            // // body...
+            // var b = {
+            //     time: ['四 8-9', '三 1-2'],
+            //     category: [],
+            //     keywords: '',
+            //     courseID: 'HIST',
+            // };
+            // $scope.result = SearchService.search(b);
+        }
+    ]);
 
 //侧边搜索栏
 angular.module('starkAPP')
-    .controller('sidebarController',['$scope', 'searchService', 
-        function ($scope, searchService) {
-        // body...
+    .controller('sidebarController',['$scope', 'SearchService', 
+        function ($scope,SearchService) {
+            var b = {
+                time: ['四 8-9', '三 1-2'],
+                category: [],
+                keywords: '',
+                courseID: 'HIST',
+            };
+            $scope.result = SearchService.search(b);
+            //$scope.result = 123;
     }]);
 
 //课表
 angular.module('starkAPP')
-    .controller('tableController',['$scope', 'searchService', 
-        function ($scope, searchService) {
+    .controller('tableController',['$scope', 'SearchService', 
+        function ($scope, SearchService) {
         // body...
     }]);
