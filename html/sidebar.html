@@ -1,6 +1,6 @@
-<ul>
-  <li class="title">XKHelper</li>
-  <li class="li">ITEM1</li>
-  <li class="li">ITEM1</li>
-  <li class="li">ITEM1</li>
-</ul>
+<div ng-controller="sidebarController">
+  <ul>
+   <!--  <li class="title">XKHelper</li> -->
+    <li class="li my-crazy-animation" ng-repeat="item in items track by $index">{{item}}</li>
+  </ul>
+</div>

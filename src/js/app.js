@@ -1,6 +1,7 @@
 'use strict';
 var starkAPP = angular.module('starkAPP', [
         'ngRoute',
+        'ngAnimate',
         'routeStyles',
         'searchService'
     ])
@@ -9,7 +10,7 @@ var starkAPP = angular.module('starkAPP', [
             $routeProvider
                 .when('/main/', {
                     templateUrl: '/html/main.html',
-                    css:'/build/css/main.css'
+                    css: '/build/css/main.css'
                 })
                 .otherwise({
                     redirectTo: '/main/'

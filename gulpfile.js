@@ -29,7 +29,7 @@ gulp.task('scripts', function() {
         }));
 });
 gulp.task('libs', function() {
-    return gulp.src(['src/lib/csv.min.js', 'src/lib/data.js', 'src/lib/angular.min.js', 'src/lib/angular-route.min.js', 'src/lib/angular-css.js'])
+    return gulp.src(['src/lib/csv.min.js', 'src/lib/data.js', 'src/lib/angular.min.js', 'src/lib/angular-route.min.js', 'src/lib/angular-css.js','src/lib/angular-animate.min.js'])
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
         .pipe(concat('lib.js'))
@@ -45,8 +45,13 @@ gulp.task('libs', function() {
 });
 
 gulp.task('sass', function() {
-    gulp.src('src/style/*.scss')
+    gulp.src(['src/style/animate.scss','src/style/base.scss','src/style/reset.scss'])
         .pipe(sass.sync().on('error', sass.logError))
+        .pipe(concat('base.css'))
+        .pipe(gulp.dest('build/css'));
+    gulp.src(['src/style/main.scss'])
+        .pipe(sass.sync().on('error', sass.logError))
+        .pipe(concat('main.css'))
         .pipe(gulp.dest('build/css'));
 });
 

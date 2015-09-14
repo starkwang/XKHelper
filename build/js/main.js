@@ -57,6 +57,7 @@ angular.module('searchService',[])
 'use strict';
 var starkAPP = angular.module('starkAPP', [
         'ngRoute',
+        'ngAnimate',
         'routeStyles',
         'searchService'
     ])
@@ -65,7 +66,7 @@ var starkAPP = angular.module('starkAPP', [
             $routeProvider
                 .when('/main/', {
                     templateUrl: '/html/main.html',
-                    css:'/build/css/main.css'
+                    css: '/build/css/main.css'
                 })
                 .otherwise({
                     redirectTo: '/main/'
@@ -90,17 +91,24 @@ angular.module('starkAPP')
 
 //侧边搜索栏
 angular.module('starkAPP')
-    .controller('sidebarController',['$scope', 'SearchService', 
-        function ($scope,SearchService) {
+    .controller('sidebarController', ['$scope', 'SearchService',
+        function($scope, SearchService, $timeout, $interval) {
             var b = {
                 time: ['四 8-9', '三 1-2'],
                 category: [],
                 keywords: '',
                 courseID: 'HIST',
             };
+            $scope.$watch($scope.items, function(oldv, newv, scope) {
+                console.log(oldv, newv);
+            }, true);
             $scope.result = SearchService.search(b);
-            //$scope.result = 123;
-    }]);
+            $scope.items = ['123', '456'];
+            $scope.items.push('123');
+            $scope.items.push('123');
+            $scope.items.push('123');
+        }
+    ]);
 
 //课表
 angular.module('starkAPP')
