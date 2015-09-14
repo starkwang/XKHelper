@@ -1,6 +1,7 @@
 //课表
 angular.module('starkAPP')
-    .controller('tableController',['$scope', 'SearchService', 
+    .controller('mainController',['$scope', 'SearchService', 
         function ($scope, SearchService) {
         // body...
+        $scope.selectedCourse = 1;
     }]);

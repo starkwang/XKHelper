@@ -9892,3 +9892,50 @@ d)&&d.redirectTo&&(e.isString(d.redirectTo)?c.path(u(d.redirectTo,d.params)).sea
 n&&r&&(l[n.name]=r)}p=l}else p=null;else p=null;p=a=p}p&&(b=h(f,{params:e.extend({},c.search(),a),pathParams:a}),b.$$route=f)});return b||k[null]&&h(k[null],{params:{},pathParams:{}})}function u(a,c){var b=[];e.forEach((a||"").split(":"),function(a,d){if(0===d)b.push(a);else{var e=a.match(/(\w+)(.*)/),f=e[1];b.push(c[f]);b.push(e[2]||"");delete c[f]}});return b.join("")}var x=!1,r={routes:k,reload:function(){x=!0;a.$evalAsync(g)}};a.$on("$locationChangeSuccess",g);return r}]});h.provider("$routeParams",
 function(){this.$get=function(){return{}}});h.directive("ngView",u);h.directive("ngView",z);u.$inject=["$route","$anchorScroll","$animate"];z.$inject=["$compile","$controller","$route"]})(window,window.angular);
 //# sourceMappingURL=angular-route.min.js.map
+/**
+ * Created by Zack Boman on 1/31/14.
+ * http://www.zackboman.com or tennisgent@gmail.com
+ */
+
+(function(){
+'use strict';
+
+    angular.module('routeStyles', ['ngRoute'])
+    
+        .directive('head', ['$rootScope','$compile','$interpolate',
+            function($rootScope, $compile, $interpolate){
+                // this allows for support of custom interpolation symbols
+                var startSym = $interpolate.startSymbol(),
+                    endSym = $interpolate.endSymbol(),
+                    html = ['<link rel="stylesheet" ng-repeat="(routeCtrl, cssUrl) in routeStyles" ng-href="',startSym,'cssUrl',endSym,'">'].join('');
+                return {
+                    restrict: 'E',
+                    link: function(scope, elem){
+                        elem.append($compile(html)(scope));
+                        scope.routeStyles = {};
+                        $rootScope.$on('$routeChangeStart', function (e, next) {
+                            if(next && next.$$route && next.$$route.css){
+                                if(!angular.isArray(next.$$route.css)){
+                                    next.$$route.css = [next.$$route.css];
+                                }
+                                angular.forEach(next.$$route.css, function(sheet){
+                                    scope.routeStyles[sheet] = sheet;
+                                });
+                            }
+                        });
+                        $rootScope.$on('$routeChangeSuccess', function(e, current, previous) {
+                            if (previous && previous.$$route && previous.$$route.css) {
+                                if (!angular.isArray(previous.$$route.css)) {
+                                    previous.$$route.css = [previous.$$route.css];
+                                }
+                                angular.forEach(previous.$$route.css, function (sheet) {
+                                    scope.routeStyles[sheet] = undefined;
+                                });
+                            }
+                        });
+                    }
+                };
+            }
+        ]);
+
+})();

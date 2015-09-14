@@ -5,6 +5,47 @@ html,body{
 
 #bg{
     width: 100%;
-    background:url("/build/img/bg.png");
+    background:url("/build/img/bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 1000px;
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar{
+    width: 200px;
+    height: 100%;
+    background-color: rgba(255,255,255,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: rgba(255,255,255,0.7);
+}
+.sidebar{
+    li{
+        border-bottom: 1px solid rgba(255,255,255,0.5);
+    }
+    .li{
+        text-align: center;
+        font-size: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        cursor: pointer; 
+    }
+    .li:hover{
+        background-color: rgba(255,255,255,0.5);
+        color: white;
+    }
+    .title{
+        font-size: 40px;
+        text-align: center;
+        width: 100%;
+        height: 200px;
+    }
+}
+.content{
+    margin-left: 200px;
+    margin-top: 50px;
     height: 100%;
 }

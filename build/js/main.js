@@ -57,13 +57,15 @@ angular.module('searchService',[])
 'use strict';
 var starkAPP = angular.module('starkAPP', [
         'ngRoute',
+        'routeStyles',
         'searchService'
     ])
     .config(['$compileProvider', '$routeProvider', '$locationProvider',
         function($compileProvider, $routeProvider, $locationProvider) {
             $routeProvider
                 .when('/main/', {
-                    templateUrl: './html/main.html'
+                    templateUrl: '/html/main.html',
+                    css:'/build/css/main.css'
                 })
                 .otherwise({
                     redirectTo: '/main/'
@@ -102,7 +104,8 @@ angular.module('starkAPP')
 
 //课表
 angular.module('starkAPP')
-    .controller('tableController',['$scope', 'SearchService', 
+    .controller('mainController',['$scope', 'SearchService', 
         function ($scope, SearchService) {
         // body...
+        $scope.selectedCourse = 1;
     }]);

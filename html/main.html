@@ -1,3 +1,24 @@
-<div ng-controller="sidebarController">
-      {{result}}
+<div ng-include="'/html/sidebar.html'" class="sidebar" ng-controller="sidebarController"></div>
+<div class="content" ng-controller="mainController">
+  <div class="course-table">
+      <div class="head"></div>
+      <div class="body">
+          <table>
+              <thead>
+                  <th>Monday</th>
+                  <th>Monday</th>
+                  <th>Monday</th>
+                  <th>Monday</th>
+                  <th>Monday</th>
+                  <th>Monday</th>
+                  <th>Monday</th>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>{{selectedCourse}}</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
 </div>
