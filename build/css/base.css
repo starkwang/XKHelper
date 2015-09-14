@@ -1,0 +1,7 @@
+html, body {
+  height: 100%; }
+
+#bg {
+  width: 100%;
+  background: url("/build/img/bg.png");
+  height: 100%; }
