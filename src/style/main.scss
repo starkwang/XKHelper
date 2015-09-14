@@ -1,1 +1,50 @@
-.course-table{}
+$bg-color: rgba(255, 255, 255, 0.5);
+$border-color: rgba(255, 255, 255, 0.25);
+$font-color: rgba(255, 255, 255, 0.7);
+.course-table{
+    margin-left: 20px;
+    margin-right: 20px;
+    height: auto;
+    background: $bg-color;
+}
+.course-table{
+    .head{
+
+    }
+    .body{
+        table{
+            width: 100%;
+        }
+        table{
+            td[line="4"]{
+                border-bottom:2px solid $font-color;
+            }
+            td[line="9"]{
+                border-bottom:2px solid $font-color;
+            }
+            td{
+                border: 1px solid $border-color;
+                text-align: center;
+                color: $font-color;
+                height: 50px;
+            }
+            .double1,.triple1,.fourfold1{
+                border-bottom:0;
+            }
+            .double2,.triple3,.fourfold4{
+                border-top:0;   
+            }
+            .triple2,.fourfold2,.fourfold3{
+                border-bottom:0;
+                border-top:0;
+            }
+            th{
+                border: 1px solid $border-color;
+                border-bottom:2px solid $border-color;
+                height: 30px;
+                line-height: 30px;
+                color: $font-color;
+            }
+        }
+    }
+}

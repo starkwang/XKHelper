@@ -5,17 +5,23 @@
       <div class="body">
           <table>
               <thead>
-                  <th>Monday</th>
-                  <th>Monday</th>
-                  <th>Monday</th>
-                  <th>Monday</th>
-                  <th>Monday</th>
-                  <th>Monday</th>
-                  <th>Monday</th>
+                <th> </th>
+                  <th>一</th>
+                  <th>二</th>
+                  <th>三</th>
+                  <th>四</th>
+                  <th>五</th>
+                  <th>六</th>
               </thead>
               <tbody>
-                  <tr>
-                      <td>{{selectedCourse}}</td>
+                  <tr ng-repeat="i in [0,1,2,3,4,5,6,7,8,9,10,11,12]">
+                      <td style="width:10%" line={{i}}>{{i+1}}</td>
+                      <td style="width:15%" class="{{tableView[0][i].type}}" line={{i}}>{{tableView[0][i].text}}</td>
+                      <td  style="width:15%" class="{{tableView[1][i].type}}" line={{i}}>{{tableView[1][i].text}}</td>
+                      <td  style="width:15%" class="{{tableView[2][i].type}}" line={{i}}>{{tableView[2][i].text}}</td>
+                      <td  style="width:15%" class="{{tableView[3][i].type}}" line={{i}}>{{tableView[3][i].text}}</td>
+                      <td  style="width:15%" class="{{tableView[4][i].type}}" line={{i}}>{{tableView[4][i].text}}</td>
+                      <td  style="width:15%" class="{{tableView[5][i].type}}" line={{i}}>{{tableView[5][i].text}}</td>
                   </tr>
               </tbody>
           </table>

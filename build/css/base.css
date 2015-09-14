@@ -2320,8 +2320,23 @@ Copyright (c) 2015 Daniel Eden
   -webkit-animation-name: slideOutUp;
   animation-name: slideOutUp; }
 
-html, body {
+html,
+body {
   height: 100%; }
+
+.li.ng-enter {
+  -webkit-animation: 0.5s bounceIn;
+  -moz-animation: 0.5s bounceIn;
+  -o-animation: 0.5s bounceIn;
+  animation: 0.5s bounceIn;
+  z-index: 100; }
+
+.li.ng-leave {
+  -webkit-animation: 0.5s bounceOut;
+  -moz-animation: 0.5s bounceOut;
+  -o-animation: 0.5s bounceOut;
+  animation: 0.5s bounceOut;
+  z-index: 100; }
 
 #bg {
   width: 100%;
@@ -2347,13 +2362,17 @@ html, body {
 .sidebar .li {
   text-align: center;
   font-size: 20px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   cursor: pointer; }
 
 .sidebar .li:hover {
   background-color: rgba(255, 255, 255, 0.5);
   color: white; }
+
+.sidebar .li.active {
+  width: 195px;
+  border-right: 5px solid #fff; }
 
 .sidebar .title {
   font-size: 40px;

@@ -1,0 +1,37 @@
+.course-table {
+  margin-left: 20px;
+  margin-right: 20px;
+  height: auto;
+  background: rgba(255, 255, 255, 0.5); }
+
+.course-table .body table {
+  width: 100%; }
+
+.course-table .body table td[line="4"] {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.7); }
+
+.course-table .body table td[line="9"] {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.7); }
+
+.course-table .body table td {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  height: 50px; }
+
+.course-table .body table .double1, .course-table .body table .triple1, .course-table .body table .fourfold1 {
+  border-bottom: 0; }
+
+.course-table .body table .double2, .course-table .body table .triple3, .course-table .body table .fourfold4 {
+  border-top: 0; }
+
+.course-table .body table .triple2, .course-table .body table .fourfold2, .course-table .body table .fourfold3 {
+  border-bottom: 0;
+  border-top: 0; }
+
+.course-table .body table th {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.25);
+  height: 30px;
+  line-height: 30px;
+  color: rgba(255, 255, 255, 0.7); }

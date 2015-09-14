@@ -1,4 +1,4 @@
-angular.module('searchService',[])
+angular.module('searchService', [])
     .factory('SearchService', function() {
         String.prototype.trim = function() {　　
             return this.replace(/(^\s*)|(\s*$)/g, "");　　
@@ -28,6 +28,8 @@ angular.module('searchService',[])
             }
             return true;
         }
+
+
         var service = {
             search: function(specification) {
                 var result = [];
@@ -49,6 +51,39 @@ angular.module('searchService',[])
                     }
                 }
                 return result;
+            },
+            timeParser: function(time) {
+                //'二 3-4'
+                var t = time.trim();
+                var weekday;
+                switch (t.split(' ')[0]) {
+                    case '一':
+                        weekday = 1;
+                        break;
+                    case '二':
+                        weekday = 2;
+                        break;
+                    case '三':
+                        weekday = 3;
+                        break;
+                    case '四':
+                        weekday = 4;
+                        break;
+                    case '五':
+                        weekday = 5;
+                        break;
+                    case '六':
+                        weekday = 6;
+                        break;
+                }
+                var length = parseInt(t.split(' ')[1].split('-')[1]) - parseInt(t.split(' ')[1].split('-')[0]) + 1;
+                var start = parseInt(t.split(' ')[1].split('-')[0]);
+                //{weekday:2,length:2,start:3}
+                return {
+                    weekday: weekday,
+                    length: length,
+                    start: start-1
+                }
             }
         };
         return service;

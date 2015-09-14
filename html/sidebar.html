@@ -1,6 +1,7 @@
 <div ng-controller="sidebarController">
   <ul>
-   <!--  <li class="title">XKHelper</li> -->
-    <li class="li my-crazy-animation" ng-repeat="item in items track by $index">{{item}}</li>
+    <li class="title">XKHelper</li>
+    <li class="li" ng-class="{active:mainIsActive}"><a href="/#/main">我的课表</a></li>
+    <li class="li" ng-class="{active:favoriteIsActive}">收藏夹</li>
   </ul>
 </div>
