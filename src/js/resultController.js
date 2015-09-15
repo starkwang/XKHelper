@@ -1,7 +1,7 @@
 //搜索结果
 angular.module('starkAPP')
-    .controller('resultController', ['$scope', 'SearchService',
-        function($scope, SearchService) {
+    .controller('resultController', ['$scope', 'BaseService',
+        function($scope, BaseService) {
             // // body...
             // var b = {
             //     time: ['四 8-9', '三 1-2'],
@@ -9,6 +9,6 @@ angular.module('starkAPP')
             //     keywords: '',
             //     courseID: 'HIST',
             // };
-            // $scope.result = SearchService.search(b);
+            // $scope.result = BaseService.search(b);
         }
     ]);

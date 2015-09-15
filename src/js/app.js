@@ -3,7 +3,7 @@ var starkAPP = angular.module('starkAPP', [
         'ngRoute',
         'ngAnimate',
         'routeStyles',
-        'searchService'
+        'baseService'
     ])
     .config(['$compileProvider', '$routeProvider', '$locationProvider',
         function($compileProvider, $routeProvider, $locationProvider) {
