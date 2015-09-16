@@ -2324,14 +2324,21 @@ html,
 body {
   height: 100%; }
 
-.li.ng-enter {
+#bg.ng-enter {
+  -webkit-animation: 0.5s fadeIn;
+  -moz-animation: 0.5s fadeIn;
+  -o-animation: 0.5s fadeIn;
+  animation: 0.5s fadeIn;
+  z-index: 100; }
+
+.ng-enter {
   -webkit-animation: 0.5s bounceIn;
   -moz-animation: 0.5s bounceIn;
   -o-animation: 0.5s bounceIn;
   animation: 0.5s bounceIn;
   z-index: 100; }
 
-.li.ng-leave {
+.ng-leave {
   -webkit-animation: 0.5s bounceOut;
   -moz-animation: 0.5s bounceOut;
   -o-animation: 0.5s bounceOut;

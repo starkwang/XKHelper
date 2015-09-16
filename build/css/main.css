@@ -7,6 +7,9 @@
 .course-table .body table {
   width: 100%; }
 
+.course-table .body table #counter {
+  width: 10%; }
+
 .course-table .body table td[line="4"] {
   border-bottom: 2px solid rgba(255, 255, 255, 0.7); }
 
@@ -14,10 +17,14 @@
   border-bottom: 2px solid rgba(255, 255, 255, 0.7); }
 
 .course-table .body table td {
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.25);
   text-align: center;
   color: rgba(255, 255, 255, 0.7);
-  height: 50px; }
+  height: 50px;
+  width: 15%; }
+
+.course-table .body table td[ng-mouseover] {
+  cursor: pointer; }
 
 .course-table .body table .double1, .course-table .body table .triple1, .course-table .body table .fourfold1 {
   border-bottom: 0; }
@@ -30,7 +37,7 @@
   border-top: 0; }
 
 .course-table .body table th {
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.25);
   border-bottom: 2px solid rgba(255, 255, 255, 0.25);
   height: 30px;
   line-height: 30px;
