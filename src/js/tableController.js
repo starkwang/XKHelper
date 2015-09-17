@@ -1,6 +1,6 @@
 //课表
 angular.module('starkAPP')
-    .controller('mainController', ['$scope', 'BaseService', '$timeout',
+    .controller('tableController', ['$scope', 'BaseService', '$timeout',
         function($scope, BaseService, $timeout) {
             // body...
 

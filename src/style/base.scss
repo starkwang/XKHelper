@@ -6,7 +6,7 @@ body {
   height: 100%;
 }
 
-#bg.ng-enter{
+#bg.ng-enter {
   -webkit-animation: 0.5s fadeIn;
   -moz-animation: 0.5s fadeIn;
   -o-animation: 0.5s fadeIn;
@@ -14,15 +14,29 @@ body {
   z-index: 100;
 }
 
+.ng-hide-remove {
+  -webkit-animation: 1s fadeIn;
+  -moz-animation: 1s fadeIn;
+  -o-animation: 1s fadeIn;
+  animation: 1s fadeIn;
+  z-index: 100;
+}
+.ng-hide-add {
+  -webkit-animation: 1s fadeOut;
+  -moz-animation: 1s fadeOut;
+  -o-animation: 1s fadeOut;
+  animation: 1s fadeOut;
+  z-index: 100;
+}
 
-
-.ng-enter{
+.ng-enter {
   -webkit-animation: 0.5s bounceIn;
   -moz-animation: 0.5s bounceIn;
   -o-animation: 0.5s bounceIn;
   animation: 0.5s bounceIn;
   z-index: 100;
 }
+
 .ng-leave {
   -webkit-animation: 0.5s bounceOut;
   -moz-animation: 0.5s bounceOut;
@@ -30,6 +44,7 @@ body {
   animation: 0.5s bounceOut;
   z-index: 100;
 }
+
 #bg {
   width: 100%;
   background: url("../img/bg.jpg");
@@ -50,6 +65,32 @@ body {
   color: $font-color;
 }
 
+.search {
+  .bg {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    position:relative;
+  }
+  .bg{
+    .close{
+      background:white;
+      position:absolute;
+      top: 0;
+      right: 0;
+      width: 10px;
+      height: 10px;
+    }
+  }
+}
+.search{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -9999;
+}
+
 .sidebar {
   li {
     border-bottom: 1px solid $border-color;
@@ -65,9 +106,9 @@ body {
     background-color: $bg-color;
     color: white;
   }
-  .li.active{
+  .li.active {
     width: 195px;
-    border-right: 5px solid #fff; 
+    border-right: 5px solid #fff;
   }
   .title {
     font-size: 40px;

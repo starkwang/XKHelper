@@ -187,17 +187,39 @@ angular.module('starkAPP')
 
 //侧边搜索栏
 angular.module('starkAPP')
-    .controller('sidebarController', ['$scope', 'BaseService','$timeout','$location',
-        function($scope, BaseService, $timeout,$location) {
+    .controller('searchController', ['$scope', 'BaseService', '$timeout', '$location',
+        function($scope, BaseService, $timeout, $location) {
+            $scope.$on('showSearch', function() {
+                $('.search').css('z-index', '0');
+                $scope.searchShow = true;
+            })
+
+            $scope.close = function() {
+                $scope.searchShow = false;
+                $timeout(function() {
+                    $('.search').css('z-index', '-9999');
+                },1000);
+            }
+        }
+    ]);
+
+//侧边搜索栏
+angular.module('starkAPP')
+    .controller('sidebarController', ['$scope', '$rootScope','BaseService','$timeout','$location',
+        function($scope, $rootScope,BaseService, $timeout,$location) {
             if($location.path() == '/main/'){
                 $scope.mainIsActive = true;
+            }
+
+            $scope.showSearch = function(){
+                $rootScope.$broadcast('showSearch');
             }
         }
     ]);
 
 //课表
 angular.module('starkAPP')
-    .controller('mainController', ['$scope', 'BaseService', '$timeout',
+    .controller('tableController', ['$scope', 'BaseService', '$timeout',
         function($scope, BaseService, $timeout) {
             // body...
 

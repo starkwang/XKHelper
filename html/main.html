@@ -1,6 +1,7 @@
 <div ng-include="'./html/sidebar.html'" class="sidebar"></div>
-<div class="content" ng-controller="mainController">
-  <div class="course-table">
+<div ng-include="'./html/search.html'" class="search"></div>
+<div class="content">
+  <div class="course-table" ng-controller="tableController">
       <div class="head"></div>
       <div class="body">
           <table>

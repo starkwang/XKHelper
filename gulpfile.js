@@ -29,7 +29,7 @@ gulp.task('scripts', function() {
         }));
 });
 gulp.task('libs', function() {
-    return gulp.src(['src/lib/csv.min.js', 'src/lib/data.js', 'src/lib/angular.min.js', 'src/lib/angular-route.min.js', 'src/lib/angular-css.js','src/lib/angular-animate.min.js'])
+    return gulp.src(['src/lib/csv.min.js', 'src/lib/data.js', 'src/lib/jquery.js','src/lib/angular.min.js', 'src/lib/angular-route.min.js', 'src/lib/angular-css.js','src/lib/angular-animate.min.js'])
         .pipe(concat('lib.js'))
         .pipe(gulp.dest('build/lib'))
         .pipe(rename({
