@@ -4,6 +4,7 @@ $font-color: rgba(255, 255, 255, 0.7);
 html,
 body {
   height: 100%;
+  font-family:"微软雅黑" !important;
 }
 
 #bg {
@@ -133,8 +134,8 @@ body {
     top: 10%;
     width: 800px;
     margin-left: -400px;
-    background: white;
-    border-radius: 20px;
+    background: rgb(223,223,223);
+    border-radius: 10px;
     .search-bar {
       line-height: 50px;
       box-sizing: border-box;
@@ -159,6 +160,7 @@ body {
         font-size: 30px;
         outline: none;
         border: 0;
+        background: rgb(223,223,223);
       }
     }
     .result {
@@ -178,13 +180,23 @@ body {
         overflow-x: hidden;
         float: left;
         li {
-          height: 28px;
+          height: auto;
+          padding-top:5px;
+          padding-bottom:5px;
           font-size: 18px;
           line-height: 28px;
-          border-bottom: 1px solid #ddd;
+          border-bottom: 1px solid #aaa;
           cursor: pointer;
           padding-left: 20px;
           box-sizing: border-box;
+          overflow: hidden;
+          p{
+            float: left;
+          }
+          .teacher{
+            color: #777;
+            margin-left: 10px;
+          }
         }
         li:hover {
           background-color: rgb(0, 68, 181);
@@ -195,6 +207,23 @@ body {
         width:379px;
         height: 100%;
         float: left;
+        text-align: center;
+        padding: 20px;
+        box-sizing:border-box;
+        h1{
+          font-size: 24px;
+          padding:5px;
+        }
+        p{
+          padding:5px;
+          font-size: 14px;
+          color:#777;
+        }
+        .main-info{
+          font-size: 18px;
+          font-weight: bold;
+          color:#000;
+        }
       }
     }
   }

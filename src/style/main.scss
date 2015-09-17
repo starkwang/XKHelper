@@ -25,12 +25,24 @@ $font-color: rgba(255, 255, 255, 0.7);
             td[line="9"]{
                 border-bottom:2px solid $font-color;
             }
+            td[line="12"]{
+                border-bottom:0;
+            }
             td{
                 border: 2px solid $border-color;
                 text-align: center;
                 color: $font-color;
-                height: 50px;
+                height: 40px;
                 width: 15%;
+            }
+            td[row="left"],th[row="left"]{
+                border-left:0;
+            }
+            th{
+                border-top:0 !important;
+            }
+            td[row="right"],th[row="right"]{
+                border-right:0;
             }
             td[ng-mouseover]{
                 cursor: pointer;

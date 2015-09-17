@@ -22,6 +22,7 @@ angular.module('baseService', [])
                         }
                     });
                     if (localStorage.courseModelData !== undefined) {
+                        console.log(localStorage.courseModelData);
                         this.data = JSON.parse(localStorage.courseModelData);
                     }
                 },
@@ -63,6 +64,7 @@ angular.module('baseService', [])
                         }
                     }
                     var data_ = this.data;
+                    localStorage.courseModelData = JSON.stringify(data_);
                     $rootScope.$broadcast('courseModelUpdate', data_);
                 }
             };

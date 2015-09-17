@@ -2369,9 +2369,11 @@ Copyright (c) 2015 Daniel Eden
   animation: 0.5s fadeOutDown;
   z-index: 10; }
 
+@charset "UTF-8";
 html,
 body {
-  height: 100%; }
+  height: 100%;
+  font-family: "微软雅黑" !important; }
 
 #bg {
   width: 100%;
@@ -2477,8 +2479,8 @@ body {
   top: 10%;
   width: 800px;
   margin-left: -400px;
-  background: white;
-  border-radius: 20px; }
+  background: #dfdfdf;
+  border-radius: 10px; }
   .search .search-box .search-bar {
     line-height: 50px;
     box-sizing: border-box;
@@ -2498,7 +2500,8 @@ body {
       margin-top: 5px;
       font-size: 30px;
       outline: none;
-      border: 0; }
+      border: 0;
+      background: #dfdfdf; }
   .search .search-box .result {
     height: 300px;
     width: 100%;
@@ -2516,20 +2519,42 @@ body {
       overflow-x: hidden;
       float: left; }
       .search .search-box .result .list li {
-        height: 28px;
+        height: auto;
+        padding-top: 5px;
+        padding-bottom: 5px;
         font-size: 18px;
         line-height: 28px;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid #aaa;
         cursor: pointer;
         padding-left: 20px;
-        box-sizing: border-box; }
+        box-sizing: border-box;
+        overflow: hidden; }
+        .search .search-box .result .list li p {
+          float: left; }
+        .search .search-box .result .list li .teacher {
+          color: #777;
+          margin-left: 10px; }
       .search .search-box .result .list li:hover {
         background-color: #0044b5;
         color: #fff; }
     .search .search-box .result .detail {
       width: 379px;
       height: 100%;
-      float: left; }
+      float: left;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box; }
+      .search .search-box .result .detail h1 {
+        font-size: 24px;
+        padding: 5px; }
+      .search .search-box .result .detail p {
+        padding: 5px;
+        font-size: 14px;
+        color: #777; }
+      .search .search-box .result .detail .main-info {
+        font-size: 18px;
+        font-weight: bold;
+        color: #000; }
 
 @charset "UTF-8";
 /* 清除内外边距 */

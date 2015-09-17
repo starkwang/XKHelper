@@ -11,13 +11,17 @@
       <div class="result" ng-show="resultShow">
         <div class="list">
           <ul>
-            <li ng-repeat="course in result" ng-mouseover="mouseover()" >{{course['课程名称']}}</li>
+            <li ng-repeat="course in result" ng-mouseover="mouseover()" ><p class="name">{{course['课程名称']}}</p><p class="teacher">{{course['教师']}}</p></li>
           </ul>
         </div>
         <div class="detail">
           <h1>{{detail['课程名称']}}</h1>
-          <p>{{detail['教师']}}</p>
-          <p>{{detail['时间']}}</p>
+          <p class="">{{detail['选课序号']}}</p>
+          <p class="main-info">{{detail['教师']}}&nbsp;&nbsp;{{detail['职称']}}</p>
+          <p class="main-info">{{detail['时间']}}&nbsp;&nbsp;{{detail['教室']}}</p>
+          <p class="">人数：{{detail['人数']}}</p>
+          <p class="">{{detail['选课限制条件']}}</p>
+          <p class="">{{detail['考试时间']}}</p>
           <button ng-click="courseUpdate()">选</button>
         </div>
       </div>

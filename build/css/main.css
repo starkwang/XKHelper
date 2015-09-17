@@ -16,12 +16,24 @@
 .course-table .body table td[line="9"] {
   border-bottom: 2px solid rgba(255, 255, 255, 0.7); }
 
+.course-table .body table td[line="12"] {
+  border-bottom: 0; }
+
 .course-table .body table td {
   border: 2px solid rgba(255, 255, 255, 0.25);
   text-align: center;
   color: rgba(255, 255, 255, 0.7);
-  height: 50px;
+  height: 40px;
   width: 15%; }
+
+.course-table .body table td[row="left"], .course-table .body table th[row="left"] {
+  border-left: 0; }
+
+.course-table .body table th {
+  border-top: 0 !important; }
+
+.course-table .body table td[row="right"], .course-table .body table th[row="right"] {
+  border-right: 0; }
 
 .course-table .body table td[ng-mouseover] {
   cursor: pointer; }
