@@ -2320,10 +2320,6 @@ Copyright (c) 2015 Daniel Eden
   -webkit-animation-name: slideOutUp;
   animation-name: slideOutUp; }
 
-html,
-body {
-  height: 100%; }
-
 #bg.ng-enter {
   -webkit-animation: 0.5s fadeIn;
   -moz-animation: 0.5s fadeIn;
@@ -2332,32 +2328,50 @@ body {
   z-index: 100; }
 
 .ng-hide-remove {
-  -webkit-animation: 1s fadeIn;
-  -moz-animation: 1s fadeIn;
-  -o-animation: 1s fadeIn;
-  animation: 1s fadeIn;
-  z-index: 100; }
+  -webkit-animation: 1s fadeInDown;
+  -moz-animation: 1s fadeInDown;
+  -o-animation: 1s fadeInDown;
+  animation: 1s fadeInDown;
+  z-index: 10; }
 
 .ng-hide-add {
   -webkit-animation: 1s fadeOut;
   -moz-animation: 1s fadeOut;
   -o-animation: 1s fadeOut;
   animation: 1s fadeOut;
+  z-index: 10; }
+
+.search .bg.ng-hide-remove {
+  -webkit-animation: 0.7s fadeIn;
+  -moz-animation: 0.7s fadeIn;
+  -o-animation: 0.7s fadeIn;
+  animation: 0.7s fadeIn;
+  z-index: 100; }
+
+.search .search-bar.ng-hide-remove {
+  -webkit-animation: 0.7s fadeInDown;
+  -moz-animation: 0.7s fadeInDown;
+  -o-animation: 0.7s fadeInDown;
+  animation: 0.7s fadeInDown;
   z-index: 100; }
 
 .ng-enter {
-  -webkit-animation: 0.5s bounceIn;
-  -moz-animation: 0.5s bounceIn;
-  -o-animation: 0.5s bounceIn;
-  animation: 0.5s bounceIn;
-  z-index: 100; }
+  -webkit-animation: 0.5s fadeInDown;
+  -moz-animation: 0.5s fadeInDown;
+  -o-animation: 0.5s fadeInDown;
+  animation: 0.5s fadeInDown;
+  z-index: 10; }
 
 .ng-leave {
-  -webkit-animation: 0.5s bounceOut;
-  -moz-animation: 0.5s bounceOut;
-  -o-animation: 0.5s bounceOut;
-  animation: 0.5s bounceOut;
-  z-index: 100; }
+  -webkit-animation: 0.5s fadeOutDown;
+  -moz-animation: 0.5s fadeOutDown;
+  -o-animation: 0.5s fadeOutDown;
+  animation: 0.5s fadeOutDown;
+  z-index: 10; }
+
+html,
+body {
+  height: 100%; }
 
 #bg {
   width: 100%;
@@ -2407,6 +2421,9 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
   cursor: pointer; }
+  .sidebar .li .iconfont {
+    float: left;
+    margin-left: 20px; }
 
 .sidebar .li:hover {
   background-color: rgba(255, 255, 255, 0.5);
@@ -2426,6 +2443,93 @@ body {
   margin-left: 200px;
   margin-top: 50px;
   height: 100%; }
+
+@font-face {
+  font-family: "iconfont";
+  src: url("../font/iconfont.eot");
+  /* IE9*/
+  src: url("../font/iconfont.eot?#iefix") format("embedded-opentype"), url("../font/iconfont.woff") format("woff"), url("../font/iconfont.ttf") format("truetype"), url("../font/iconfont.svg#iconfont") format("svg");
+  /* iOS 4.1- */ }
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-magnifier:before {
+  content: "\e663"; }
+
+.icon-calendarfull:before {
+  content: "\e614"; }
+
+.icon-inbox:before {
+  content: "\e651"; }
+
+.icon-chevrondown:before {
+  content: "\e61c"; }
+
+.search .search-box {
+  position: fixed;
+  left: 50%;
+  top: 10%;
+  width: 800px;
+  margin-left: -400px;
+  background: white;
+  border-radius: 20px; }
+  .search .search-box .search-bar {
+    line-height: 50px;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px; }
+    .search .search-box .search-bar .icon,
+    .search .search-box .search-bar .input {
+      float: left; }
+    .search .search-box .search-bar .more {
+      float: right; }
+    .search .search-box .search-bar .icon {
+      margin-right: 20px; }
+      .search .search-box .search-bar .icon i {
+        font-size: 30px; }
+    .search .search-box .search-bar .input {
+      height: 40px;
+      margin-top: 5px;
+      font-size: 30px;
+      outline: none;
+      border: 0; }
+  .search .search-box .result {
+    height: 300px;
+    width: 100%;
+    border-top: 1px solid #ccc;
+    box-sizing: border-box;
+    padding-right: 20px;
+    overflow: hidden;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px; }
+    .search .search-box .result .list {
+      width: 400px;
+      height: 100%;
+      border-right: 1px solid #ccc;
+      overflow-y: auto;
+      overflow-x: hidden;
+      float: left; }
+      .search .search-box .result .list li {
+        height: 28px;
+        font-size: 18px;
+        line-height: 28px;
+        border-bottom: 1px solid #ddd;
+        cursor: pointer;
+        padding-left: 20px;
+        box-sizing: border-box; }
+      .search .search-box .result .list li:hover {
+        background-color: #0044b5;
+        color: #fff; }
+    .search .search-box .result .detail {
+      width: 379px;
+      height: 100%;
+      float: left; }
 
 @charset "UTF-8";
 /* 清除内外边距 */

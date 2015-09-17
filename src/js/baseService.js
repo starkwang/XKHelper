@@ -59,6 +59,7 @@ angular.module('baseService', [])
                             for (var i = 0; i < courseLength; i++) {
                                 courseModel.data[weekday][start + i] = course;
                             }
+                            console.log(courseModel);
                         }
                     }
                     var data_ = this.data;
@@ -69,6 +70,9 @@ angular.module('baseService', [])
             courseModel.init();
 
             function search(specification) {
+                if(!(specification.time.length||specification.keywords.length||specification.courseID.length||specification.category.length)){
+                    return [];
+                }
                 function matchCourse(specification, course) {
                     if (specification.time) {
                         if (specification.time.indexOf(course['时间'].trim()) == -1) {

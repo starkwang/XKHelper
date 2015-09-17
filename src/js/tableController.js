@@ -57,33 +57,47 @@ angular.module('starkAPP')
                     if (parseResult.length == 3) {
                         $scope.tableView[parseResult.weekday][parseResult.start] = {
                             text: item['选课序号'],
-                            type: 'triple1'
+                            type: 'triple1',
+                            show: true,
+                            style: ''
                         };
                         $scope.tableView[parseResult.weekday][parseResult.start + 1] = {
                             text: item['课程名称'],
-                            type: 'triple2'
+                            type: 'triple2',
+                            show: true,
+                            style: ''
                         };
                         $scope.tableView[parseResult.weekday][parseResult.start + 2] = {
                             text: item['教室'] + ' ' + item['教师'],
-                            type: 'triple3'
+                            type: 'triple3',
+                            show: true,
+                            style: ''
                         };
                     }
                     if (parseResult.length == 4) {
                         $scope.tableView[parseResult.weekday][parseResult.start] = {
                             text: item['选课序号'],
-                            type: 'fourfold1'
+                            type: 'fourfold1',
+                            show: true,
+                            style: ''
                         };
                         $scope.tableView[parseResult.weekday][parseResult.start + 1] = {
                             text: item['课程名称'],
-                            type: 'fourfold2'
+                            type: 'fourfold2',
+                            show: true,
+                            style: ''
                         };
                         $scope.tableView[parseResult.weekday][parseResult.start + 2] = {
                             text: item['教室'],
-                            type: 'fourfold3'
+                            type: 'fourfold3',
+                            show: true,
+                            style: ''
                         };
                         $scope.tableView[parseResult.weekday][parseResult.start + 3] = {
                             text: item['教师'],
-                            type: 'fourfold4'
+                            type: 'fourfold4',
+                            show: true,
+                            style: ''
                         };
                     }
                 });

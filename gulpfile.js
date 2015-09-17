@@ -43,7 +43,7 @@ gulp.task('libs', function() {
 });
 
 gulp.task('sass', function() {
-    gulp.src(['src/style/animate.scss','src/style/base.scss','src/style/reset.scss'])
+    gulp.src(['src/style/animate.scss','src/style/animation.scss','src/style/base.scss','src/style/reset.scss'])
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(concat('base.css'))
         .pipe(gulp.dest('build/css'));

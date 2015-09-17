@@ -79,6 +79,7 @@ angular.module('baseService', [])
                             for (var i = 0; i < courseLength; i++) {
                                 courseModel.data[weekday][start + i] = course;
                             }
+                            console.log(courseModel);
                         }
                     }
                     var data_ = this.data;
@@ -89,6 +90,9 @@ angular.module('baseService', [])
             courseModel.init();
 
             function search(specification) {
+                if(!(specification.time.length||specification.keywords.length||specification.courseID.length||specification.category.length)){
+                    return [];
+                }
                 function matchCourse(specification, course) {
                     if (specification.time) {
                         if (specification.time.indexOf(course['时间'].trim()) == -1) {
@@ -190,15 +194,45 @@ angular.module('starkAPP')
     .controller('searchController', ['$scope', 'BaseService', '$timeout', '$location',
         function($scope, BaseService, $timeout, $location) {
             $scope.$on('showSearch', function() {
-                $('.search').css('z-index', '0');
+                $('.search').css('z-index', '100');
                 $scope.searchShow = true;
+                $timeout(function() {
+                    $('.search-bar input').focus();
+                }, 700);
+
             })
 
             $scope.close = function() {
-                $scope.searchShow = false;
-                $timeout(function() {
-                    $('.search').css('z-index', '-9999');
-                },1000);
+                if (/bg/.test(event.target.className)) {
+                    $scope.searchShow = false;
+                    $timeout(function() {
+                        $('.search').css('z-index', '-9999');
+                    }, 700);
+                }
+            }
+
+            $scope.kwChange = function() {
+                var params = {
+                    category: [],
+                    keywords: $scope.keywords,
+                    courseID: '',
+                    time: ''
+                }
+                var result = BaseService.search(params);
+                console.log(result);
+                $scope.result = result;
+                if(result.length> 0){
+                    $scope.resultShow = true;
+                }else{
+                    $scope.resultShow = false;
+                }
+            }
+
+            $scope.mouseover = function(){
+                $scope.detail = this.course;
+            }
+            $scope.courseUpdate = function(){
+                BaseService.courseModel.update(this.detail);
             }
         }
     ]);
@@ -276,33 +310,47 @@ angular.module('starkAPP')
                     if (parseResult.length == 3) {
                         $scope.tableView[parseResult.weekday][parseResult.start] = {
                             text: item['选课序号'],
-                            type: 'triple1'
+                            type: 'triple1',
+                            show: true,
+                            style: ''
                         };
                         $scope.tableView[parseResult.weekday][parseResult.start + 1] = {
                             text: item['课程名称'],
-                            type: 'triple2'
+                            type: 'triple2',
+                            show: true,
+                            style: ''
                         };
                         $scope.tableView[parseResult.weekday][parseResult.start + 2] = {
                             text: item['教室'] + ' ' + item['教师'],
-                            type: 'triple3'
+                            type: 'triple3',
+                            show: true,
+                            style: ''
                         };
                     }
                     if (parseResult.length == 4) {
                         $scope.tableView[parseResult.weekday][parseResult.start] = {
                             text: item['选课序号'],
-                            type: 'fourfold1'
+                            type: 'fourfold1',
+                            show: true,
+                            style: ''
                         };
                         $scope.tableView[parseResult.weekday][parseResult.start + 1] = {
                             text: item['课程名称'],
-                            type: 'fourfold2'
+                            type: 'fourfold2',
+                            show: true,
+                            style: ''
                         };
                         $scope.tableView[parseResult.weekday][parseResult.start + 2] = {
                             text: item['教室'],
-                            type: 'fourfold3'
+                            type: 'fourfold3',
+                            show: true,
+                            style: ''
                         };
                         $scope.tableView[parseResult.weekday][parseResult.start + 3] = {
                             text: item['教师'],
-                            type: 'fourfold4'
+                            type: 'fourfold4',
+                            show: true,
+                            style: ''
                         };
                     }
                 });

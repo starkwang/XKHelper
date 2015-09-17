@@ -1,0 +1,55 @@
+#bg.ng-enter {
+  -webkit-animation: 0.5s fadeIn;
+  -moz-animation: 0.5s fadeIn;
+  -o-animation: 0.5s fadeIn;
+  animation: 0.5s fadeIn;
+  z-index: 100;
+}
+
+.ng-hide-remove {
+  -webkit-animation: 1s fadeInDown;
+  -moz-animation: 1s fadeInDown;
+  -o-animation: 1s fadeInDown;
+  animation: 1s fadeInDown;
+  z-index: 10;
+}
+
+.ng-hide-add {
+  -webkit-animation: 1s fadeOut;
+  -moz-animation: 1s fadeOut;
+  -o-animation: 1s fadeOut;
+  animation: 1s fadeOut;
+  z-index: 10;
+}
+
+.search .bg.ng-hide-remove {
+  -webkit-animation: 0.7s fadeIn;
+  -moz-animation: 0.7s fadeIn;
+  -o-animation: 0.7s fadeIn;
+  animation: 0.7s fadeIn;
+  z-index: 100;
+}
+
+.search .search-bar.ng-hide-remove {
+  -webkit-animation: 0.7s fadeInDown;
+  -moz-animation: 0.7s fadeInDown;
+  -o-animation: 0.7s fadeInDown;
+  animation: 0.7s fadeInDown;
+  z-index: 100;
+}
+
+.ng-enter {
+  -webkit-animation: 0.5s fadeInDown;
+  -moz-animation: 0.5s fadeInDown;
+  -o-animation: 0.5s fadeInDown;
+  animation: 0.5s fadeInDown;
+  z-index: 10;
+}
+
+.ng-leave {
+  -webkit-animation: 0.5s fadeOutDown;
+  -moz-animation: 0.5s fadeOutDown;
+  -o-animation: 0.5s fadeOutDown;
+  animation: 0.5s fadeOutDown;
+  z-index: 10;
+}

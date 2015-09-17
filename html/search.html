@@ -1,5 +1,26 @@
 <div ng-controller="searchController" style="width:100%;height:100%;position:absolute;top:0;left:0;">
   <div ng-show="searchShow" class="bg" ng-click="close()">
-      <div class="close" ng-click="close()">x</div>
+    <div class="search-box" ng-show="searchShow">
+      <div class="search-bar">
+        <div style="overflow:hidden">
+          <div class="icon"><i class="iconfont icon-magnifier"></i></div>
+          <input type="text" name="" id="" class="input" placeholder="课程名称" ng-change="kwChange()" ng-model="keywords">
+          <div class="more"><i class="iconfont icon-chevrondown"></i>更多条件</div>
+        </div>
+      </div>
+      <div class="result" ng-show="resultShow">
+        <div class="list">
+          <ul>
+            <li ng-repeat="course in result" ng-mouseover="mouseover()" >{{course['课程名称']}}</li>
+          </ul>
+        </div>
+        <div class="detail">
+          <h1>{{detail['课程名称']}}</h1>
+          <p>{{detail['教师']}}</p>
+          <p>{{detail['时间']}}</p>
+          <button ng-click="courseUpdate()">选</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
