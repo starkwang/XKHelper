@@ -38,15 +38,15 @@
 .course-table .body table td[ng-mouseover] {
   cursor: pointer; }
 
-.course-table .body table .double1, .course-table .body table .triple1, .course-table .body table .fourfold1 {
-  border-bottom: 0; }
+.course-table .body table .end {
+  border-top: 0 !important; }
 
-.course-table .body table .double2, .course-table .body table .triple3, .course-table .body table .fourfold4 {
-  border-top: 0; }
+.course-table .body table .start {
+  border-bottom: 0 !important; }
 
-.course-table .body table .triple2, .course-table .body table .fourfold2, .course-table .body table .fourfold3 {
-  border-bottom: 0;
-  border-top: 0; }
+.course-table .body table .body {
+  border-bottom: 0 !important;
+  border-top: 0 !important; }
 
 .course-table .body table th {
   border: 2px solid rgba(255, 255, 255, 0.25);

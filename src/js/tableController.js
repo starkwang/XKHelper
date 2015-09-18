@@ -4,21 +4,7 @@ angular.module('starkAPP')
         function($scope, BaseService, $timeout) {
             // body...
 
-            $scope.tableView = [
-                [],
-                [],
-                [],
-                [],
-                [],
-                []
-            ];
-            $scope.tableView.forEach(function(a) {
-                for (var i = 0; i < 13; i++) {
-                    a.push({
-                        length: 1
-                    });
-                }
-            })
+
 
             refreshen(BaseService.courseModel.data);
 
@@ -28,6 +14,21 @@ angular.module('starkAPP')
 
 
             function refreshen(data) {
+                $scope.tableView = [
+                    [],
+                    [],
+                    [],
+                    [],
+                    [],
+                    []
+                ];
+                $scope.tableView.forEach(function(a) {
+                    for (var i = 0; i < 13; i++) {
+                        a.push({
+                            length: 1
+                        });
+                    }
+                })
                 var courseModel = [];
 
                 data.forEach(function(i) {
@@ -44,192 +45,106 @@ angular.module('starkAPP')
                         $scope.tableView[parseResult.weekday][parseResult.start] = {
                             text1: item['选课序号'],
                             text2: item['课程名称'],
-                            type: 'double1',
+                            length: parseResult.length,
+                            No: 0,
                             show: true,
-                            style: ''
+                            style: '',
+                            locate: 'start'
                         };
                         $scope.tableView[parseResult.weekday][parseResult.start + 1] = {
                             text1: item['教室'],
                             text2: item['教师'],
-                            type: 'double2',
+                            length: parseResult.length,
+                            No: 1,
                             show: true,
-                            style: ''
+                            locate: 'end'
                         };
                     }
                     if (parseResult.length == 3) {
                         $scope.tableView[parseResult.weekday][parseResult.start] = {
                             text1: item['选课序号'],
-                            type: 'triple1',
+                            length: parseResult.length,
+                            No: 0,
                             show: true,
-                            style: ''
+                            style: '',
+                            locate: 'start'
                         };
                         $scope.tableView[parseResult.weekday][parseResult.start + 1] = {
                             text1: item['课程名称'],
-                            type: 'triple2',
+                            length: parseResult.length,
+                            No: 1,
                             show: true,
-                            style: ''
-                        };
-                        $scope.tableView[parseResult.weekday][parseResult.start + 2] = {
-                            text1: item['教室'] ,
-                            text2: item['教师'],
-                            type: 'triple3',
-                            show: true,
-                            style: ''
-                        };
-                    }
-                    if (parseResult.length == 4) {
-                        $scope.tableView[parseResult.weekday][parseResult.start] = {
-                            text1: item['选课序号'],
-                            type: 'fourfold1',
-                            show: true,
-                            style: ''
-                        };
-                        $scope.tableView[parseResult.weekday][parseResult.start + 1] = {
-                            text1: item['课程名称'],
-                            type: 'fourfold2',
-                            show: true,
-                            style: ''
+                            style: '',
+                            locate: 'body'
                         };
                         $scope.tableView[parseResult.weekday][parseResult.start + 2] = {
                             text1: item['教室'],
-                            type: 'fourfold3',
+                            text2: item['教师'],
+                            length: parseResult.length,
+                            No: 2,
                             show: true,
-                            style: ''
+                            style: '',
+                            locate: 'end'
                         };
-                        $scope.tableView[parseResult.weekday][parseResult.start + 3] = {
-                            text1: item['教师'],
-                            type: 'fourfold4',
-                            show: true,
-                            style: ''
-                        };
+                    }
+                    if (parseResult.length >= 4) {
+                        var tag = ['选课序号', '课程名称', '教室', '教师'];
+                        var lineStart = Math.floor((parseResult.length - 4) / 2);
+
+                        for (var i = 0; i < parseResult.length; i++) {
+                            $scope.tableView[parseResult.weekday][parseResult.start + i] = {
+                                length: parseResult.length,
+                                No: i,
+                                show: true,
+                                style: '',
+                                locate: 'body'
+                            };
+                            if (i == 0) {
+                                $scope.tableView[parseResult.weekday][parseResult.start + i].locate = 'start';
+                            }
+                            if (i == parseResult.length - 1) {
+                                $scope.tableView[parseResult.weekday][parseResult.start + i].locate = 'end';
+                            }
+                        }
+
+                        for (var i = 0; i < 4; i++) {
+                            var No = lineStart + i;
+                            $scope.tableView[parseResult.weekday][parseResult.start + lineStart + i]['text1'] = item[tag[i]];
+                        }
+
                     }
                 });
             }
 
+            $scope.remove =function(weekday,No){
+                var course = BaseService.courseModel.data[weekday][No];
+                BaseService.courseModel.remove(course);
+            }
+
             $scope.hover = function(line, row) {
                 var color = "background:rgba(255, 255, 255, 0.7)";
-                if ($scope.tableView[row][line].type == undefined) {
-                    $scope.tableView[row][line].style = color;
-                    return;
+                var nowItem = line;
+                //往上几格
+                var up = $scope.tableView[row][line].No || 0;
+                var down = $scope.tableView[row][line].length - up - 1 || 0;
+                for (var i = 0; i <= up; i++) {
+                    $scope.tableView[row][line - i].style = color;
                 }
-                if ($scope.tableView[row][line].type == 'double1') {
-                    $scope.tableView[row][line].style = color;
-                    $scope.tableView[row][line + 1].style = color;
-                    return;
-                }
-                if ($scope.tableView[row][line].type == 'double2') {
-                    $scope.tableView[row][line].style = color;
-                    $scope.tableView[row][line - 1].style = color;
-                    return;
-                }
-                if ($scope.tableView[row][line].type == 'triple1') {
-                    $scope.tableView[row][line].style = color;
-                    $scope.tableView[row][line + 1].style = color;
-                    $scope.tableView[row][line + 2].style = color;
-                    return;
-                }
-                if ($scope.tableView[row][line].type == 'triple2') {
-                    $scope.tableView[row][line].style = color;
-                    $scope.tableView[row][line + 1].style = color;
-                    $scope.tableView[row][line - 1].style = color;
-                    return;
-                }
-                if ($scope.tableView[row][line].type == 'triple3') {
-                    $scope.tableView[row][line].style = color;
-                    $scope.tableView[row][line - 1].style = color;
-                    $scope.tableView[row][line - 2].style = color;
-                    return;
-                }
-                if ($scope.tableView[row][line].type == 'fourfold1') {
-                    $scope.tableView[row][line].style = color;
-                    $scope.tableView[row][line + 1].style = color;
-                    $scope.tableView[row][line + 2].style = color;
-                    $scope.tableView[row][line + 3].style = color;
-                    return;
-                }
-                if ($scope.tableView[row][line].type == 'fourfold2') {
-                    $scope.tableView[row][line].style = color;
-                    $scope.tableView[row][line + 1].style = color;
-                    $scope.tableView[row][line + 2].style = color;
-                    $scope.tableView[row][line - 1].style = color;
-                    return;
-                }
-                if ($scope.tableView[row][line].type == 'fourfold3') {
-                    $scope.tableView[row][line].style = color;
-                    $scope.tableView[row][line + 1].style = color;
-                    $scope.tableView[row][line - 1].style = color;
-                    $scope.tableView[row][line - 2].style = color;
-                    return;
-                }
-                if ($scope.tableView[row][line].type == 'fourfold4') {
-                    $scope.tableView[row][line].style = color;
-                    $scope.tableView[row][line - 1].style = color;
-                    $scope.tableView[row][line - 2].style = color;
-                    $scope.tableView[row][line - 3].style = color;
-                    return;
+                for (var i = 0; i <= down; i++) {
+                    $scope.tableView[row][line + i].style = color;
                 }
             }
             $scope.out = function(line, row) {
-                var color = "background:rgba(255, 255, 255, 0)";
-                if ($scope.tableView[row][line].type == undefined) {
-                    $scope.tableView[row][line].style = color;
-                    return;
+                var color = "background:rgba(255, 255, 255, 0.0)";
+                var nowItem = line;
+                //往上几格
+                var up = $scope.tableView[row][line].No || 0;
+                var down = $scope.tableView[row][line].length - up - 1 || 0;
+                for (var i = 0; i <= up; i++) {
+                    $scope.tableView[row][line - i].style = color;
                 }
-                if ($scope.tableView[row][line].type == 'double1') {
-                    $scope.tableView[row][line].style = color;
-                    $scope.tableView[row][line + 1].style = color;
-                    return;
-                }
-                if ($scope.tableView[row][line].type == 'double2') {
-                    $scope.tableView[row][line].style = color;
-                    $scope.tableView[row][line - 1].style = color;
-                    return;
-                }
-                if ($scope.tableView[row][line].type == 'triple1') {
-                    $scope.tableView[row][line].style = color;
-                    $scope.tableView[row][line + 1].style = color;
-                    $scope.tableView[row][line + 2].style = color;
-                    return;
-                }
-                if ($scope.tableView[row][line].type == 'triple2') {
-                    $scope.tableView[row][line].style = color;
-                    $scope.tableView[row][line + 1].style = color;
-                    $scope.tableView[row][line - 1].style = color;
-                    return;
-                }
-                if ($scope.tableView[row][line].type == 'triple3') {
-                    $scope.tableView[row][line].style = color;
-                    $scope.tableView[row][line - 1].style = color;
-                    $scope.tableView[row][line - 2].style = color;
-                    return;
-                }
-                if ($scope.tableView[row][line].type == 'fourfold1') {
-                    $scope.tableView[row][line].style = color;
-                    $scope.tableView[row][line + 1].style = color;
-                    $scope.tableView[row][line + 2].style = color;
-                    $scope.tableView[row][line + 3].style = color;
-                    return;
-                }
-                if ($scope.tableView[row][line].type == 'fourfold2') {
-                    $scope.tableView[row][line].style = color;
-                    $scope.tableView[row][line + 1].style = color;
-                    $scope.tableView[row][line + 2].style = color;
-                    $scope.tableView[row][line - 1].style = color;
-                    return;
-                }
-                if ($scope.tableView[row][line].type == 'fourfold3') {
-                    $scope.tableView[row][line].style = color;
-                    $scope.tableView[row][line + 1].style = color;
-                    $scope.tableView[row][line - 1].style = color;
-                    $scope.tableView[row][line - 2].style = color;
-                    return;
-                }
-                if ($scope.tableView[row][line].type == 'fourfold4') {
-                    $scope.tableView[row][line].style = color;
-                    $scope.tableView[row][line - 1].style = color;
-                    $scope.tableView[row][line - 2].style = color;
-                    $scope.tableView[row][line - 3].style = color;
-                    return;
+                for (var i = 0; i <= down; i++) {
+                    $scope.tableView[row][line + i].style = color;
                 }
             }
 

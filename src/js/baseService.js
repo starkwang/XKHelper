@@ -22,7 +22,6 @@ angular.module('baseService', [])
                         }
                     });
                     if (localStorage.courseModelData !== undefined) {
-                        console.log(localStorage.courseModelData);
                         this.data = JSON.parse(localStorage.courseModelData);
                     }
                 },
@@ -31,36 +30,49 @@ angular.module('baseService', [])
                     var weekday = parseResult.weekday;
                     var start = parseResult.start;
                     var courseLength = parseResult.length;
-
-                    if (this.data[weekday][start] === 0 && this.data[weekday][start + 1] === 0 && this.data[weekday][start + courseLength - 1] === 0) {
+                    var isConflict = false;
+                    var _this = this;
+                    for (var i = 0; i < courseLength; i++) {
+                        if (this.data[weekday][start + i] != 0) {
+                            isConflict = true;
+                        }
+                    }
+                    if (!isConflict) {
                         for (var i = 0; i < courseLength; i++) {
                             courseModel.data[weekday][start + i] = course;
                         }
                     } else {
-
                         //冲突课程名的数组
                         var conflictName = [];
+                        var conflictCourse = [];
                         for (var i = 0; i < courseLength; i++) {
-                            console.log(this.data[weekday][start + i]);
-                            if (conflictName.indexOf(this.data[weekday][start + i]['课程名称']) == -1) {
+                            if (conflictName.indexOf(this.data[weekday][start + i]['课程名称']) == -1 && this.data[weekday][start + i] != 0) {
                                 conflictName.push(this.data[weekday][start + i]['课程名称']);
+                                conflictCourse.push(this.data[weekday][start + i]);
                             }
-
                         }
-                        console.log(conflictName);
-                        var name = conflictName.length > 1 ? conflictName.join('、') : conflictName[0];
-                        if (confirm('这门课与' + name + '冲突，是否替换？')) {
+                        var name = conflictName.length > 1 ? conflictName.join('》、《') : conflictName[0];
+                        if (confirm('这门课与《' + name + '》冲突，是否替换？')) {
                             //删除之前的课
-                            for (var i = 0; i < 13; i++) {
-                                if (conflictName.indexOf(this.data[weekday][i]) != -1) {
-                                    this.data[weekday][i] = 0;
-                                }
-                            }
+                            conflictCourse.forEach(function(course){
+                                _this.remove(course);
+                            })
+                            this.update(course);
+                        }
+                    }
+                    var data_ = this.data;
+                    localStorage.courseModelData = JSON.stringify(data_);
+                    $rootScope.$broadcast('courseModelUpdate', data_);
+                },
 
-                            for (var i = 0; i < courseLength; i++) {
-                                courseModel.data[weekday][start + i] = course;
-                            }
-                            console.log(courseModel);
+                remove: function(course) {
+                    var parseResult = timeParser(course['时间']);
+                    var weekday = parseResult.weekday;
+                    var start = parseResult.start;
+                    var courseLength = parseResult.length;
+                    for (var i = 0; i < 13; i++) {
+                        if (this.data[weekday][i]['选课序号'] == course['选课序号']) {
+                            this.data[weekday][i] = 0;
                         }
                     }
                     var data_ = this.data;
@@ -72,9 +84,10 @@ angular.module('baseService', [])
             courseModel.init();
 
             function search(specification) {
-                if(!(specification.time.length||specification.keywords.length||specification.courseID.length||specification.category.length)){
+                if (!(specification.time.length || specification.keywords.length || specification.courseID.length || specification.category.length)) {
                     return [];
                 }
+
                 function matchCourse(specification, course) {
                     if (specification.time) {
                         if (specification.time.indexOf(course['时间'].trim()) == -1) {

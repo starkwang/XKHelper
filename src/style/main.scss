@@ -47,15 +47,15 @@ $font-color: rgba(255, 255, 255, 0.7);
             td[ng-mouseover]{
                 cursor: pointer;
             }
-            .double1,.triple1,.fourfold1{
-                border-bottom:0;
+            .end{
+                border-top:0 !important;
             }
-            .double2,.triple3,.fourfold4{
-                border-top:0;   
+            .start{
+                border-bottom:0 !important;   
             }
-            .triple2,.fourfold2,.fourfold3{
-                border-bottom:0;
-                border-top:0;
+            .body{
+                border-bottom:0 !important;
+                border-top:0 !important;
             }
             th{
                 border: 2px solid $border-color;
