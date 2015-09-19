@@ -4,7 +4,7 @@ $font-color: rgba(255, 255, 255, 1);
 html,
 body {
   height: 100%;
-  font-family:"微软雅黑" !important;
+  font-family: "微软雅黑" !important;
 }
 
 #bg {
@@ -134,7 +134,7 @@ body {
     top: 10%;
     width: 800px;
     margin-left: -400px;
-    background: rgb(223,223,223);
+    background: rgb(223, 223, 223);
     border-radius: 10px;
     .search-bar {
       line-height: 50px;
@@ -160,7 +160,7 @@ body {
         font-size: 30px;
         outline: none;
         border: 0;
-        background: rgb(223,223,223);
+        background: rgb(223, 223, 223);
       }
     }
     .result {
@@ -181,8 +181,8 @@ body {
         float: left;
         li {
           height: auto;
-          padding-top:5px;
-          padding-bottom:5px;
+          padding-top: 5px;
+          padding-bottom: 5px;
           font-size: 18px;
           line-height: 28px;
           border-bottom: 1px solid #aaa;
@@ -190,10 +190,10 @@ body {
           padding-left: 20px;
           box-sizing: border-box;
           overflow: hidden;
-          p{
+          p {
             float: left;
           }
-          .teacher{
+          .teacher {
             color: #777;
             margin-left: 10px;
           }
@@ -203,26 +203,47 @@ body {
           color: #fff;
         }
       }
-      .detail{
-        width:379px;
+      .detail {
+        width: 379px;
         height: 100%;
         float: left;
         text-align: center;
         padding: 20px;
-        box-sizing:border-box;
-        h1{
+        box-sizing: border-box;
+        h1 {
           font-size: 24px;
-          padding:5px;
+          padding: 5px;
         }
-        p{
-          padding:5px;
+        p {
+          padding: 5px;
           font-size: 14px;
-          color:#777;
+          color: #777;
         }
-        .main-info{
+        .main-info {
           font-size: 18px;
           font-weight: bold;
-          color:#000;
+          color: #000;
+        }
+        .update {
+          background-color: #00ae68;
+          border: 0;
+          outline: 0;
+          color: #fff;
+          height: 26px;
+          width: 100px;
+          box-sizing: border-box;
+          font-size: 18px;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: all 0.1s;
+          -o-transition: all 0.1s;
+          -webkit-transition: all 0.1s;
+          -moz-transition: all 0.1s;
+        }
+        .update:hover {
+          background-color: rgba(255, 255, 255, 0);
+          border: 2px solid #00ae68;
+          color: #00ae68;
         }
       }
     }

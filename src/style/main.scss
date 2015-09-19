@@ -73,9 +73,50 @@ $font-color: rgba(255, 255, 255, 1);
     .detail{
         background-color:$font-color;
         width: 200px;
-        height:400px;
+        height:auto;
         border-radius:4px;
         position: absolute;
+        p{
+            font-size: 14px;
+            text-align: center;
+            padding:5px 5px;
+            border-bottom:1px solid #ddd;
+            color:#333;
+        }
+        h1{
+            padding:8px 5px;
+            font-size: 20px;
+            text-align: center;
+            border-bottom:1px solid #ddd;
+        }
+        .main-info{
+            color:#000;
+            font-size: 16px;
+            font-weight: bolder;
+        }
+        .remove{
+            background-color:rgb(223,62,62);
+            margin: 5px 5px;
+            width: 190px;
+            height: 20px;
+            text-align: center;
+            border:0;
+            outline: 0;
+            border-radius:4px;
+            cursor: pointer;
+            color:#fff;
+            box-sizing:border-box;
+            transition: all 0.1s;
+            -o-transition: all 0.1s;
+            -webkit-transition: all 0.1s;
+            -moz-ransition: all 0.1s;
+        }
+        .remove:hover{
+            border:2px solid rgb(223,62,62);
+            background-color:#fff;
+            color: rgb(223,62,62);
+        }
+
     }
     .detail-bg{
         width:100%;

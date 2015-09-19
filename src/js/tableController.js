@@ -154,6 +154,7 @@ angular.module('starkAPP')
                     return;
                 }
                 $scope.detail = BaseService.courseModel.data[weekday][No];
+                console.log($scope.detail);
                 if($scope.detailIsShow == true){
                     $scope.detailIsShow = false;
                     $timeout(function(){
@@ -177,6 +178,10 @@ angular.module('starkAPP')
 
             $scope.closeDetail = function(){
                 $scope.detailIsShow = false;
+            }
+
+            $scope.removeCourse = function(){
+                BaseService.courseModel.remove($scope.detail);
             }
 
         }

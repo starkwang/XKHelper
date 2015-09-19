@@ -2555,6 +2555,25 @@ body {
         font-size: 18px;
         font-weight: bold;
         color: #000; }
+      .search .search-box .result .detail .update {
+        background-color: #00ae68;
+        border: 0;
+        outline: 0;
+        color: #fff;
+        height: 26px;
+        width: 100px;
+        box-sizing: border-box;
+        font-size: 18px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.1s;
+        -o-transition: all 0.1s;
+        -webkit-transition: all 0.1s;
+        -moz-transition: all 0.1s; }
+      .search .search-box .result .detail .update:hover {
+        background-color: rgba(255, 255, 255, 0);
+        border: 2px solid #00ae68;
+        color: #00ae68; }
 
 @charset "UTF-8";
 /* 清除内外边距 */

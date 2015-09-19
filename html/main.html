@@ -47,14 +47,14 @@
     </div>
     <div class="detail-bg" ng-show="detailIsShow" ng-click="closeDetail()">
       <div class="detail" ng-show="detailIsShow" style="{{detailPosition}}">
-        <button ng-click="closeDetail()">X</button>
         <h1>{{detail['课程名称']}}</h1>
-          <p class="">{{detail['选课序号']}}</p>
-          <p class="main-info">{{detail['教师']}}&nbsp;&nbsp;{{detail['职称']}}</p>
-          <p class="main-info">{{detail['时间']}}&nbsp;&nbsp;{{detail['教室']}}</p>
-          <p class="">人数：{{detail['人数']}}</p>
-          <p class="">{{detail['选课限制条件']}}</p>
-          <p class="">{{detail['考试时间']}}</p>
+        <p class="">{{detail['选课序号']}}</p>
+        <p class="main-info">{{detail['教师']}}</p>
+        <p class="main-info">{{detail['时间']}}<br/>{{detail['教室']}}</p>
+        <p class="">人数：{{detail['人数']}}</p>
+        <p class="">限制条件：<br/>{{detail['选课限制条件']||'无'}}</p>
+        <p class="">{{detail['考试时间']}}</p>
+        <button class="remove" ng-click="removeCourse()">删除</button>
       </div>
     </div>
   </div>
