@@ -4,53 +4,59 @@
   height: auto;
   background: rgba(255, 255, 255, 0.5); }
 
-.course-table .body table {
-  width: 100%; }
-
-.course-table .body table #counter {
-  width: 10%; }
-
-.course-table .body table td[line="4"] {
-  border-bottom: 2px solid rgba(255, 255, 255, 0.7); }
-
-.course-table .body table td[line="9"] {
-  border-bottom: 2px solid rgba(255, 255, 255, 0.7); }
-
-.course-table .body table td[line="12"] {
-  border-bottom: 0; }
-
-.course-table .body table td {
-  border: 2px solid rgba(255, 255, 255, 0.25);
-  text-align: center;
-  color: rgba(255, 255, 255, 0.7);
-  height: 40px;
-  width: 15%; }
-
-.course-table .body table td[row="left"], .course-table .body table th[row="left"] {
-  border-left: 0; }
-
-.course-table .body table th {
-  border-top: 0 !important; }
-
-.course-table .body table td[row="right"], .course-table .body table th[row="right"] {
-  border-right: 0; }
-
-.course-table .body table td[ng-mouseover] {
-  cursor: pointer; }
-
-.course-table .body table .end {
-  border-top: 0 !important; }
-
-.course-table .body table .start {
-  border-bottom: 0 !important; }
-
-.course-table .body table .body {
-  border-bottom: 0 !important;
-  border-top: 0 !important; }
-
-.course-table .body table th {
-  border: 2px solid rgba(255, 255, 255, 0.25);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.25);
-  height: 30px;
-  line-height: 30px;
-  color: rgba(255, 255, 255, 0.7); }
+.course-table {
+  position: relative;
+  border-radius: 4px; }
+  .course-table .body table {
+    width: 100%; }
+  .course-table .body table #counter {
+    width: 10%; }
+  .course-table .body table td[line="4"] {
+    border-bottom: 2px solid white; }
+  .course-table .body table td[line="9"] {
+    border-bottom: 2px solid white; }
+  .course-table .body table td[line="12"] {
+    border-bottom: 0; }
+  .course-table .body table td {
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    text-align: center;
+    color: white;
+    height: 40px;
+    width: 15%;
+    box-sizing: border-box;
+    padding: 0 2px; }
+  .course-table .body table td[row="left"], .course-table .body table th[row="left"] {
+    border-left: 0; }
+  .course-table .body table th {
+    border-top: 0 !important; }
+  .course-table .body table td[row="right"], .course-table .body table th[row="right"] {
+    border-right: 0; }
+  .course-table .body table td[ng-mouseover] {
+    cursor: pointer; }
+  .course-table .body table .end {
+    border-top: 0 !important; }
+  .course-table .body table .start {
+    border-bottom: 0 !important; }
+  .course-table .body table .body {
+    border-bottom: 0 !important;
+    border-top: 0 !important; }
+  .course-table .body table th {
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.25);
+    height: 30px;
+    line-height: 30px;
+    color: white; }
+  .course-table .detail {
+    background-color: white;
+    width: 200px;
+    height: 400px;
+    border-radius: 4px;
+    position: absolute; }
+  .course-table .detail-bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    z-index: 200;
+    top: 0;
+    left: 0; }

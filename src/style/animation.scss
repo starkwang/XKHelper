@@ -6,21 +6,21 @@
   z-index: 100;
 }
 
-.ng-hide-remove {
-  -webkit-animation: 1s fadeInDown;
-  -moz-animation: 1s fadeInDown;
-  -o-animation: 1s fadeInDown;
-  animation: 1s fadeInDown;
-  z-index: 10;
-}
+// .ng-hide-remove {
+//   -webkit-animation: 1s fadeInDown;
+//   -moz-animation: 1s fadeInDown;
+//   -o-animation: 1s fadeInDown;
+//   animation: 1s fadeInDown;
+//   z-index: 10;
+// }
 
-.ng-hide-add {
-  -webkit-animation: 1s fadeOut;
-  -moz-animation: 1s fadeOut;
-  -o-animation: 1s fadeOut;
-  animation: 1s fadeOut;
-  z-index: 10;
-}
+// .ng-hide-add {
+//   -webkit-animation: 1s fadeOut;
+//   -moz-animation: 1s fadeOut;
+//   -o-animation: 1s fadeOut;
+//   animation: 1s fadeOut;
+//   z-index: 10;
+// }
 
 .search .bg.ng-hide-remove {
   -webkit-animation: 0.7s fadeIn;
@@ -37,6 +37,13 @@
   animation: 0.7s fadeInDown;
   z-index: 100;
 }
+.search .ng-hide-add {
+  -webkit-animation: 0.7s fadeOut;
+  -moz-animation: 0.7s fadeOut;
+  -o-animation: 0.7s fadeOut;
+  animation: 0.7s fadeOut;
+  z-index: 10;
+}
 
 .ng-enter {
   -webkit-animation: 0.5s fadeInDown;
@@ -52,4 +59,14 @@
   -o-animation: 0.5s fadeOutDown;
   animation: 0.5s fadeOutDown;
   z-index: 10;
+}
+
+.course-table {
+  .detail.ng-hide-remove {
+    -webkit-animation: 0.5s bounceIn;
+    -moz-animation: 0.5s bounceIn;
+    -o-animation: 0.5s bounceIn;
+    animation: 0.5s bounceIn;
+    z-index: 10;
+  }
 }

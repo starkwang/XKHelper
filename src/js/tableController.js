@@ -116,7 +116,7 @@ angular.module('starkAPP')
                 });
             }
 
-            $scope.remove =function(weekday,No){
+            $scope.remove = function(weekday, No) {
                 var course = BaseService.courseModel.data[weekday][No];
                 BaseService.courseModel.remove(course);
             }
@@ -146,6 +146,37 @@ angular.module('starkAPP')
                 for (var i = 0; i <= down; i++) {
                     $scope.tableView[row][line + i].style = color;
                 }
+            }
+
+            $scope.showDetail = function(weekday, No) {
+                console.log(event);
+                if(BaseService.courseModel.data[weekday][No] === 0){
+                    return;
+                }
+                $scope.detail = BaseService.courseModel.data[weekday][No];
+                if($scope.detailIsShow == true){
+                    $scope.detailIsShow = false;
+                    $timeout(function(){
+                        $scope.detailIsShow = true;
+                    },0);
+                }else{
+                    $scope.detailIsShow = true;
+                }
+                
+                if (weekday === 0 || weekday === 1 || weekday === 2) {
+                    var top = event.layerY - 200 < 0 ? 0 : event.layerY - 200;
+                    var left = (weekday + 1) * 15 + 10;
+                    $scope.detailPosition = "top:" + top + "px;left:" + left + "%;";
+                }
+                if (weekday === 3 || weekday === 4 || weekday === 5) {
+                    var top = event.layerY - 200 < 0 ? 0 : event.layerY - 200;
+                    var right = (6-weekday)*15;
+                    $scope.detailPosition = "top:" + top + "px;right:" + right + "%;";
+                }
+            }
+
+            $scope.closeDetail = function(){
+                $scope.detailIsShow = false;
             }
 
         }
