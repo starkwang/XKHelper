@@ -2334,18 +2334,18 @@ Copyright (c) 2015 Daniel Eden
   animation: 0.7s fadeIn;
   z-index: 100; }
 
-.search .search-bar.ng-hide-remove {
-  -webkit-animation: 0.7s fadeInDown;
-  -moz-animation: 0.7s fadeInDown;
-  -o-animation: 0.7s fadeInDown;
-  animation: 0.7s fadeInDown;
+.search .ng-hide-remove {
+  -webkit-animation: 0.7s bounceInDown;
+  -moz-animation: 0.7s bounceInDown;
+  -o-animation: 0.7s bounceInDown;
+  animation: 0.7s bounceInDown;
   z-index: 100; }
 
 .search .ng-hide-add {
-  -webkit-animation: 0.7s fadeOut;
-  -moz-animation: 0.7s fadeOut;
-  -o-animation: 0.7s fadeOut;
-  animation: 0.7s fadeOut;
+  -webkit-animation: 0.7s bounceOutUp;
+  -moz-animation: 0.7s bounceOutUp;
+  -o-animation: 0.7s bounceOutUp;
+  animation: 0.7s bounceOutUp;
   z-index: 10; }
 
 .ng-enter {
@@ -2369,6 +2369,27 @@ Copyright (c) 2015 Daniel Eden
   animation: 0.5s bounceIn;
   z-index: 10; }
 
+.course-table .detail-bg.ng-hide-remove {
+  -webkit-animation: 0.5s fadeIn;
+  -moz-animation: 0.5s fadeIn;
+  -o-animation: 0.5s fadeIn;
+  animation: 0.5s fadeIn;
+  z-index: 10; }
+
+.course-table .detail-bg.ng-hide-add {
+  -webkit-animation: 0.5s fadeOut;
+  -moz-animation: 0.5s fadeOut;
+  -o-animation: 0.5s fadeOut;
+  animation: 0.5s fadeOut;
+  z-index: 10; }
+
+.course-table .detail.ng-hide-add {
+  -webkit-animation: 0.5s bounceOut;
+  -moz-animation: 0.5s bounceOut;
+  -o-animation: 0.5s bounceOut;
+  animation: 0.5s bounceOut;
+  z-index: 10; }
+
 @charset "UTF-8";
 html,
 body {
@@ -2377,7 +2398,7 @@ body {
 
 #bg {
   width: 100%;
-  background: url("../img/bg.jpg");
+  background: #55a997;
   background-size: cover;
   background-repeat: no-repeat;
   height: 1000px;
@@ -2387,16 +2408,19 @@ body {
 .sidebar {
   width: 200px;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: #54555a;
   position: fixed;
   top: 0;
   left: 0;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   color: white; }
+  .sidebar a {
+    color: #54555a; }
 
 .search .bg {
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: transparent;
   z-index: 9999;
   position: relative; }
 
@@ -2428,12 +2452,12 @@ body {
     margin-left: 20px; }
 
 .sidebar .li:hover {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: #54555a;
   color: white; }
 
 .sidebar .li.active {
-  width: 195px;
-  border-right: 5px solid #fff; }
+  background: #fff;
+  color: #54555a; }
 
 .sidebar .title {
   font-size: 40px;
@@ -2480,6 +2504,7 @@ body {
   width: 800px;
   margin-left: -400px;
   background: #dfdfdf;
+  box-shadow: 5px 6px 25px rgba(0, 0, 0, 0.7);
   border-radius: 10px; }
   .search .search-box .search-bar {
     line-height: 50px;

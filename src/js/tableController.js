@@ -122,7 +122,7 @@ angular.module('starkAPP')
             }
 
             $scope.hover = function(line, row) {
-                var color = "background:rgba(255, 255, 255, 0.7)";
+                var color = "background:#ddd";
                 var nowItem = line;
                 //往上几格
                 var up = $scope.tableView[row][line].No || 0;
@@ -135,7 +135,7 @@ angular.module('starkAPP')
                 }
             }
             $scope.out = function(line, row) {
-                var color = "background:rgba(255, 255, 255, 0.0)";
+                var color = "";
                 var nowItem = line;
                 //往上几格
                 var up = $scope.tableView[row][line].No || 0;

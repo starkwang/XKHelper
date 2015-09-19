@@ -1,4 +1,4 @@
-$bg-color: rgba(255, 255, 255, 0.5);
+$bg-color: rgb(84, 85, 90);
 $border-color: rgba(255, 255, 255, 0.5);
 $font-color: rgba(255, 255, 255, 1);
 html,
@@ -9,12 +9,13 @@ body {
 
 #bg {
   width: 100%;
-  background: url("../img/bg.jpg");
+  background: rgb(85,169,151);
   background-size: cover;
   background-repeat: no-repeat;
   height: 1000px;
   position: relative;
   overflow: hidden;
+
 }
 
 .sidebar {
@@ -24,14 +25,18 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
   color: $font-color;
+  a{
+    color: $bg-color;
+  }
 }
 
 .search {
   .bg {
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0);
     z-index: 9999;
     position: relative;
   }
@@ -74,8 +79,8 @@ body {
     color: white;
   }
   .li.active {
-    width: 195px;
-    border-right: 5px solid #fff;
+    background:#fff;
+    color: $bg-color;
   }
   .title {
     font-size: 40px;
@@ -135,6 +140,7 @@ body {
     width: 800px;
     margin-left: -400px;
     background: rgb(223, 223, 223);
+    box-shadow: 5px 6px 25px rgba(0,0,0,0.7);
     border-radius: 10px;
     .search-bar {
       line-height: 50px;

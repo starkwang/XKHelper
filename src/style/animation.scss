@@ -30,18 +30,18 @@
   z-index: 100;
 }
 
-.search .search-bar.ng-hide-remove {
-  -webkit-animation: 0.7s fadeInDown;
-  -moz-animation: 0.7s fadeInDown;
-  -o-animation: 0.7s fadeInDown;
-  animation: 0.7s fadeInDown;
+.search .ng-hide-remove {
+  -webkit-animation: 0.7s bounceInDown;
+  -moz-animation: 0.7s bounceInDown;
+  -o-animation: 0.7s bounceInDown;
+  animation: 0.7s bounceInDown;
   z-index: 100;
 }
 .search .ng-hide-add {
-  -webkit-animation: 0.7s fadeOut;
-  -moz-animation: 0.7s fadeOut;
-  -o-animation: 0.7s fadeOut;
-  animation: 0.7s fadeOut;
+  -webkit-animation: 0.7s bounceOutUp;
+  -moz-animation: 0.7s bounceOutUp;
+  -o-animation: 0.7s bounceOutUp;
+  animation: 0.7s bounceOutUp;
   z-index: 10;
 }
 
@@ -67,6 +67,27 @@
     -moz-animation: 0.5s bounceIn;
     -o-animation: 0.5s bounceIn;
     animation: 0.5s bounceIn;
+    z-index: 10;
+  }
+  .detail-bg.ng-hide-remove{
+    -webkit-animation: 0.5s fadeIn;
+    -moz-animation: 0.5s fadeIn;
+    -o-animation: 0.5s fadeIn;
+    animation: 0.5s fadeIn;
+    z-index: 10;
+  }
+  .detail-bg.ng-hide-add{
+    -webkit-animation: 0.5s fadeOut;
+    -moz-animation: 0.5s fadeOut;
+    -o-animation: 0.5s fadeOut;
+    animation: 0.5s fadeOut;
+    z-index: 10;
+  }
+  .detail.ng-hide-add {
+    -webkit-animation: 0.5s bounceOut;
+    -moz-animation: 0.5s bounceOut;
+    -o-animation: 0.5s bounceOut;
+    animation: 0.5s bounceOut;
     z-index: 10;
   }
 }
