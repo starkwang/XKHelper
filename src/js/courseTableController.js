@@ -2,7 +2,7 @@
 angular.module('starkAPP')
     .controller('courseTableController', ['$scope', 'BaseService', '$timeout',
         function($scope, BaseService, $timeout) {
-            
+
             refreshen(BaseService.courseModel.data);
 
             $scope.$on('courseModelUpdate', function(event, data) {
@@ -27,7 +27,6 @@ angular.module('starkAPP')
                     }
                 })
                 var courseModel = [];
-
                 data.forEach(function(i) {
                     i.forEach(function(j) {
                         if (j != 0) {
@@ -36,8 +35,8 @@ angular.module('starkAPP')
 
                     })
                 });
-                courseModel.forEach(function(item) {
-                    var parseResult = BaseService.timeParser(item['时间']);
+
+                function render(item, parseResult) {
                     if (parseResult.length == 2) {
                         $scope.tableView[parseResult.weekday][parseResult.start] = {
                             text1: item['选课序号'],
@@ -110,6 +109,13 @@ angular.module('starkAPP')
                         }
 
                     }
+                }
+                courseModel.forEach(function(item) {
+                    var timeArr = item['时间'].split('{time}');
+                    for (var i = 0; i < timeArr.length; i++) {
+                        var parseResult = BaseService.timeParser(timeArr[i]);
+                        render(item, parseResult);
+                    }
                 });
             }
 
@@ -146,36 +152,37 @@ angular.module('starkAPP')
             }
 
             $scope.showDetail = function(weekday, No) {
-                if(BaseService.courseModel.data[weekday][No] === 0){
+                var e = e || window.event;
+                if (BaseService.courseModel.data[weekday][No] === 0) {
                     return;
                 }
                 $scope.detail = BaseService.courseModel.data[weekday][No];
-                if($scope.detailIsShow == true){
+                if ($scope.detailIsShow == true) {
                     $scope.detailIsShow = false;
-                    $timeout(function(){
+                    $timeout(function() {
                         $scope.detailIsShow = true;
-                    },0);
-                }else{
+                    }, 0);
+                } else {
                     $scope.detailIsShow = true;
                 }
-                
+
                 if (weekday === 0 || weekday === 1 || weekday === 2) {
-                    var top = event.layerY - 100 < 0 ? 0 : event.layerY - 100;
+                    var top = e.layerY - 100 < 0 ? 0 : e.layerY - 100;
                     var left = (weekday + 1) * 15 + 10;
                     $scope.detailPosition = "top:" + top + "px;left:" + left + "%;";
                 }
                 if (weekday === 3 || weekday === 4 || weekday === 5) {
-                    var top = event.layerY - 100 < 0 ? 0 : event.layerY - 100;
-                    var right = (6-weekday)*15;
+                    var top = e.layerY - 100 < 0 ? 0 : e.layerY - 100;
+                    var right = (6 - weekday) * 15;
                     $scope.detailPosition = "top:" + top + "px;right:" + right + "%;";
                 }
             }
 
-            $scope.closeDetail = function(){
+            $scope.closeDetail = function() {
                 $scope.detailIsShow = false;
             }
 
-            $scope.removeCourse = function(){
+            $scope.removeCourse = function() {
                 BaseService.courseModel.remove($scope.detail);
             }
 

@@ -2320,8 +2320,61 @@ Copyright (c) 2015 Daniel Eden
   -webkit-animation-name: slideOutUp;
   animation-name: slideOutUp; }
 
-.content {
-  height: 1000px; }
+.category {
+  background: #fff;
+  position: relative;
+  box-shadow: 5px 6px 5px rgba(0, 0, 0, 0.5);
+  margin: 20px 20px; }
+  .category table td,
+  .category table th {
+    padding: 5px;
+    height: 50px;
+    overflow: auto;
+    word-wrap: break-word; }
+  .category table td {
+    font-size: 12px; }
+  .category table tr {
+    border: 1px solid #ddd; }
+  .category table tr:hover {
+    background: #ddd;
+    cursor: pointer; }
+  .category table td.overflow {
+    padding: 0; }
+    .category table td.overflow div {
+      width: 100px;
+      padding: 10px;
+      overflow: auto;
+      text-align: center; }
+  .category table td.manipulate {
+    width: 100px; }
+  .category .handle {
+    background-color: #eee;
+    width: 200px;
+    height: auto;
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2; }
+    .category .handle .update {
+      background-color: #00ae68;
+      border: 0;
+      outline: 0;
+      color: #fff;
+      height: 26px;
+      width: 100px;
+      box-sizing: border-box;
+      font-size: 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.1s;
+      -o-transition: all 0.1s;
+      -webkit-transition: all 0.1s;
+      -moz-transition: all 0.1s; }
+    .category .handle .update:hover {
+      background-color: rgba(255, 255, 255, 0);
+      border: 2px solid #00ae68;
+      color: #00ae68; }
 
 #bg.ng-enter {
   -webkit-animation: 0.5s fadeIn;

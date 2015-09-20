@@ -48,23 +48,40 @@ angular.module('baseService', [])
                     }
                 },
                 update: function(course) {
-                    var parseResult = timeParser(course['时间']);
-                    var weekday = parseResult.weekday;
-                    var start = parseResult.start;
-                    var courseLength = parseResult.length;
+                    var timeCollection = course['时间'].split('{time}');
+                    var _this = this;
+                    for (var i = 0; i < timeCollection.length; i++) {
+                        var parseResult = timeParser(timeCollection[i]);
+                        var weekday = parseResult.weekday;
+                        var start = parseResult.start;
+                        var courseLength = parseResult.length;
+                        var courseRank = i + 1 - 1;
+                        _this.updateOne(course, weekday, start, courseLength, courseRank);
+                    }
+                    var data_ = this.data;
+                    localStorage.courseModelData = JSON.stringify(data_);
+                    $rootScope.$broadcast('courseModelUpdate', data_);
+
+                },
+                //courseRank是这周的第几节课，比如这周的第2(1)节数分大课
+                updateOne: function(course, weekday, start, courseLength, courseRank) {
                     var isConflict = false;
                     var _this = this;
                     for (var i = 0; i < courseLength; i++) {
+                        
                         if (this.data[weekday][start + i] != 0) {
                             isConflict = true;
                         }
                     }
+                    console.log(isConflict);
                     if (!isConflict) {
                         for (var i = 0; i < courseLength; i++) {
                             courseModel.data[weekday][start + i] = course;
+                            courseModel.data[weekday][start + i].rank = courseRank;
                         }
                     } else {
                         //冲突课程名的数组
+                        
                         var conflictName = [];
                         var conflictCourse = [];
                         for (var i = 0; i < courseLength; i++) {
@@ -73,25 +90,29 @@ angular.module('baseService', [])
                                 conflictCourse.push(this.data[weekday][start + i]);
                             }
                         }
+                        console.log(conflictName);
                         var name = conflictName.length > 1 ? conflictName.join('》、《') : conflictName[0];
                         if (confirm('这门课与《' + name + '》冲突，是否替换？')) {
                             //删除之前的课
-                            conflictCourse.forEach(function(course){
+                            conflictCourse.forEach(function(course) {
                                 _this.remove(course);
-                            })
+                                console.log(course);
+                            });
                             this.update(course);
                         }
                     }
-                    var data_ = this.data;
-                    localStorage.courseModelData = JSON.stringify(data_);
-                    $rootScope.$broadcast('courseModelUpdate', data_);
-                },
 
-                remove: function(course) {
-                    var parseResult = timeParser(course['时间']);
+                },
+                remove:function(course){
+                    var timeArr = course['时间'].split('{time}');
+                    var _this = this;
+                    timeArr.forEach(function(time){
+                        var parseResult = timeParser(time);
+                        _this.removeOne(course,parseResult);
+                    })
+                },
+                removeOne: function(course,parseResult) {
                     var weekday = parseResult.weekday;
-                    var start = parseResult.start;
-                    var courseLength = parseResult.length;
                     for (var i = 0; i < 13; i++) {
                         if (this.data[weekday][i]['选课序号'] == course['选课序号']) {
                             this.data[weekday][i] = 0;
@@ -100,6 +121,18 @@ angular.module('baseService', [])
                     var data_ = this.data;
                     localStorage.courseModelData = JSON.stringify(data_);
                     $rootScope.$broadcast('courseModelUpdate', data_);
+                },
+
+                check: function(courseID) {
+                    var IDlist = [];
+                    this.data.forEach(function(i) {
+                        i.forEach(function(course) {
+                            if (course != 0 && IDlist.indexOf(course['选课序号']) === -1) {
+                                IDlist.push(course['选课序号']);
+                            }
+                        })
+                    })
+                    return IDlist.indexOf(courseID) != -1;
                 }
             };
 
@@ -191,19 +224,37 @@ angular.module('baseService', [])
         }
     ]);
 
-//侧边搜索栏
 angular.module('starkAPP')
-    .controller('allController', ['$scope', '$rootScope','BaseService','$timeout','$location',
-        function($scope, $rootScope,BaseService, $timeout,$location) {
+    .controller('allController', ['$scope', '$rootScope', 'BaseService', '$timeout', '$location',
+        function($scope, $rootScope, BaseService, $timeout, $location) {
             var data = [];
-            for(name in COURSE_DATA){
+            for (name in COURSE_DATA) {
                 data.push({
                     name: name,
                     courses: COURSE_DATA[name]
                 })
             }
             $scope.data = data;
-            console.log($scope.data);
+            var handleCourse;
+            $scope.handle = {};
+            $scope.showHandle = function() {
+                var e = e || window.event;
+                handleCourse = this.course;
+
+                if (BaseService.courseModel.check(this.course['选课序号'])) {
+                    $scope.handle.text1 = '已选入课表';
+                    $scope.update = function() {
+                        alert('已经在课表里啦~');
+                    }
+                }else{
+                    $scope.handle.text1 = '加入课表';
+                    $scope.update = function() {
+                        BaseService.courseModel.update(handleCourse);
+                    }
+                }
+                $scope.handleIsShow = true;
+            }
+
         }
     ]);
 
@@ -211,7 +262,7 @@ angular.module('starkAPP')
 angular.module('starkAPP')
     .controller('courseTableController', ['$scope', 'BaseService', '$timeout',
         function($scope, BaseService, $timeout) {
-            
+
             refreshen(BaseService.courseModel.data);
 
             $scope.$on('courseModelUpdate', function(event, data) {
@@ -236,7 +287,6 @@ angular.module('starkAPP')
                     }
                 })
                 var courseModel = [];
-
                 data.forEach(function(i) {
                     i.forEach(function(j) {
                         if (j != 0) {
@@ -245,8 +295,8 @@ angular.module('starkAPP')
 
                     })
                 });
-                courseModel.forEach(function(item) {
-                    var parseResult = BaseService.timeParser(item['时间']);
+
+                function render(item, parseResult) {
                     if (parseResult.length == 2) {
                         $scope.tableView[parseResult.weekday][parseResult.start] = {
                             text1: item['选课序号'],
@@ -319,6 +369,13 @@ angular.module('starkAPP')
                         }
 
                     }
+                }
+                courseModel.forEach(function(item) {
+                    var timeArr = item['时间'].split('{time}');
+                    for (var i = 0; i < timeArr.length; i++) {
+                        var parseResult = BaseService.timeParser(timeArr[i]);
+                        render(item, parseResult);
+                    }
                 });
             }
 
@@ -355,36 +412,37 @@ angular.module('starkAPP')
             }
 
             $scope.showDetail = function(weekday, No) {
-                if(BaseService.courseModel.data[weekday][No] === 0){
+                var e = e || window.event;
+                if (BaseService.courseModel.data[weekday][No] === 0) {
                     return;
                 }
                 $scope.detail = BaseService.courseModel.data[weekday][No];
-                if($scope.detailIsShow == true){
+                if ($scope.detailIsShow == true) {
                     $scope.detailIsShow = false;
-                    $timeout(function(){
+                    $timeout(function() {
                         $scope.detailIsShow = true;
-                    },0);
-                }else{
+                    }, 0);
+                } else {
                     $scope.detailIsShow = true;
                 }
-                
+
                 if (weekday === 0 || weekday === 1 || weekday === 2) {
-                    var top = event.layerY - 100 < 0 ? 0 : event.layerY - 100;
+                    var top = e.layerY - 100 < 0 ? 0 : e.layerY - 100;
                     var left = (weekday + 1) * 15 + 10;
                     $scope.detailPosition = "top:" + top + "px;left:" + left + "%;";
                 }
                 if (weekday === 3 || weekday === 4 || weekday === 5) {
-                    var top = event.layerY - 100 < 0 ? 0 : event.layerY - 100;
-                    var right = (6-weekday)*15;
+                    var top = e.layerY - 100 < 0 ? 0 : e.layerY - 100;
+                    var right = (6 - weekday) * 15;
                     $scope.detailPosition = "top:" + top + "px;right:" + right + "%;";
                 }
             }
 
-            $scope.closeDetail = function(){
+            $scope.closeDetail = function() {
                 $scope.detailIsShow = false;
             }
 
-            $scope.removeCourse = function(){
+            $scope.removeCourse = function() {
                 BaseService.courseModel.remove($scope.detail);
             }
 
@@ -399,8 +457,7 @@ angular.module('starkAPP')
 
             $scope.$on('courseModelUpdate', function(event, data) {
                 refreshen(data);
-            });
-            console.log($scope.list);   
+            });   
             function refreshen(data) {
                 var list = [];
                 var idList = [];
@@ -434,7 +491,8 @@ angular.module('starkAPP')
             })
 
             $scope.close = function() {
-                if (/bg/.test(event.target.className)) {
+                var e = e || window.event;
+                if (/bg/.test(e.target.className)) {
                     $scope.searchShow = false;
                     $timeout(function() {
                         $('.search').css('z-index', '-9999');
@@ -450,19 +508,18 @@ angular.module('starkAPP')
                     time: ''
                 }
                 var result = BaseService.search(params);
-                console.log(result);
                 $scope.result = result;
-                if(result.length> 0){
+                if (result.length > 0) {
                     $scope.resultShow = true;
-                }else{
+                } else {
                     $scope.resultShow = false;
                 }
             }
 
-            $scope.mouseover = function(){
+            $scope.mouseover = function() {
                 $scope.detail = this.course;
             }
-            $scope.courseUpdate = function(){
+            $scope.courseUpdate = function() {
                 BaseService.courseModel.update(this.detail);
             }
         }

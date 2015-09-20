@@ -4375,7 +4375,9 @@ XDSY118021.01,代谢与生活,2.0,赵世民,教授,20,H2104A,"一 11-13\r\n\
 \r\n\
 考试时间：-",15\r\n';
 
-COURSE_DATA['理科课程'] = new CSV(temp_data, { header: true }).parse();
+COURSE_DATA['理科课程'] = new CSV(temp_data, {
+    header: true
+}).parse();
 
 temp_data = '选课序号,课程名称,学分,教师,职称,人数,教室,时间,备注,考试时间,开课系\r\n\
 ENGL110009.01,英美文化概论,2.0,孙文捷,副教授,30,H5113,三 1-2 ,建议修完大学英语III,"考试日期：2015-12-25\r\n\
@@ -4893,7 +4895,9 @@ ENGL110055.01,学术英语（医学）,2.0,蔡和兵,讲师,35,F2202,四 1-2 ,�
 \r\n\
 考试时间：08:00-09:40",大学英语教学部 '
 
-COURSE_DATA['大学外语'] = new CSV(temp_data, { header: true }).parse();
+COURSE_DATA['大学外语'] = new CSV(temp_data, {
+    header: true
+}).parse();
 
 temp_data = '选课序号,课程名称,学分,教师,职称,人数,教室,时间,选修专业,备注,考试安排,开课系\r\n\
 911.001.1.01,现代汉语(上),2.0,陶寰,副教授,15,H6404,一 3-4 ,"14 汉语言文学(二专)\r\n\
@@ -5300,7 +5304,9 @@ temp_data = '选课序号,课程名称,学分,教师,职称,人数,教室,时间
 \r\n\
 考试时间：09:55-11:35",哲学学院 '
 
-COURSE_DATA['二专课程'] = new CSV(temp_data, { header: true }).parse();
+COURSE_DATA['二专课程'] = new CSV(temp_data, {
+    header: true
+}).parse();
 
 temp_data = '选课序号,课程名称,学分,教师,职称,人数,教室,时间,备注,考试时间,开课系,选课限制条件\r\n\
 COMP110001.01,计算机高级办公自动化,1.0,陈海洪,工程师,89,H4501,一 6-7 ,,"考试日期：2015-12-19\r\n\
@@ -5460,9 +5466,11 @@ COMP110042.01,Python程序设计,2.0,张向东,讲师,89,H4501,四 6-9 ,,"考试
 \r\n\
 考试时间：08:00-22:00",计算机科学技术学院,'
 
-COURSE_DATA['计算机'] = new CSV(temp_data, { header: true }).parse();
+COURSE_DATA['计算机'] = new CSV(temp_data, {
+    header: true
+}).parse();
 
-temp_data  = '选课序号,课程名称,学分,教师,职称,人数,教室,时间,开课系,备注,考试安排\r\n\
+temp_data = '选课序号,课程名称,学分,教师,职称,人数,教室,时间,开课系,备注,考试安排\r\n\
 NDEC110002.01,军事理论,1.0,黄荣国,副教授,100,H3401,一 8-9 ,军事理论教研室,,"考试日期：2015-12-21\r\n\
 \r\n\
 考试时间：18:30-20:30"\r\n\
@@ -5509,7 +5517,9 @@ NDEC110002.15,军事理论,1.0,,,500,H院系自主,二 11-12 ,军事理论教研
 \r\n\
 考试时间：-"'
 
-COURSE_DATA['军事理论'] = new CSV(temp_data, { header: true }).parse();
+COURSE_DATA['军事理论'] = new CSV(temp_data, {
+    header: true
+}).parse();
 
 temp_data = '选课序号,课程名称,学分,教师,职称,人数,教室,时间,备注,考试时间,开课系,选课限制条件\r\n\
 ICES110001.01,留学生高级汉语I,4.0,赵国军,助理研究员,60,HGX209,三 1-2 ,,"考试日期：2015-12-23\r\n\
@@ -5586,7 +5596,9 @@ ICES110012.05,中国概况（上）,2.0,许金生,副教授,40,HGD414,四 11-12 
 \r\n\
 考试时间：18:30-20:00",国际文化交流学院,15 留学生'
 
-COURSE_DATA['留学生'] = new CSV(temp_data, { header: true }).parse();
+COURSE_DATA['留学生'] = new CSV(temp_data, {
+    header: true
+}).parse();
 
 temp_data = '选课序号,课程名称,学分,教师,职称,人数,教室,时间,备注,考试时间,开课系,选课限制条件\r\n\
 FINE110001.01,影视剧艺术,2.0,龚金平,副教授,50,H6204,一 8-9 ,上海市精品课程团队,"考试日期：2015-12-24\r\n\
@@ -5739,7 +5751,9 @@ FINE110077.01,微影人的自我修养,2.0,许肖潇,讲师,15,H6210,三 8-9 ,�
 FINE110001.02,影视剧艺术,2.0,许肖潇,讲师,50,JB303,一 11-12 ,上海市精品课程团队,"考试日期：2015-12-14\r\n\
 \r\n\
 考试时间：18:30-20:10",艺术教育中心 ,'
-COURSE_DATA['美育'] = new CSV(temp_data, { header: true }).parse();
+COURSE_DATA['美育'] = new CSV(temp_data, {
+    header: true
+}).parse();
 
 temp_data = '选课序号,课程名称,学分,教师,职称,人数,教室,时间,备注,考试时间,选课限制条件\r\n\
 CHIN120002.01,中国文学传统,2.0,汪涌豪,教授,100,HGX207,一 3-4 ,,"考试日期：2015-12-14\r\n\
@@ -9160,7 +9174,9 @@ MUSE130067.01,环境考古学,2.0,潘艳,讲师,25,HGX405,四 6-7 ,,"考试日�
 \r\n\
 考试时间：13:00-15:00",文物与博物馆学系'
 
-COURSE_DATA['文科专业课'] = new CSV(temp_data, { header: true }).parse();
+COURSE_DATA['文科专业课'] = new CSV(temp_data, {
+    header: true
+}).parse();
 
 temp_data = '模块名称,选课序号,课程名称,性质,学分,教师,职称,人数,教室,时间,备注,考试时间,开课系,\r\n\
 文史经典与文化传承,CHIN119001.01,古典诗词导读,1,2.0,唐雯,副研究员,100,H6301,一 3-4,,"考试日期：2015-12-14\r\n\
@@ -9584,7 +9600,36 @@ VII,FINE119008.03,中国戏曲·京剧,1,2.0,章伟国,副教授,100,Z2306,四 8
 \r\n\
 考试时间：15:25-17:05",艺术教育中心 ,'
 
-COURSE_DATA['模块课程'] = new CSV(temp_data, { header: true }).parse();
+COURSE_DATA['模块课程'] = new CSV(temp_data, {
+    header: true
+}).parse();
+
+
+
+//去重操作
+for (category in COURSE_DATA) {
+    var arr = COURSE_DATA[category];
+    var idArr = [];
+    var newArr = [];
+    arr.forEach(function(course) {
+        idArr.push(course['选课序号']);
+    });
+    for (var i = 0; i < arr.length; i++) {
+        var first = idArr.indexOf(arr[i]['选课序号'])
+        if (first != i) {
+            arr[first]['时间'] += '{time}' + arr[i]['时间'];
+        }else{
+            arr[i].isFirst = true;
+        }
+    }
+    arr.forEach(function(course) {
+        if(course.isFirst){
+            newArr.push(course);
+        }
+    });
+    COURSE_DATA[category] = newArr;
+}
+
 /*!
  * jQuery JavaScript Library v2.0.3
  * http://jquery.com/

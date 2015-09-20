@@ -12,7 +12,8 @@ angular.module('starkAPP')
             })
 
             $scope.close = function() {
-                if (/bg/.test(event.target.className)) {
+                var e = e || window.event;
+                if (/bg/.test(e.target.className)) {
                     $scope.searchShow = false;
                     $timeout(function() {
                         $('.search').css('z-index', '-9999');
@@ -28,19 +29,18 @@ angular.module('starkAPP')
                     time: ''
                 }
                 var result = BaseService.search(params);
-                console.log(result);
                 $scope.result = result;
-                if(result.length> 0){
+                if (result.length > 0) {
                     $scope.resultShow = true;
-                }else{
+                } else {
                     $scope.resultShow = false;
                 }
             }
 
-            $scope.mouseover = function(){
+            $scope.mouseover = function() {
                 $scope.detail = this.course;
             }
-            $scope.courseUpdate = function(){
+            $scope.courseUpdate = function() {
                 BaseService.courseModel.update(this.detail);
             }
         }

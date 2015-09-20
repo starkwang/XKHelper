@@ -1,7 +1,7 @@
 <div ng-include="'./html/sidebar.html'" class="sidebar"></div>
 <div ng-include="'./html/search.html'" class="search"></div>
 <div class="content" ng-controller="allController">
-  <div ng-repeat="category in data track by $index">
+  <div ng-repeat="category in data track by $index" class="category">
     <h1>{{category.name}}</h1>
     <table>
       <thead>
@@ -14,22 +14,22 @@
         <th>教室</th>
         <th>时间</th>
         <th>备注</th>
-        <th>考试时间</th>
       </thead>
       <tbody>
-        <tr ng-repeat="course in category.courses track by $index">
-          <td>{{course['选课序号']}}</td>
-          <td>{{course['课程名称']}}</td>
-          <td>{{course['学分']}}</td>
-          <td>{{course['教师']}}</td>
-          <td>{{course['职称']}}</td>
-          <td>{{course['人数']}}</td>
-          <td>{{course['教室']}}</td>
-          <td>{{course['时间']}}</td>
-          <td>{{course['备注']}}</td>
-          <td>{{course['考试时间']}}</td>
+        <tr ng-repeat="course in category.courses track by $index" ng-click="showHandle()">
+          <td><div>{{course['选课序号']}}</div></td>
+          <td><div>{{course['课程名称']}}</div></td>
+          <td><div>{{course['学分']}}</div></td>
+          <td class="overflow"><div>{{course['教师']}}</div></td>
+          <td class="overflow"><div>{{course['职称']}}</div></td>
+          <td><div>{{course['人数']}}</div></td>
+          <td><div>{{course['教室']}}</div></td>
+          <td><div>{{course['时间']}}</div></td>
+          <td class="overflow"><div>{{course['备注']||'无'}}</div></td>
         </tr>
       </tbody>
     </table>
+
+    <div class="handle" ng-show="handleIsShow"><button class="update" ng-click="update()">{{handle.text1}}</button><button class="box" ng-click="addIntoBox()">加入收藏夹</button></div>
   </div>
 </div>
