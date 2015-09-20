@@ -1,6 +1,9 @@
 $bg-color: rgb(84, 85, 90);
 $border-color: rgba(255, 255, 255, 0.5);
 $font-color: rgba(255, 255, 255, 1);
+a:hover{
+  text-decoration:none !important;
+}
 html,
 body {
   height: 100%;
@@ -12,7 +15,6 @@ body {
   background: rgb(85,169,151);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 1000px;
   position: relative;
   overflow: hidden;
 
@@ -27,8 +29,11 @@ body {
   left: 0;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
   color: $font-color;
-  a{
+  .active a{
     color: $bg-color;
+  }
+  a{
+    color: $font-color;
   }
 }
 
@@ -92,8 +97,8 @@ body {
 
 .content {
   margin-left: 200px;
-  margin-top: 50px;
-  height: 100%;
+  margin-top: 20px;
+  height: auto;
 }
 
 @font-face {

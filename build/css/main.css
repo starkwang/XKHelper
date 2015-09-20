@@ -1,12 +1,8 @@
 .course-table {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin: 20px;
   height: auto;
-  background: #fff; }
-
-.course-table {
+  background: #fff;
   position: relative;
-  border-radius: 4px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); }
   .course-table .body table {
     width: 100%; }
@@ -19,7 +15,7 @@
   .course-table .body table td[line="12"] {
     border-bottom: 0; }
   .course-table .body table td {
-    border: 2px solid #ddd;
+    border: 2px solid #eee;
     text-align: center;
     color: #333;
     height: 40px;
@@ -42,8 +38,8 @@
     border-bottom: 0 !important;
     border-top: 0 !important; }
   .course-table .body table th {
-    border: 2px solid #ddd;
-    border-bottom: 2px solid #ddd;
+    border: 2px solid #eee;
+    border-bottom: 2px solid #eee;
     height: 30px;
     line-height: 30px;
     color: #333; }
@@ -51,8 +47,7 @@
     background-color: #eee;
     width: 200px;
     height: auto;
-    border-radius: 4px;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.7);
     position: absolute;
     z-index: 2; }
     .course-table .detail p {
@@ -99,3 +94,29 @@
     top: 0;
     left: 0;
     z-index: 1; }
+
+.course-total {
+  margin: 20px;
+  height: auto;
+  background: #fff;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  overflow: hidden; }
+  .course-total .head {
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd; }
+  .course-total .body table {
+    width: 100%;
+    border-bottom: 1px solid #ddd; }
+    .course-total .body table th, .course-total .body table td {
+      padding: 5px 20px;
+      text-align: center; }
+    .course-total .body table tr:hover {
+      background: #ddd; }
+  .course-total .body .total-credit {
+    float: right;
+    font-size: 16px;
+    margin: 10px;
+    margin-right: 20px; }

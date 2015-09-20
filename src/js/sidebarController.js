@@ -5,6 +5,9 @@ angular.module('starkAPP')
             if($location.path() == '/main/'){
                 $scope.mainIsActive = true;
             }
+            if($location.path() == '/all/'){
+                $scope.allIsActive = true;
+            }
 
             $scope.showSearch = function(){
                 $rootScope.$broadcast('showSearch');

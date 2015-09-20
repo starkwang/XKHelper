@@ -2320,6 +2320,9 @@ Copyright (c) 2015 Daniel Eden
   -webkit-animation-name: slideOutUp;
   animation-name: slideOutUp; }
 
+.content {
+  height: 1000px; }
+
 #bg.ng-enter {
   -webkit-animation: 0.5s fadeIn;
   -moz-animation: 0.5s fadeIn;
@@ -2356,10 +2359,10 @@ Copyright (c) 2015 Daniel Eden
   z-index: 10; }
 
 .ng-leave {
-  -webkit-animation: 0.5s fadeOutDown;
-  -moz-animation: 0.5s fadeOutDown;
-  -o-animation: 0.5s fadeOutDown;
-  animation: 0.5s fadeOutDown;
+  -webkit-animation: 0.5s fadeOut;
+  -moz-animation: 0.5s fadeOut;
+  -o-animation: 0.5s fadeOut;
+  animation: 0.5s fadeOut;
   z-index: 10; }
 
 .course-table .detail.ng-hide-remove {
@@ -2391,6 +2394,9 @@ Copyright (c) 2015 Daniel Eden
   z-index: 10; }
 
 @charset "UTF-8";
+a:hover {
+  text-decoration: none !important; }
+
 html,
 body {
   height: 100%;
@@ -2401,7 +2407,6 @@ body {
   background: #55a997;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 1000px;
   position: relative;
   overflow: hidden; }
 
@@ -2414,8 +2419,10 @@ body {
   left: 0;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   color: white; }
-  .sidebar a {
+  .sidebar .active a {
     color: #54555a; }
+  .sidebar a {
+    color: white; }
 
 .search .bg {
   width: 100%;
@@ -2467,8 +2474,8 @@ body {
 
 .content {
   margin-left: 200px;
-  margin-top: 50px;
-  height: 100%; }
+  margin-top: 20px;
+  height: auto; }
 
 @font-face {
   font-family: "iconfont";

@@ -1,11 +1,8 @@
 //课表
 angular.module('starkAPP')
-    .controller('tableController', ['$scope', 'BaseService', '$timeout',
+    .controller('courseTableController', ['$scope', 'BaseService', '$timeout',
         function($scope, BaseService, $timeout) {
-            // body...
-
-
-
+            
             refreshen(BaseService.courseModel.data);
 
             $scope.$on('courseModelUpdate', function(event, data) {
@@ -149,12 +146,10 @@ angular.module('starkAPP')
             }
 
             $scope.showDetail = function(weekday, No) {
-                console.log(event);
                 if(BaseService.courseModel.data[weekday][No] === 0){
                     return;
                 }
                 $scope.detail = BaseService.courseModel.data[weekday][No];
-                console.log($scope.detail);
                 if($scope.detailIsShow == true){
                     $scope.detailIsShow = false;
                     $timeout(function(){
@@ -165,12 +160,12 @@ angular.module('starkAPP')
                 }
                 
                 if (weekday === 0 || weekday === 1 || weekday === 2) {
-                    var top = event.layerY - 200 < 0 ? 0 : event.layerY - 200;
+                    var top = event.layerY - 100 < 0 ? 0 : event.layerY - 100;
                     var left = (weekday + 1) * 15 + 10;
                     $scope.detailPosition = "top:" + top + "px;left:" + left + "%;";
                 }
                 if (weekday === 3 || weekday === 4 || weekday === 5) {
-                    var top = event.layerY - 200 < 0 ? 0 : event.layerY - 200;
+                    var top = event.layerY - 100 < 0 ? 0 : event.layerY - 100;
                     var right = (6-weekday)*15;
                     $scope.detailPosition = "top:" + top + "px;right:" + right + "%;";
                 }

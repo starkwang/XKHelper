@@ -9,8 +9,10 @@ var starkAPP = angular.module('starkAPP', [
         function($compileProvider, $routeProvider, $locationProvider) {
             $routeProvider
                 .when('/main/', {
-                    templateUrl: './html/main.html',
-                    css: './build/css/main.css'
+                    templateUrl: './html/main.html'
+                })
+                .when('/all/', {
+                    templateUrl: './html/all.html'
                 })
                 .otherwise({
                     redirectTo: '/main/'
@@ -189,91 +191,27 @@ angular.module('baseService', [])
         }
     ]);
 
-//搜索结果
-angular.module('starkAPP')
-    .controller('resultController', ['$scope', 'BaseService',
-        function($scope, BaseService) {
-            // // body...
-            // var b = {
-            //     time: ['四 8-9', '三 1-2'],
-            //     category: [],
-            //     keywords: '',
-            //     courseID: 'HIST',
-            // };
-            // $scope.result = BaseService.search(b);
-        }
-    ]);
-
 //侧边搜索栏
 angular.module('starkAPP')
-    .controller('searchController', ['$scope', 'BaseService', '$timeout', '$location',
-        function($scope, BaseService, $timeout, $location) {
-            $scope.$on('showSearch', function() {
-                $('.search').css('z-index', '100');
-                $scope.searchShow = true;
-                $timeout(function() {
-                    $('.search-bar input').focus();
-                }, 700);
-
-            })
-
-            $scope.close = function() {
-                if (/bg/.test(event.target.className)) {
-                    $scope.searchShow = false;
-                    $timeout(function() {
-                        $('.search').css('z-index', '-9999');
-                    }, 700);
-                }
-            }
-
-            $scope.kwChange = function() {
-                var params = {
-                    category: [],
-                    keywords: $scope.keywords,
-                    courseID: '',
-                    time: ''
-                }
-                var result = BaseService.search(params);
-                console.log(result);
-                $scope.result = result;
-                if(result.length> 0){
-                    $scope.resultShow = true;
-                }else{
-                    $scope.resultShow = false;
-                }
-            }
-
-            $scope.mouseover = function(){
-                $scope.detail = this.course;
-            }
-            $scope.courseUpdate = function(){
-                BaseService.courseModel.update(this.detail);
-            }
-        }
-    ]);
-
-//侧边搜索栏
-angular.module('starkAPP')
-    .controller('sidebarController', ['$scope', '$rootScope','BaseService','$timeout','$location',
+    .controller('allController', ['$scope', '$rootScope','BaseService','$timeout','$location',
         function($scope, $rootScope,BaseService, $timeout,$location) {
-            if($location.path() == '/main/'){
-                $scope.mainIsActive = true;
+            var data = [];
+            for(name in COURSE_DATA){
+                data.push({
+                    name: name,
+                    courses: COURSE_DATA[name]
+                })
             }
-
-            $scope.showSearch = function(){
-                $rootScope.$broadcast('showSearch');
-            }
+            $scope.data = data;
+            console.log($scope.data);
         }
     ]);
 
 //课表
 angular.module('starkAPP')
-    .controller('tableController', ['$scope', 'BaseService', '$timeout',
+    .controller('courseTableController', ['$scope', 'BaseService', '$timeout',
         function($scope, BaseService, $timeout) {
-            // body...
-
-
-
+            
             refreshen(BaseService.courseModel.data);
 
             $scope.$on('courseModelUpdate', function(event, data) {
@@ -417,12 +355,10 @@ angular.module('starkAPP')
             }
 
             $scope.showDetail = function(weekday, No) {
-                console.log(event);
                 if(BaseService.courseModel.data[weekday][No] === 0){
                     return;
                 }
                 $scope.detail = BaseService.courseModel.data[weekday][No];
-                console.log($scope.detail);
                 if($scope.detailIsShow == true){
                     $scope.detailIsShow = false;
                     $timeout(function(){
@@ -433,12 +369,12 @@ angular.module('starkAPP')
                 }
                 
                 if (weekday === 0 || weekday === 1 || weekday === 2) {
-                    var top = event.layerY - 200 < 0 ? 0 : event.layerY - 200;
+                    var top = event.layerY - 100 < 0 ? 0 : event.layerY - 100;
                     var left = (weekday + 1) * 15 + 10;
                     $scope.detailPosition = "top:" + top + "px;left:" + left + "%;";
                 }
                 if (weekday === 3 || weekday === 4 || weekday === 5) {
-                    var top = event.layerY - 200 < 0 ? 0 : event.layerY - 200;
+                    var top = event.layerY - 100 < 0 ? 0 : event.layerY - 100;
                     var right = (6-weekday)*15;
                     $scope.detailPosition = "top:" + top + "px;right:" + right + "%;";
                 }
@@ -452,5 +388,99 @@ angular.module('starkAPP')
                 BaseService.courseModel.remove($scope.detail);
             }
 
+        }
+    ]);
+
+//搜索结果
+angular.module('starkAPP')
+    .controller('courseTotalController', ['$scope', 'BaseService',
+        function($scope, BaseService) {
+            refreshen(BaseService.courseModel.data);
+
+            $scope.$on('courseModelUpdate', function(event, data) {
+                refreshen(data);
+            });
+            console.log($scope.list);   
+            function refreshen(data) {
+                var list = [];
+                var idList = [];
+                var totalCredit = 0;
+                data.forEach(function(i) {
+                    i.forEach(function(course) {
+                        if (course != 0 && idList.indexOf(course['选课序号']) === -1) {
+                            idList.push(course['选课序号']);
+                            list.push(course);
+                            totalCredit += parseInt(course['学分']);
+                        }
+                    })
+                })
+                $scope.list = list;
+                $scope.totalCredit = totalCredit;
+            }
+        }
+    ]);
+
+//侧边搜索栏
+angular.module('starkAPP')
+    .controller('searchController', ['$scope', 'BaseService', '$timeout', '$location',
+        function($scope, BaseService, $timeout, $location) {
+            $scope.$on('showSearch', function() {
+                $('.search').css('z-index', '100');
+                $scope.searchShow = true;
+                $timeout(function() {
+                    $('.search-bar input').focus();
+                }, 700);
+
+            })
+
+            $scope.close = function() {
+                if (/bg/.test(event.target.className)) {
+                    $scope.searchShow = false;
+                    $timeout(function() {
+                        $('.search').css('z-index', '-9999');
+                    }, 700);
+                }
+            }
+
+            $scope.kwChange = function() {
+                var params = {
+                    category: [],
+                    keywords: $scope.keywords,
+                    courseID: '',
+                    time: ''
+                }
+                var result = BaseService.search(params);
+                console.log(result);
+                $scope.result = result;
+                if(result.length> 0){
+                    $scope.resultShow = true;
+                }else{
+                    $scope.resultShow = false;
+                }
+            }
+
+            $scope.mouseover = function(){
+                $scope.detail = this.course;
+            }
+            $scope.courseUpdate = function(){
+                BaseService.courseModel.update(this.detail);
+            }
+        }
+    ]);
+
+//侧边搜索栏
+angular.module('starkAPP')
+    .controller('sidebarController', ['$scope', '$rootScope','BaseService','$timeout','$location',
+        function($scope, $rootScope,BaseService, $timeout,$location) {
+            if($location.path() == '/main/'){
+                $scope.mainIsActive = true;
+            }
+            if($location.path() == '/all/'){
+                $scope.allIsActive = true;
+            }
+
+            $scope.showSearch = function(){
+                $rootScope.$broadcast('showSearch');
+            }
         }
     ]);

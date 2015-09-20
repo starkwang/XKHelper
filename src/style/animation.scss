@@ -54,10 +54,10 @@
 }
 
 .ng-leave {
-  -webkit-animation: 0.5s fadeOutDown;
-  -moz-animation: 0.5s fadeOutDown;
-  -o-animation: 0.5s fadeOutDown;
-  animation: 0.5s fadeOutDown;
+  -webkit-animation: 0.5s fadeOut;
+  -moz-animation: 0.5s fadeOut;
+  -o-animation: 0.5s fadeOut;
+  animation: 0.5s fadeOut;
   z-index: 10;
 }
 

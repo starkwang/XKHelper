@@ -1,15 +1,11 @@
 $bg-color: rgba(255, 255, 255, 0.5);
-$border-color: #ddd;
+$border-color: #eee;
 $font-color: #333;
 .course-table{
-    margin-left: 20px;
-    margin-right: 20px;
+    margin:20px;
     height: auto;
     background: #fff;
-}
-.course-table{
     position:relative;
-    border-radius:4px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
     .head{
 
@@ -75,8 +71,7 @@ $font-color: #333;
         background-color:#eee;
         width: 200px;
         height:auto;
-        border-radius:4px;
-        box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+        box-shadow: 3px 3px 20px rgba(0,0,0,0.7);
         position: absolute;
         z-index: 2;
         p{
@@ -130,5 +125,38 @@ $font-color: #333;
         top:0;
         left: 0;
         z-index: 1;
+    }
+}
+.course-total{
+    margin:20px;
+    height: auto;
+    background: #fff;
+    position:relative;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    overflow: hidden;
+    .head{
+        padding: 10px 20px;
+        font-size: 20px;
+        font-weight: bold;
+        border-bottom:1px solid #ddd;
+    }
+    .body{
+        table{
+            width: 100%;
+            border-bottom:1px solid #ddd;
+            th,td{
+                padding:5px 20px;
+                text-align: center;
+            }
+            tr:hover{
+                background:#ddd;
+            }
+        }
+        .total-credit{
+            float: right;
+            font-size: 16px;
+            margin:10px;
+            margin-right: 20px;
+        }
     }
 }

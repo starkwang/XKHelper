@@ -9,8 +9,10 @@ var starkAPP = angular.module('starkAPP', [
         function($compileProvider, $routeProvider, $locationProvider) {
             $routeProvider
                 .when('/main/', {
-                    templateUrl: './html/main.html',
-                    css: './build/css/main.css'
+                    templateUrl: './html/main.html'
+                })
+                .when('/all/', {
+                    templateUrl: './html/all.html'
                 })
                 .otherwise({
                     redirectTo: '/main/'

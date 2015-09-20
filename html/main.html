@@ -1,7 +1,7 @@
 <div ng-include="'./html/sidebar.html'" class="sidebar"></div>
 <div ng-include="'./html/search.html'" class="search"></div>
 <div class="content">
-  <div class="course-table" ng-controller="tableController">
+  <div class="course-table" ng-controller="courseTableController">
     <div class="head"></div>
     <div class="body">
       <table>
@@ -56,6 +56,29 @@
         <p class="">{{detail['考试时间']}}</p>
         <button class="remove" ng-click="removeCourse()">删除</button>
       </div>
+    </div>
+  </div>
+
+  <div class="course-total" ng-controller="courseTotalController">
+    <div class="head">课程清单</div>
+    <div class="body">
+      <table>
+        <thead>
+          <th>课程编号</th>
+          <th>课程名称</th>
+          <th>教师姓名</th>
+          <th>学分</th>
+        </th>
+        <tbody>
+          <tr ng-repeat="course in list track by $index">
+            <td>{{course['选课序号']}}</td>
+            <td>{{course['课程名称']}}</td>
+            <td>{{course['教师']}}</td>
+            <td>{{course['学分']}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="total-credit">总学分：{{totalCredit}}</p>
     </div>
   </div>
 </div>
