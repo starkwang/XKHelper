@@ -262,8 +262,8 @@ angular.module('starkAPP')
                         BaseService.courseModel.update(handleCourse);
                     }
                 }
-                var top = e.screenY-100;
-                var left = e.screenX;
+                var top = e.clientY;
+                var left = e.clientX;
                 this.$parent.category.handle.name = this.course['课程名称'];
                 this.$parent.category.handle.teacher = this.course['教师'];
                 this.$parent.category.handle.position = 'left:'+left+'px;top:'+top+'px;';
