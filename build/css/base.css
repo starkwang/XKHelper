@@ -2325,28 +2325,36 @@ Copyright (c) 2015 Daniel Eden
   position: relative;
   box-shadow: 5px 6px 5px rgba(0, 0, 0, 0.5);
   margin: 20px 20px; }
-  .category table td,
-  .category table th {
+  .category h1 {
+    text-align: center;
     padding: 5px;
-    height: 50px;
-    overflow: auto;
-    word-wrap: break-word; }
-  .category table td {
-    font-size: 12px; }
-  .category table tr {
-    border: 1px solid #ddd;
-    cursor: pointer; }
-  .category table tr:hover {
-    background: #ddd; }
-  .category table td.overflow {
-    padding: 0; }
-    .category table td.overflow div {
-      width: 100px;
-      padding: 10px;
+    font-size: 25px; }
+  .category table {
+    width: 100%; }
+    .category table td,
+    .category table th {
+      padding: 5px;
+      height: 50px;
       overflow: auto;
-      text-align: center; }
-  .category table td.manipulate {
-    width: 100px; }
+      word-wrap: break-word; }
+    .category table td {
+      font-size: 12px; }
+      .category table td div {
+        text-align: center; }
+    .category table tr {
+      border: 1px solid #ddd;
+      cursor: pointer; }
+    .category table tr:hover {
+      background: #ddd; }
+    .category table td.overflow {
+      padding: 0; }
+      .category table td.overflow div {
+        width: 100px;
+        padding: 10px;
+        overflow: auto;
+        text-align: center; }
+    .category table td.manipulate {
+      width: 100px; }
   .category .handle-bg {
     width: 100%;
     height: 100%;

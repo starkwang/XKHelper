@@ -33,7 +33,6 @@ angular.module('starkAPP')
                 this.$parent.category.handle.teacher = this.course['教师'];
                 this.$parent.category.handle.position = 'left:'+left+'px;top:'+top+'px;';
                 this.$parent.category.handleIsShow = true;
-                console.log(e,this);
             }
             $scope.closeHandle = function(){
                 this.category.handleIsShow = false;
