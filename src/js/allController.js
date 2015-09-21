@@ -14,19 +14,29 @@ angular.module('starkAPP')
             $scope.showHandle = function() {
                 var e = e || window.event;
                 handleCourse = this.course;
-
+                
+                this.$parent.category.handle = {};
                 if (BaseService.courseModel.check(this.course['选课序号'])) {
-                    $scope.handle.text1 = '已选入课表';
+                    this.$parent.category.handle.text1 = '已选入课表';
                     $scope.update = function() {
                         alert('已经在课表里啦~');
                     }
                 }else{
-                    $scope.handle.text1 = '加入课表';
+                    this.$parent.category.handle.text1 = '加入课表';
                     $scope.update = function() {
                         BaseService.courseModel.update(handleCourse);
                     }
                 }
-                $scope.handleIsShow = true;
+                var top = e.screenY-100;
+                var left = e.screenX;
+                this.$parent.category.handle.name = this.course['课程名称'];
+                this.$parent.category.handle.teacher = this.course['教师'];
+                this.$parent.category.handle.position = 'left:'+left+'px;top:'+top+'px;';
+                this.$parent.category.handleIsShow = true;
+                console.log(e,this);
+            }
+            $scope.closeHandle = function(){
+                this.category.handleIsShow = false;
             }
 
         }

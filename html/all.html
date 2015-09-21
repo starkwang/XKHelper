@@ -17,19 +17,42 @@
       </thead>
       <tbody>
         <tr ng-repeat="course in category.courses track by $index" ng-click="showHandle()">
-          <td><div>{{course['选课序号']}}</div></td>
-          <td><div>{{course['课程名称']}}</div></td>
-          <td><div>{{course['学分']}}</div></td>
-          <td class="overflow"><div>{{course['教师']}}</div></td>
-          <td class="overflow"><div>{{course['职称']}}</div></td>
-          <td><div>{{course['人数']}}</div></td>
-          <td><div>{{course['教室']}}</div></td>
-          <td><div>{{course['时间']}}</div></td>
-          <td class="overflow"><div>{{course['备注']||'无'}}</div></td>
+          <td>
+            <div>{{course['选课序号']}}</div>
+          </td>
+          <td>
+            <div>{{course['课程名称']}}</div>
+          </td>
+          <td>
+            <div>{{course['学分']}}</div>
+          </td>
+          <td class="overflow">
+            <div>{{course['教师']}}</div>
+          </td>
+          <td class="overflow">
+            <div>{{course['职称']}}</div>
+          </td>
+          <td>
+            <div>{{course['人数']}}</div>
+          </td>
+          <td>
+            <div>{{course['教室']}}</div>
+          </td>
+          <td>
+            <div>{{course['时间'] | timeFilter}}</div>
+          </td>
+          <td class="overflow">
+            <div>{{course['备注']||'无'}}</div>
+          </td>
         </tr>
       </tbody>
     </table>
-
-    <div class="handle" ng-show="handleIsShow"><button class="update" ng-click="update()">{{handle.text1}}</button><button class="box" ng-click="addIntoBox()">加入收藏夹</button></div>
+    <div class="handle-bg" ng-click="closeHandle()" ng-show="category.handleIsShow">
+      <div class="handle" ng-show="category.handleIsShow" style="{{category.handle.position}}">
+      <p class="name">{{category.handle.name}}</p><p class="teacher">{{category.handle.teacher}}</p>
+        <button class="update" ng-click="update()">{{category.handle.text1}}</button>
+        <button class="box" ng-click="addIntoBox()">加入收藏夹</button>
+      </div>
+    </div>
   </div>
 </div>

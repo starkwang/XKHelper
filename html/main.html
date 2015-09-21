@@ -50,7 +50,7 @@
         <h1>{{detail['课程名称']}}</h1>
         <p class="">{{detail['选课序号']}}</p>
         <p class="main-info">{{detail['教师']}}</p>
-        <p class="main-info">{{detail['时间']}}<br/>{{detail['教室']}}</p>
+        <p class="main-info">{{detail['时间'] | timeFilter}}<br/>{{detail['教室']}}</p>
         <p class="">人数：{{detail['人数']}}</p>
         <p class="">限制条件：<br/>{{detail['选课限制条件']||'无'}}</p>
         <p class="">{{detail['考试时间']}}</p>

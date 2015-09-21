@@ -68,7 +68,7 @@ angular.module('baseService', [])
                     var isConflict = false;
                     var _this = this;
                     for (var i = 0; i < courseLength; i++) {
-                        
+
                         if (this.data[weekday][start + i] != 0) {
                             isConflict = true;
                         }
@@ -81,7 +81,7 @@ angular.module('baseService', [])
                         }
                     } else {
                         //冲突课程名的数组
-                        
+
                         var conflictName = [];
                         var conflictCourse = [];
                         for (var i = 0; i < courseLength; i++) {
@@ -103,15 +103,15 @@ angular.module('baseService', [])
                     }
 
                 },
-                remove:function(course){
+                remove: function(course) {
                     var timeArr = course['时间'].split('{time}');
                     var _this = this;
-                    timeArr.forEach(function(time){
+                    timeArr.forEach(function(time) {
                         var parseResult = timeParser(time);
-                        _this.removeOne(course,parseResult);
+                        _this.removeOne(course, parseResult);
                     })
                 },
-                removeOne: function(course,parseResult) {
+                removeOne: function(course, parseResult) {
                     var weekday = parseResult.weekday;
                     for (var i = 0; i < 13; i++) {
                         if (this.data[weekday][i]['选课序号'] == course['选课序号']) {
@@ -222,8 +222,17 @@ angular.module('baseService', [])
             };
             return service;
         }
-    ]);
-
+    ])
+    .filter("timeFilter", function() {
+        var filter = function(time) {
+            if(time != undefined){
+                return time.replace(/{time}/g, '，');
+            }else{
+                return time;
+            }
+        };
+        return filter;
+    });
 angular.module('starkAPP')
     .controller('allController', ['$scope', '$rootScope', 'BaseService', '$timeout', '$location',
         function($scope, $rootScope, BaseService, $timeout, $location) {
@@ -240,19 +249,29 @@ angular.module('starkAPP')
             $scope.showHandle = function() {
                 var e = e || window.event;
                 handleCourse = this.course;
-
+                
+                this.$parent.category.handle = {};
                 if (BaseService.courseModel.check(this.course['选课序号'])) {
-                    $scope.handle.text1 = '已选入课表';
+                    this.$parent.category.handle.text1 = '已选入课表';
                     $scope.update = function() {
                         alert('已经在课表里啦~');
                     }
                 }else{
-                    $scope.handle.text1 = '加入课表';
+                    this.$parent.category.handle.text1 = '加入课表';
                     $scope.update = function() {
                         BaseService.courseModel.update(handleCourse);
                     }
                 }
-                $scope.handleIsShow = true;
+                var top = e.screenY-100;
+                var left = e.screenX;
+                this.$parent.category.handle.name = this.course['课程名称'];
+                this.$parent.category.handle.teacher = this.course['教师'];
+                this.$parent.category.handle.position = 'left:'+left+'px;top:'+top+'px;';
+                this.$parent.category.handleIsShow = true;
+                console.log(e,this);
+            }
+            $scope.closeHandle = function(){
+                this.category.handleIsShow = false;
             }
 
         }
