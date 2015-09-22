@@ -36,12 +36,37 @@ angular.module('starkAPP')
                     $scope.resultShow = false;
                 }
             }
-
+            function refreshenDetail (id) {
+                if (BaseService.courseModel.check(id)) {
+                    $scope.detail.isInCourseTable = true;
+                    $scope.detail.text1 = '已加入课表';
+                } else {
+                    $scope.detail.isInCourseTable = false;
+                    $scope.detail.text1 = '加入课表';
+                }
+                if (BaseService.collectionModel.check(id)) {
+                    $scope.detail.isInCollection = true;
+                    $scope.detail.text2 = '已在收藏夹';
+                } else {
+                    $scope.detail.isInCollection = false;
+                    $scope.detail.text2 = '加入收藏夹';
+                }
+            }
             $scope.mouseover = function() {
                 $scope.detail = this.course;
+                refreshenDetail($scope.detail['选课序号']);
             }
+            $scope.$on('courseModelUpdate',function(){
+                refreshenDetail($scope.detail['选课序号']);
+            });
+            $scope.$on('collectionUpdate',function(){
+                refreshenDetail($scope.detail['选课序号']);
+            });
             $scope.courseUpdate = function() {
                 BaseService.courseModel.update(this.detail);
+            }
+            $scope.collectionUpdate = function() {
+                BaseService.collectionModel.update(this.detail);
             }
         }
     ]);

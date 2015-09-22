@@ -116,6 +116,47 @@ angular.module('baseService', [])
 
             courseModel.init();
 
+            var collectionModel = {
+                data: [],
+                init: function() {
+                    if (localStorage.collectionModelData !== undefined) {
+                        this.data = JSON.parse(localStorage.collectionModelData);
+                    }
+                },
+                update: function(course) {
+                    for (var i = 0; i < this.data.length; i++) {
+                        if (this.data[i]['选课序号'] == course['选课序号']) {
+                            return;
+                        }
+                    }
+                    this.data.push(course);
+                    var data_ = this.data;
+                    localStorage.collectionModelData = JSON.stringify(data_);
+                    $rootScope.$broadcast('collectionUpdate', data_);
+                    console.log(this.data);
+                },
+                remove: function(courseID) {
+                    for (var i = 0; i < this.data.length; i++) {
+                        if (this.data[i]['选课序号'] == courseID) {
+                            this.data.splice(i, 1);
+                            break;
+                        }
+                    }
+                    var data_ = this.data;
+                    localStorage.collectionModelData = JSON.stringify(data_);
+                    $rootScope.$broadcast('collectionUpdate', data_);
+                },
+                check:function(courseID){
+                    for(var i=0;i<this.data.length;i++){
+                        if(this.data[i]['选课序号'] == courseID){
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+
+            }
+            collectionModel.init();
             function search(specification) {
                 if (!(specification.time.length || specification.keywords.length || specification.courseID.length || specification.category.length)) {
                     return [];
@@ -196,16 +237,17 @@ angular.module('baseService', [])
             var service = {
                 search: search,
                 timeParser: timeParser,
-                courseModel: courseModel
+                courseModel: courseModel,
+                collectionModel: collectionModel
             };
             return service;
         }
     ])
     .filter("timeFilter", function() {
         var filter = function(time) {
-            if(time != undefined){
+            if (time != undefined) {
                 return time.replace(/{time}/g, '，');
-            }else{
+            } else {
                 return time;
             }
         };

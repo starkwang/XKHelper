@@ -2320,6 +2320,66 @@ Copyright (c) 2015 Daniel Eden
   -webkit-animation-name: slideOutUp;
   animation-name: slideOutUp; }
 
+.collection {
+  background: #fff;
+  position: relative;
+  box-shadow: 5px 6px 5px rgba(0, 0, 0, 0.5);
+  margin: 20px 20px; }
+  .collection table {
+    width: 100%; }
+    .collection table tr {
+      border: 1px solid #ddd;
+      text-align: center; }
+    .collection table tr:hover {
+      background-color: #ddd; }
+    .collection table th, .collection table td {
+      padding: 5px; }
+    .collection table .update {
+      background-color: #00ae68;
+      border: 0;
+      outline: 0;
+      color: #fff;
+      height: 26px;
+      width: 100px;
+      box-sizing: border-box;
+      font-size: 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.1s;
+      -o-transition: all 0.1s;
+      -webkit-transition: all 0.1s;
+      -moz-transition: all 0.1s; }
+    .collection table .update.isInCourseTable {
+      background-color: #aaa !important; }
+    .collection table .update:hover {
+      background-color: rgba(255, 255, 255, 0);
+      border: 2px solid #00ae68;
+      color: #00ae68; }
+    .collection table .update.isInCourseTable:hover {
+      background-color: #00ae68;
+      border: 0;
+      color: #fff; }
+    .collection table .remove {
+      background-color: #df3e3e;
+      border: 0;
+      outline: 0;
+      color: #fff;
+      height: 26px;
+      width: 100px;
+      margin-top: 5px;
+      box-sizing: border-box;
+      font-size: 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.1s;
+      -o-transition: all 0.1s;
+      -webkit-transition: all 0.1s;
+      -moz-transition: all 0.1s; }
+    .collection table .remove:hover {
+      background-color: rgba(255, 255, 255, 0);
+      border: 2px solid #df3e3e;
+      color: #df3e3e; }
+
 .category {
   background: #fff;
   position: relative;
@@ -2396,12 +2456,18 @@ Copyright (c) 2015 Daniel Eden
       -o-transition: all 0.1s;
       -webkit-transition: all 0.1s;
       -moz-transition: all 0.1s; }
+    .category .handle .update.isInCourseTable {
+      background-color: #aaa; }
     .category .handle .update:hover {
       background-color: rgba(255, 255, 255, 0);
       border: 2px solid #00ae68;
       color: #00ae68; }
+    .category .handle .update.isInCourseTable:hover {
+      background-color: #aaa;
+      border: 0;
+      color: #fff; }
     .category .handle .box {
-      background-color: #ffd773;
+      background-color: #de7d2c;
       border: 0;
       outline: 0;
       color: #fff;
@@ -2417,50 +2483,56 @@ Copyright (c) 2015 Daniel Eden
       -moz-transition: all 0.1s; }
     .category .handle .box:hover {
       background-color: rgba(255, 255, 255, 0);
-      border: 2px solid #ffd773;
-      color: #ffd773; }
+      border: 2px solid #de7d2c;
+      color: #de7d2c; }
+    .category .handle .box.isInCollection {
+      background-color: #aaa; }
+    .category .handle .box.isInCollection:hover {
+      background-color: #de7d2c;
+      border: 0;
+      color: #fff; }
 
 #bg.ng-enter {
   -webkit-animation: 0.5s fadeIn;
   -moz-animation: 0.5s fadeIn;
   -o-animation: 0.5s fadeIn;
   animation: 0.5s fadeIn;
-  z-index: 100; }
+  z-index: 95; }
 
 .search .bg.ng-hide-remove {
   -webkit-animation: 0.7s fadeIn;
   -moz-animation: 0.7s fadeIn;
   -o-animation: 0.7s fadeIn;
   animation: 0.7s fadeIn;
-  z-index: 100; }
+  z-index: 95; }
 
 .search .ng-hide-remove {
   -webkit-animation: 0.7s bounceInDown;
   -moz-animation: 0.7s bounceInDown;
   -o-animation: 0.7s bounceInDown;
   animation: 0.7s bounceInDown;
-  z-index: 100; }
+  z-index: 95; }
 
 .search .ng-hide-add {
   -webkit-animation: 0.7s bounceOutUp;
   -moz-animation: 0.7s bounceOutUp;
   -o-animation: 0.7s bounceOutUp;
   animation: 0.7s bounceOutUp;
-  z-index: 10; }
+  z-index: 95; }
 
 .ng-enter {
   -webkit-animation: 0.5s fadeInDown;
   -moz-animation: 0.5s fadeInDown;
   -o-animation: 0.5s fadeInDown;
   animation: 0.5s fadeInDown;
-  z-index: 10; }
+  z-index: 95; }
 
 .ng-leave {
-  -webkit-animation: 0.5s fadeOut;
-  -moz-animation: 0.5s fadeOut;
-  -o-animation: 0.5s fadeOut;
-  animation: 0.5s fadeOut;
-  z-index: 10; }
+  -webkit-animation: 0.5s fadeOutUp;
+  -moz-animation: 0.5s fadeOutUp;
+  -o-animation: 0.5s fadeOutUp;
+  animation: 0.5s fadeOutUp;
+  z-index: 95; }
 
 .course-table .detail.ng-hide-remove {
   -webkit-animation: 0.5s bounceIn;
@@ -2525,11 +2597,11 @@ a:hover {
 html,
 body {
   height: 100%;
-  font-family: "微软雅黑" !important; }
+  font-family: "微软雅黑" !important;
+  background: #55a997; }
 
 #bg {
   width: 100%;
-  background: #55a997;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
@@ -2542,6 +2614,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 99;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   color: white; }
   .sidebar .active a {
@@ -2727,10 +2800,41 @@ body {
         -o-transition: all 0.1s;
         -webkit-transition: all 0.1s;
         -moz-transition: all 0.1s; }
+      .search .search-box .result .detail .update.isInCourseTable {
+        background-color: #aaa; }
+      .search .search-box .result .detail .update.isInCourseTable:hover {
+        background-color: #aaa;
+        border: 0;
+        color: #fff; }
       .search .search-box .result .detail .update:hover {
         background-color: rgba(255, 255, 255, 0);
         border: 2px solid #00ae68;
         color: #00ae68; }
+      .search .search-box .result .detail .box {
+        background-color: #de7d2c;
+        border: 0;
+        outline: 0;
+        color: #fff;
+        height: 26px;
+        width: 100px;
+        box-sizing: border-box;
+        font-size: 18px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.1s;
+        -o-transition: all 0.1s;
+        -webkit-transition: all 0.1s;
+        -moz-transition: all 0.1s; }
+      .search .search-box .result .detail .box.isInCollection {
+        background-color: #aaa; }
+      .search .search-box .result .detail .box.isInCollection:hover {
+        background-color: #aaa;
+        border: 0;
+        color: #fff; }
+      .search .search-box .result .detail .box:hover {
+        background-color: rgba(255, 255, 255, 0);
+        border: 2px solid #de7d2c;
+        color: #de7d2c; }
 
 @charset "UTF-8";
 /* 清除内外边距 */

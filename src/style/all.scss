@@ -90,13 +90,21 @@
       -webkit-transition: all 0.1s;
       -moz-transition: all 0.1s;
     }
+    .update.isInCourseTable{
+      background-color: #aaa;
+    }
     .update:hover {
       background-color: rgba(255, 255, 255, 0);
       border: 2px solid #00ae68;
       color: #00ae68;
     }
+    .update.isInCourseTable:hover{
+      background-color: #aaa;
+      border:0;
+      color: #fff;
+    }
     .box {
-      background-color: #ffd773;
+      background-color: rgb(222,125,44);
       border: 0;
       outline: 0;
       color: #fff;
@@ -113,8 +121,16 @@
     }
     .box:hover {
       background-color: rgba(255, 255, 255, 0);
-      border: 2px solid #ffd773;
-      color: #ffd773;
+      border: 2px solid rgb(222,125,44);
+      color: rgb(222,125,44);
+    }
+    .box.isInCollection {
+      background-color: #aaa;
+    }
+    .box.isInCollection:hover {
+      background-color: rgb(222,125,44);
+      border: 0;
+      color: #fff;
     }
   }
 }

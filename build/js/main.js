@@ -14,6 +14,9 @@ var starkAPP = angular.module('starkAPP', [
                 .when('/all/', {
                     templateUrl: './html/all.html'
                 })
+                .when('/collection/',{
+                    templateUrl:'./html/collection.html'
+                })
                 .otherwise({
                     redirectTo: '/main/'
                 });
@@ -138,6 +141,47 @@ angular.module('baseService', [])
 
             courseModel.init();
 
+            var collectionModel = {
+                data: [],
+                init: function() {
+                    if (localStorage.collectionModelData !== undefined) {
+                        this.data = JSON.parse(localStorage.collectionModelData);
+                    }
+                },
+                update: function(course) {
+                    for (var i = 0; i < this.data.length; i++) {
+                        if (this.data[i]['选课序号'] == course['选课序号']) {
+                            return;
+                        }
+                    }
+                    this.data.push(course);
+                    var data_ = this.data;
+                    localStorage.collectionModelData = JSON.stringify(data_);
+                    $rootScope.$broadcast('collectionUpdate', data_);
+                    console.log(this.data);
+                },
+                remove: function(courseID) {
+                    for (var i = 0; i < this.data.length; i++) {
+                        if (this.data[i]['选课序号'] == courseID) {
+                            this.data.splice(i, 1);
+                            break;
+                        }
+                    }
+                    var data_ = this.data;
+                    localStorage.collectionModelData = JSON.stringify(data_);
+                    $rootScope.$broadcast('collectionUpdate', data_);
+                },
+                check:function(courseID){
+                    for(var i=0;i<this.data.length;i++){
+                        if(this.data[i]['选课序号'] == courseID){
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+
+            }
+            collectionModel.init();
             function search(specification) {
                 if (!(specification.time.length || specification.keywords.length || specification.courseID.length || specification.category.length)) {
                     return [];
@@ -218,21 +262,23 @@ angular.module('baseService', [])
             var service = {
                 search: search,
                 timeParser: timeParser,
-                courseModel: courseModel
+                courseModel: courseModel,
+                collectionModel: collectionModel
             };
             return service;
         }
     ])
     .filter("timeFilter", function() {
         var filter = function(time) {
-            if(time != undefined){
+            if (time != undefined) {
                 return time.replace(/{time}/g, '，');
-            }else{
+            } else {
                 return time;
             }
         };
         return filter;
     });
+
 angular.module('starkAPP')
     .controller('allController', ['$scope', '$rootScope', 'BaseService', '$timeout', '$location',
         function($scope, $rootScope, BaseService, $timeout, $location) {
@@ -249,30 +295,73 @@ angular.module('starkAPP')
             $scope.showHandle = function() {
                 var e = e || window.event;
                 handleCourse = this.course;
-                
+
                 this.$parent.category.handle = {};
                 if (BaseService.courseModel.check(this.course['选课序号'])) {
                     this.$parent.category.handle.text1 = '已选入课表';
-                    $scope.update = function() {
-                        alert('已经在课表里啦~');
-                    }
-                }else{
+                    this.$parent.category.handle.isInCourseTable = true;
+                } else {
                     this.$parent.category.handle.text1 = '加入课表';
-                    $scope.update = function() {
-                        BaseService.courseModel.update(handleCourse);
-                    }
+                    this.$parent.category.handle.isInCourseTable = false;
+                }
+                if (BaseService.collectionModel.check(this.course['选课序号'])) {
+                    this.$parent.category.handle.text2 = '已在收藏夹';
+                    this.$parent.category.handle.isInCollection = true;
+                } else {
+                    this.$parent.category.handle.text2 = '加入收藏夹';
+                    this.$parent.category.handle.isInCollection = false;
                 }
                 var top = e.clientY;
                 var left = e.clientX;
                 this.$parent.category.handle.name = this.course['课程名称'];
                 this.$parent.category.handle.teacher = this.course['教师'];
-                this.$parent.category.handle.position = 'left:'+left+'px;top:'+top+'px;';
+                this.$parent.category.handle.position = 'left:' + left + 'px;top:' + top + 'px;';
                 this.$parent.category.handleIsShow = true;
             }
-            $scope.closeHandle = function(){
+            $scope.closeHandle = function() {
                 this.category.handleIsShow = false;
             }
+            $scope.update = function() {
+                BaseService.courseModel.update(handleCourse);
+            }
+            $scope.addIntoBox = function(){
+                BaseService.collectionModel.update(handleCourse);
+            }
 
+        }
+    ]);
+
+//侧边搜索栏
+angular.module('starkAPP')
+    .controller('collectionController', ['$scope', '$rootScope','BaseService','$timeout','$location',
+        function($scope, $rootScope,BaseService, $timeout,$location) {
+            function refreshen(){
+                $scope.courses = BaseService.collectionModel.data;
+                $scope.courses.forEach(function(course){
+                    if(BaseService.courseModel.check(course['选课序号'])){
+                        course.isInCourseTable = true;
+                    }else{
+                        course.isInCourseTable = false;
+                    }
+                    course.text = course.isInCourseTable?'已加入课表':'加入课表';
+                });
+                console.log($scope);
+            }
+            refreshen();
+            $scope.$on('collectionUpdate',function(data){
+                refreshen();
+                console.log($scope);
+            });
+            $scope.$on('courseModelUpdate',function(data){
+                refreshen();
+            });
+
+            $scope.addCourse = function(){
+                BaseService.courseModel.update(this.course);
+            }
+            $scope.remove = function(){
+                BaseService.collectionModel.remove(this.course['选课序号']);
+            }
         }
     ]);
 
@@ -533,12 +622,37 @@ angular.module('starkAPP')
                     $scope.resultShow = false;
                 }
             }
-
+            function refreshenDetail (id) {
+                if (BaseService.courseModel.check(id)) {
+                    $scope.detail.isInCourseTable = true;
+                    $scope.detail.text1 = '已加入课表';
+                } else {
+                    $scope.detail.isInCourseTable = false;
+                    $scope.detail.text1 = '加入课表';
+                }
+                if (BaseService.collectionModel.check(id)) {
+                    $scope.detail.isInCollection = true;
+                    $scope.detail.text2 = '已在收藏夹';
+                } else {
+                    $scope.detail.isInCollection = false;
+                    $scope.detail.text2 = '加入收藏夹';
+                }
+            }
             $scope.mouseover = function() {
                 $scope.detail = this.course;
+                refreshenDetail($scope.detail['选课序号']);
             }
+            $scope.$on('courseModelUpdate',function(){
+                refreshenDetail($scope.detail['选课序号']);
+            });
+            $scope.$on('collectionUpdate',function(){
+                refreshenDetail($scope.detail['选课序号']);
+            });
             $scope.courseUpdate = function() {
                 BaseService.courseModel.update(this.detail);
+            }
+            $scope.collectionUpdate = function() {
+                BaseService.collectionModel.update(this.detail);
             }
         }
     ]);

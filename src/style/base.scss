@@ -8,11 +8,11 @@ html,
 body {
   height: 100%;
   font-family: "微软雅黑" !important;
+  background: rgb(85,169,151);
 }
 
 #bg {
   width: 100%;
-  background: rgb(85,169,151);
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
@@ -27,6 +27,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 99;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
   color: $font-color;
   .active a{
@@ -251,10 +252,48 @@ body {
           -webkit-transition: all 0.1s;
           -moz-transition: all 0.1s;
         }
+        .update.isInCourseTable{
+          background-color:#aaa;
+        }
+        .update.isInCourseTable:hover {
+          background-color: #aaa;
+          border: 0;
+          color: #fff;
+        }
         .update:hover {
           background-color: rgba(255, 255, 255, 0);
           border: 2px solid #00ae68;
           color: #00ae68;
+        }
+
+        .box {
+          background-color: rgb(222,125,44);
+          border: 0;
+          outline: 0;
+          color: #fff;
+          height: 26px;
+          width: 100px;
+          box-sizing: border-box;
+          font-size: 18px;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: all 0.1s;
+          -o-transition: all 0.1s;
+          -webkit-transition: all 0.1s;
+          -moz-transition: all 0.1s;
+        }
+        .box.isInCollection{
+          background-color:#aaa;
+        }
+        .box.isInCollection:hover {
+          background-color: #aaa;
+          border: 0;
+          color: #fff;
+        }
+        .box:hover {
+          background-color: rgba(255, 255, 255, 0);
+          border: 2px solid rgb(222,125,44);
+          color: rgb(222,125,44);
         }
       }
     }

@@ -3,7 +3,7 @@
   -moz-animation: 0.5s fadeIn;
   -o-animation: 0.5s fadeIn;
   animation: 0.5s fadeIn;
-  z-index: 100;
+  z-index: 95;
 }
 
 // .ng-hide-remove {
@@ -13,7 +13,6 @@
 //   animation: 1s fadeInDown;
 //   z-index: 10;
 // }
-
 // .ng-hide-add {
 //   -webkit-animation: 1s fadeOut;
 //   -moz-animation: 1s fadeOut;
@@ -21,13 +20,12 @@
 //   animation: 1s fadeOut;
 //   z-index: 10;
 // }
-
 .search .bg.ng-hide-remove {
   -webkit-animation: 0.7s fadeIn;
   -moz-animation: 0.7s fadeIn;
   -o-animation: 0.7s fadeIn;
   animation: 0.7s fadeIn;
-  z-index: 100;
+  z-index: 95;
 }
 
 .search .ng-hide-remove {
@@ -35,14 +33,15 @@
   -moz-animation: 0.7s bounceInDown;
   -o-animation: 0.7s bounceInDown;
   animation: 0.7s bounceInDown;
-  z-index: 100;
+  z-index: 95;
 }
+
 .search .ng-hide-add {
   -webkit-animation: 0.7s bounceOutUp;
   -moz-animation: 0.7s bounceOutUp;
   -o-animation: 0.7s bounceOutUp;
   animation: 0.7s bounceOutUp;
-  z-index: 10;
+  z-index: 95;
 }
 
 .ng-enter {
@@ -50,16 +49,17 @@
   -moz-animation: 0.5s fadeInDown;
   -o-animation: 0.5s fadeInDown;
   animation: 0.5s fadeInDown;
-  z-index: 10;
+  z-index: 95;
 }
 
 .ng-leave {
-  -webkit-animation: 0.5s fadeOut;
-  -moz-animation: 0.5s fadeOut;
-  -o-animation: 0.5s fadeOut;
-  animation: 0.5s fadeOut;
-  z-index: 10;
+  -webkit-animation: 0.5s fadeOutUp;
+  -moz-animation: 0.5s fadeOutUp;
+  -o-animation: 0.5s fadeOutUp;
+  animation: 0.5s fadeOutUp;
+  z-index: 95;
 }
+
 
 .course-table {
   .detail.ng-hide-remove {
@@ -69,14 +69,14 @@
     animation: 0.5s bounceIn;
     z-index: 10;
   }
-  .detail-bg.ng-hide-remove{
+  .detail-bg.ng-hide-remove {
     -webkit-animation: 0.5s fadeIn;
     -moz-animation: 0.5s fadeIn;
     -o-animation: 0.5s fadeIn;
     animation: 0.5s fadeIn;
     z-index: 10;
   }
-  .detail-bg.ng-hide-add{
+  .detail-bg.ng-hide-add {
     -webkit-animation: 0.5s fadeOut;
     -moz-animation: 0.5s fadeOut;
     -o-animation: 0.5s fadeOut;
@@ -91,6 +91,7 @@
     z-index: 10;
   }
 }
+
 .content {
   .handle.ng-hide-remove {
     -webkit-animation: 0.5s bounceIn;
@@ -106,14 +107,14 @@
     animation: 0.5s bounceOut;
     z-index: 10;
   }
-  .handle-bg.ng-hide-remove{
+  .handle-bg.ng-hide-remove {
     -webkit-animation: 0.5s fadeIn;
     -moz-animation: 0.5s fadeIn;
     -o-animation: 0.5s fadeIn;
     animation: 0.5s fadeIn;
     z-index: 10;
   }
-  .handle-bg.ng-hide-add{
+  .handle-bg.ng-hide-add {
     -webkit-animation: 0.5s fadeOut;
     -moz-animation: 0.5s fadeOut;
     -o-animation: 0.5s fadeOut;

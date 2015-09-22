@@ -22,7 +22,8 @@
           <p class="">人数：{{detail['人数']}}</p>
           <p class="">{{detail['选课限制条件']}}</p>
           <p class="">{{detail['考试时间']}}</p>
-          <button ng-click="courseUpdate()" class="update">加入课表</button>
+          <button ng-click="courseUpdate()" class="update" ng-class="{true: 'isInCourseTable'}[detail.isInCourseTable]" ng-disabled="detail.isInCourseTable">{{detail.text1}}</button>
+          <button ng-click="collectionUpdate()" class="box" ng-class="{true: 'isInCollection'}[detail.isInCollection]" ng-disabled="detail.isInCollection">{{detail.text2}}</button>
         </div>
       </div>
     </div>

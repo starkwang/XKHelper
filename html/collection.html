@@ -1,0 +1,26 @@
+<div class="content" ng-controller="collectionController">
+  <div class="collection">
+    <table>
+      <thead>
+        <tr>
+          <th>选课序号</th>
+          <th>课程名称</th>
+          <th>教师</th>
+          <th>时间</th>
+          <th>教室</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="course in courses">
+          <td>{{course['选课序号']}}</td>
+          <td>{{course['课程名称']}}</td>
+          <td>{{course['教师']}}</td>
+          <td>{{course['时间'] | timeFilter}}</td>
+          <td>{{course['教室']}}</td>
+          <td><button ng-click="addCourse()" class="update" ng-class="{true: 'isInCourseTable'}[course.isInCourseTable]" ng-disabled="course.isInCourseTable">{{course.text}}</button><button ng-click="remove()" class="remove">移除</button></td>
+        </tr>
+      </tbody> 
+    </table>
+  </div>
+</div>

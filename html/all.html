@@ -1,5 +1,3 @@
-<div ng-include="'./html/sidebar.html'" class="sidebar"></div>
-<div ng-include="'./html/search.html'" class="search"></div>
 <div class="content" ng-controller="allController">
   <div ng-repeat="category in data track by $index" class="category">
     <h1>{{category.name}}</h1>
@@ -50,8 +48,8 @@
     <div class="handle-bg" ng-click="closeHandle()" ng-show="category.handleIsShow">
       <div class="handle" ng-show="category.handleIsShow" style="{{category.handle.position}}">
       <p class="name">{{category.handle.name}}</p><p class="teacher">{{category.handle.teacher}}</p>
-        <button class="update" ng-click="update()">{{category.handle.text1}}</button>
-        <button class="box" ng-click="addIntoBox()">加入收藏夹</button>
+        <button class="update" ng-click="update()" ng-class="{true: 'isInCourseTable'}[category.handle.isInCourseTable]" ng-disabled="category.handle.isInCourseTable">{{category.handle.text1}}</button>
+        <button class="box" ng-click="addIntoBox()" ng-class="{true: 'isInCollection'}[category.handle.isInCollection]" ng-disabled="category.handle.isInCollection">{{category.handle.text2}}</button>
       </div>
     </div>
   </div>
