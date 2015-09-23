@@ -15,7 +15,9 @@
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
-.icon-magnifier:before { content: "\e663"; }
-.icon-calendarfull:before { content: "\e614"; }
-.icon-inbox:before { content: "\e651"; }
-.icon-chevrondown:before { content: "\e61c"; }
+.icon-iconremove:before { content: "\e600"; }
+.icon-search:before { content: "\e601"; }
+.icon-selected:before { content: "\e602"; }
+.icon-icon:before { content: "\e605"; }
+.icon-table:before { content: "\e603"; }
+.icon-collection:before { content: "\e604"; }

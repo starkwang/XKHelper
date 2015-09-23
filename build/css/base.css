@@ -2375,6 +2375,8 @@ Copyright (c) 2015 Daniel Eden
       -o-transition: all 0.1s;
       -webkit-transition: all 0.1s;
       -moz-transition: all 0.1s; }
+      .collection table .remove i {
+        font-size: 18px; }
     .collection table .remove:hover {
       background-color: rgba(255, 255, 255, 0);
       border: 2px solid #df3e3e;
@@ -2697,17 +2699,23 @@ body {
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon-magnifier:before {
-  content: "\e663"; }
+.icon-remove:before {
+  content: "\e600"; }
 
-.icon-calendarfull:before {
-  content: "\e614"; }
+.icon-search:before {
+  content: "\e601"; }
 
-.icon-inbox:before {
-  content: "\e651"; }
+.icon-selected:before {
+  content: "\e602"; }
 
-.icon-chevrondown:before {
-  content: "\e61c"; }
+.icon-list:before {
+  content: "\e605"; }
+
+.icon-table:before {
+  content: "\e603"; }
+
+.icon-collection:before {
+  content: "\e604"; }
 
 .search .search-box {
   position: fixed;
