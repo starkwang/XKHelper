@@ -5,6 +5,13 @@
   animation: 0.5s fadeIn;
   z-index: 95;
 }
+#bg.ng-leave{
+  -webkit-animation: 0.5s fadeOut;
+  -moz-animation: 0.5s fadeOut;
+  -o-animation: 0.5s fadeOut;
+  animation: 0.5s fadeOut;
+  z-index: 95;
+}
 
 // .ng-hide-remove {
 //   -webkit-animation: 1s fadeInDown;
