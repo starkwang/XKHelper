@@ -146,9 +146,9 @@ angular.module('baseService', [])
                     localStorage.collectionModelData = JSON.stringify(data_);
                     $rootScope.$broadcast('collectionUpdate', data_);
                 },
-                check:function(courseID){
-                    for(var i=0;i<this.data.length;i++){
-                        if(this.data[i]['选课序号'] == courseID){
+                check: function(courseID) {
+                    for (var i = 0; i < this.data.length; i++) {
+                        if (this.data[i]['选课序号'] == courseID) {
                             return true;
                         }
                     }
@@ -158,29 +158,35 @@ angular.module('baseService', [])
             }
             collectionModel.init();
 
+            function matchCourse(specification, course) {
+                if (specification.keywords) {
+                    if (course['课程名称'].trim().indexOf(specification.keywords.trim()) == -1 && course['教师'].trim().indexOf(specification.keywords.trim()) == -1) {
+                        return false;
+                    }
+                }
+                if (specification.courseID) {
+                    if (course['选课序号'].trim().indexOf(specification.courseID.trim()) == -1) {
+                        return false;
+                    }
+                }
+                if(specification.time){
+                    var timeArr = course['时间'].split('{time}');
+                    for(var i =0;i<timeArr.length;i++){
+                        if(judgeTime(specification.time.start,specification.time.end,timeArr[i].trim())){
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+                return true;
+            }
+
             function search(specification) {
                 if (!(specification.time.length || specification.keywords.length || specification.courseID.length || specification.category.length)) {
                     return [];
                 }
 
-                function matchCourse(specification, course) {
-                    if (specification.time) {
-                        if (specification.time.indexOf(course['时间'].trim()) == -1) {
-                            return false;
-                        }
-                    }
-                    if (specification.keywords) {
-                        if (course['课程名称'].trim().indexOf(specification.keywords.trim()) == -1 && course['教师'].trim().indexOf(specification.keywords.trim()) == -1) {
-                            return false;
-                        }
-                    }
-                    if (specification.courseID) {
-                        if (course['选课序号'].trim().indexOf(specification.courseID.trim()) == -1) {
-                            return false;
-                        }
-                    }
-                    return true;
-                }
+
                 var result = [];
                 if (specification.category.length > 0) {
                     specification.category.forEach(function(category) {
@@ -205,8 +211,20 @@ angular.module('baseService', [])
             function timeParser(time) {
                 //'二 3-4'
                 var t = time.trim();
+                var weekday = chToNumber(t.split(' ')[0]);
+                var length = parseInt(t.split(' ')[1].split('-')[1]) - parseInt(t.split(' ')[1].split('-')[0]) + 1;
+                var start = parseInt(t.split(' ')[1].split('-')[0]);
+                //{weekday:2,length:2,start:3}
+                return {
+                    weekday: weekday - 1,
+                    length: length,
+                    start: start - 1
+                };
+            }
+
+            function chToNumber(chinese) {
                 var weekday;
-                switch (t.split(' ')[0]) {
+                switch (chinese) {
                     case '一':
                         weekday = 1;
                         break;
@@ -226,20 +244,43 @@ angular.module('baseService', [])
                         weekday = 6;
                         break;
                 }
-                var length = parseInt(t.split(' ')[1].split('-')[1]) - parseInt(t.split(' ')[1].split('-')[0]) + 1;
-                var start = parseInt(t.split(' ')[1].split('-')[0]);
-                //{weekday:2,length:2,start:3}
-                return {
-                    weekday: weekday - 1,
-                    length: length,
-                    start: start - 1
-                };
+                return weekday;
             }
+
+            function judgeTime(startTime, endTime, courseTime) {
+                //'一 2','二 4','一 3-5'
+                var ch = courseTime.trim().split(' ')[0];
+                var start = courseTime.trim().split(' ')[1].split('-')[0];
+                var end = courseTime.trim().split(' ')[1].split('-')[1];
+                var courseTimeStart = ch + ' ' + start;
+                var courseTimeEnd = ch + ' ' + end;
+                if (compareTime(startTime, courseTimeStart) && compareTime(courseTimeEnd, endTime)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            function compareTime(time1, time2) {
+                //'一 2','一 3'
+                //time1比time2更早的话，返回true
+                var weekday1 = chToNumber(time1.trim().split(' ')[0]);
+                var weekday2 = chToNumber(time2.trim().split(' ')[0]);
+                var No1 = parseInt(time1.trim().split(' ')[1]);
+                var No2 = parseInt(time2.trim().split(' ')[1]);
+                if (weekday1 === weekday2) {
+                    return No1 < No2;
+                } else {
+                    return weekday1 < weekday2;
+                }
+            }
+
             var service = {
                 search: search,
                 timeParser: timeParser,
                 courseModel: courseModel,
-                collectionModel: collectionModel
+                collectionModel: collectionModel,
+                judgeTime: judgeTime
             };
             return service;
         }

@@ -28,7 +28,10 @@ angular.module('starkAPP')
                         category: [],
                         keywords: '',
                         courseID: $scope.keywords,
-                        time: ''
+                        // time: {
+                        //     start:'五 1',
+                        //     end:'五 13'
+                        // }
                     }
                     $scope.result = BaseService.search(params);
                 } else {
