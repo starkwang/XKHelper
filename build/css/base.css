@@ -2529,20 +2529,6 @@ Copyright (c) 2015 Daniel Eden
   animation: 0.7s bounceOutUp;
   z-index: 95; }
 
-.ng-enter {
-  -webkit-animation: 0.5s fadeInDown;
-  -moz-animation: 0.5s fadeInDown;
-  -o-animation: 0.5s fadeInDown;
-  animation: 0.5s fadeInDown;
-  z-index: 95; }
-
-.ng-leave {
-  -webkit-animation: 0.5s fadeOutUp;
-  -moz-animation: 0.5s fadeOutUp;
-  -o-animation: 0.5s fadeOutUp;
-  animation: 0.5s fadeOutUp;
-  z-index: 95; }
-
 .course-table .detail.ng-hide-remove {
   -webkit-animation: 0.5s bounceIn;
   -moz-animation: 0.5s bounceIn;
@@ -2743,10 +2729,13 @@ body {
     .search .search-box .search-bar .input {
       height: 40px;
       margin-top: 5px;
+      width: 600px;
       font-size: 30px;
       outline: none;
       border: 0;
       background: #dfdfdf; }
+    .search .search-box .search-bar .more {
+      cursor: pointer; }
   .search .search-box .result {
     height: 300px;
     width: 100%;
@@ -2773,7 +2762,8 @@ body {
         cursor: pointer;
         padding-left: 20px;
         box-sizing: border-box;
-        overflow: hidden; }
+        overflow: hidden;
+        z-index: 1000; }
         .search .search-box .result .list li p {
           float: left; }
         .search .search-box .result .list li .teacher {

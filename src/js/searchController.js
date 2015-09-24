@@ -22,21 +22,33 @@ angular.module('starkAPP')
             }
 
             $scope.kwChange = function() {
-                var params = {
-                    category: [],
-                    keywords: $scope.keywords,
-                    courseID: '',
-                    time: ''
+                if (/^[a-zA-Z]/.test($scope.keywords[0])) {
+                    //选课号
+                    var params = {
+                        category: [],
+                        keywords: '',
+                        courseID: $scope.keywords,
+                        time: ''
+                    }
+                    $scope.result = BaseService.search(params);
+                } else {
+                    var params = {
+                        category: [],
+                        keywords: $scope.keywords,
+                        courseID: '',
+                        time: ''
+                    }
+                    $scope.result = BaseService.search(params);
                 }
-                var result = BaseService.search(params);
-                $scope.result = result;
-                if (result.length > 0) {
+
+                if ($scope.result.length > 0) {
                     $scope.resultShow = true;
                 } else {
                     $scope.resultShow = false;
                 }
             }
-            function refreshenDetail (id) {
+
+            function refreshenDetail(id) {
                 if (BaseService.courseModel.check(id)) {
                     $scope.detail.isInCourseTable = true;
                     $scope.detail.text1 = '已加入课表';
@@ -56,10 +68,10 @@ angular.module('starkAPP')
                 $scope.detail = this.course;
                 refreshenDetail($scope.detail['选课序号']);
             }
-            $scope.$on('courseModelUpdate',function(){
+            $scope.$on('courseModelUpdate', function() {
                 refreshenDetail($scope.detail['选课序号']);
             });
-            $scope.$on('collectionUpdate',function(){
+            $scope.$on('collectionUpdate', function() {
                 refreshenDetail($scope.detail['选课序号']);
             });
             $scope.courseUpdate = function() {
@@ -67,6 +79,9 @@ angular.module('starkAPP')
             }
             $scope.collectionUpdate = function() {
                 BaseService.collectionModel.update(this.detail);
+            }
+            $scope.showMoreSearch = function() {
+                $scope.moreSearchShow = true;
             }
         }
     ]);

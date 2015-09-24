@@ -4,9 +4,12 @@
       <div class="search-bar">
         <div style="overflow:hidden">
           <div class="icon"><i class="iconfont icon-magnifier"></i></div>
-          <input type="text" name="" id="" class="input" placeholder="课程名称" ng-change="kwChange()" ng-model="keywords">
-          <div class="more"><i class="iconfont icon-chevrondown"></i>更多条件</div>
+          <input type="text" name="" id="" class="input" placeholder="课程名称/选课号/教师姓名" ng-change="kwChange()" ng-model="keywords">
+          <div class="more"><i class="iconfont icon-chevrondown" ng-click="showMoreSearch()"></i>更多条件</div>
         </div>
+      </div>
+      <div class="more-search" ng-show="moreSearchShow">
+        
       </div>
       <div class="result" ng-show="resultShow">
         <div class="list">
@@ -18,7 +21,7 @@
           <h1>{{detail['课程名称']}}</h1>
           <p class="">{{detail['选课序号']}}</p>
           <p class="main-info">{{detail['教师']}}&nbsp;&nbsp;{{detail['职称']}}</p>
-          <p class="main-info">{{detail['时间']}}&nbsp;&nbsp;{{detail['教室']}}</p>
+          <p class="main-info">{{detail['时间'] | timeFilter}}&nbsp;&nbsp;{{detail['教室']}}</p>
           <p class="">人数：{{detail['人数']}}</p>
           <p class="">{{detail['选课限制条件']}}</p>
           <p class="">{{detail['考试时间']}}</p>

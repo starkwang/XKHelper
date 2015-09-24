@@ -157,6 +157,7 @@ angular.module('baseService', [])
 
             }
             collectionModel.init();
+
             function search(specification) {
                 if (!(specification.time.length || specification.keywords.length || specification.courseID.length || specification.category.length)) {
                     return [];
@@ -169,7 +170,7 @@ angular.module('baseService', [])
                         }
                     }
                     if (specification.keywords) {
-                        if (course['课程名称'].trim().indexOf(specification.keywords.trim()) == -1) {
+                        if (course['课程名称'].trim().indexOf(specification.keywords.trim()) == -1 && course['教师'].trim().indexOf(specification.keywords.trim()) == -1) {
                             return false;
                         }
                     }

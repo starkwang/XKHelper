@@ -157,11 +157,18 @@ body {
       .input {
         height: 40px;
         margin-top: 5px;
+        width:600px;
         font-size: 30px;
         outline: none;
         border: 0;
         background: rgb(223, 223, 223);
       }
+      .more{
+        cursor: pointer;
+      }
+    }
+    .more-search{
+
     }
     .result {
       height: 300px;
@@ -190,6 +197,7 @@ body {
           padding-left: 20px;
           box-sizing: border-box;
           overflow: hidden;
+          z-index: 1000;
           p {
             float: left;
           }
