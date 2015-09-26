@@ -2529,6 +2529,20 @@ Copyright (c) 2015 Daniel Eden
   animation: 0.7s bounceOutUp;
   z-index: 95; }
 
+.more-search.ng-hide-remove {
+  -webkit-animation: 0.7s fadeInDown;
+  -moz-animation: 0.7s fadeInDown;
+  -o-animation: 0.7s fadeInDown;
+  animation: 0.7s fadeInDown;
+  z-index: 95; }
+
+.more-search.ng-hide-add {
+  -webkit-animation: 0.7s fadeOutUp;
+  -moz-animation: 0.7s fadeOutUp;
+  -o-animation: 0.7s fadeOutUp;
+  animation: 0.7s fadeOutUp;
+  z-index: 95; }
+
 .course-table .detail.ng-hide-remove {
   -webkit-animation: 0.5s bounceIn;
   -moz-animation: 0.5s bounceIn;
@@ -2688,6 +2702,9 @@ body {
 .icon-remove:before {
   content: "\e600"; }
 
+.icon-down:before {
+  content: "\e606"; }
+
 .icon-search:before {
   content: "\e601"; }
 
@@ -2704,6 +2721,11 @@ body {
   content: "\e604"; }
 
 .search .search-box {
+  overflow: hidden;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -moz-transition: all 0.5s;
   position: fixed;
   left: 50%;
   top: 10%;
@@ -2716,12 +2738,25 @@ body {
     line-height: 50px;
     box-sizing: border-box;
     padding-left: 20px;
-    padding-right: 20px; }
+    padding-right: 20px;
+    border-bottom: 1px solid #ccc; }
     .search .search-box .search-bar .icon,
     .search .search-box .search-bar .input {
       float: left; }
     .search .search-box .search-bar .more {
       float: right; }
+      .search .search-box .search-bar .more i {
+        display: inline-block;
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        -moz-transition: all 0.5s; }
+      .search .search-box .search-bar .more i.active {
+        transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        -webkit-transform: rotate(180deg); }
     .search .search-box .search-bar .icon {
       margin-right: 20px; }
       .search .search-box .search-bar .icon i {
@@ -2736,10 +2771,21 @@ body {
       background: #dfdfdf; }
     .search .search-box .search-bar .more {
       cursor: pointer; }
+  .search .search-box .more-search {
+    width: 100%; }
+    .search .search-box .more-search div {
+      padding: 10px 20px;
+      font-size: 16px; }
+      .search .search-box .more-search div p {
+        font-size: 20px;
+        margin-bottom: 15px;
+        font-weight: bold; }
+    .search .search-box .more-search .certain-category {
+      border-bottom: 1px solid #ccc; }
   .search .search-box .result {
     height: 300px;
     width: 100%;
-    border-top: 1px solid #ccc;
+    border-top: 2px solid #333;
     box-sizing: border-box;
     padding-right: 20px;
     overflow: hidden;

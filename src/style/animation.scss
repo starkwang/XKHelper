@@ -51,6 +51,20 @@
   z-index: 95;
 }
 
+.more-search.ng-hide-remove{
+  -webkit-animation: 0.7s fadeInDown;
+  -moz-animation: 0.7s fadeInDown;
+  -o-animation: 0.7s fadeInDown;
+  animation: 0.7s fadeInDown;
+  z-index: 95;
+}
+.more-search.ng-hide-add{
+  -webkit-animation: 0.7s fadeOutUp;
+  -moz-animation: 0.7s fadeOutUp;
+  -o-animation: 0.7s fadeOutUp;
+  animation: 0.7s fadeOutUp;
+  z-index: 95;
+}
 // .ng-enter {
 //   -webkit-animation: 0.5s fadeInDown;
 //   -moz-animation: 0.5s fadeInDown;

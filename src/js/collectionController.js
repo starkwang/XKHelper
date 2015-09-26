@@ -12,12 +12,10 @@ angular.module('starkAPP')
                     }
                     course.text = course.isInCourseTable?'已加入课表':'加入课表';
                 });
-                console.log($scope);
             }
             refreshen();
             $scope.$on('collectionUpdate',function(data){
                 refreshen();
-                console.log($scope);
             });
             $scope.$on('courseModelUpdate',function(data){
                 refreshen();

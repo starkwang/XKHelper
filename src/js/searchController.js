@@ -11,6 +11,34 @@ angular.module('starkAPP')
 
             })
 
+            $scope.moreSearchShow = false;
+            $scope.keywords = '';
+
+            function resetCertainCategory() {
+                $scope.certainCategory = {
+                    '二专课程': true,
+                    '军事理论': true,
+                    '大学外语': true,
+                    '文科专业课': true,
+                    '模块课程': true,
+                    '理科课程': true,
+                    '留学生': true,
+                    '美育': true,
+                    '计算机': true,
+                }
+            }
+
+            function resetCertainTime() {
+                $scope.certainTime = {
+                    startDay: '一',
+                    endDay: '六',
+                    startCourse: '1',
+                    endCourse: '13'
+                }
+            }
+            resetCertainTime();
+            resetCertainCategory();
+
             $scope.close = function() {
                 var e = e || window.event;
                 if (/bg/.test(e.target.className)) {
@@ -22,24 +50,31 @@ angular.module('starkAPP')
             }
 
             $scope.kwChange = function() {
-                if (/^[a-zA-Z]/.test($scope.keywords[0])) {
+                var category = [];
+                var time = {
+                    start: $scope.certainTime.startDay + ' ' + $scope.certainTime.startCourse,
+                    end: $scope.certainTime.endDay + ' ' + $scope.certainTime.endCourse,
+                };
+                for (var item in $scope.certainCategory) {
+                    if ($scope.certainCategory[item]) {
+                        category.push(item);
+                    }
+                }
+                if ($scope.keywords.length > 0 && /^[a-zA-Z]/.test($scope.keywords[0])) {
                     //选课号
                     var params = {
-                        category: [],
+                        category: category,
                         keywords: '',
                         courseID: $scope.keywords,
-                        // time: {
-                        //     start:'五 1',
-                        //     end:'五 13'
-                        // }
+                        time: time
                     }
                     $scope.result = BaseService.search(params);
                 } else {
                     var params = {
-                        category: [],
+                        category: category,
                         keywords: $scope.keywords,
                         courseID: '',
-                        time: ''
+                        time: time
                     }
                     $scope.result = BaseService.search(params);
                 }
@@ -83,8 +118,8 @@ angular.module('starkAPP')
             $scope.collectionUpdate = function() {
                 BaseService.collectionModel.update(this.detail);
             }
-            $scope.showMoreSearch = function() {
-                $scope.moreSearchShow = true;
+            $scope.moreSearch = function() {
+                $scope.moreSearchShow = !$scope.moreSearchShow;
             }
         }
     ]);

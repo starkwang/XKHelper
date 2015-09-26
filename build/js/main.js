@@ -53,12 +53,34 @@ angular.module('baseService', [])
                 update: function(course) {
                     var timeCollection = course['时间'].split('{time}');
                     var _this = this;
+                    var conflictName = [];
+                    var conflictCourse = [];
                     for (var i = 0; i < timeCollection.length; i++) {
                         var parseResult = timeParser(timeCollection[i]);
                         var weekday = parseResult.weekday;
                         var start = parseResult.start;
                         var courseLength = parseResult.length;
-                        var courseRank = i + 1 - 1;
+                        for (var i = 0; i < courseLength; i++) {
+                            if (conflictName.indexOf(this.data[weekday][start + i]['课程名称']) == -1 && this.data[weekday][start + i] != 0) {
+                                conflictName.push(this.data[weekday][start + i]['课程名称']);
+                                conflictCourse.push(this.data[weekday][start + i]);
+                            }
+                        }
+                    }
+                    var name = conflictName.length > 1 ? conflictName.join('》、《') : conflictName[0];
+                    if (conflictName.length > 0 && confirm('这门课与《' + name + '》冲突，是否替换？')) {
+                        //删除之前的课
+                        conflictCourse.forEach(function(course) {
+                            _this.remove(course);
+                        });
+                        this.update(course);
+                    }
+                    for (var i = 0; i < timeCollection.length; i++) {
+                        var parseResult = timeParser(timeCollection[i]);
+                        var weekday = parseResult.weekday;
+                        var start = parseResult.start;
+                        var courseLength = parseResult.length;
+                        var courseRank = i;
                         _this.updateOne(course, weekday, start, courseLength, courseRank);
                     }
                     var data_ = this.data;
@@ -68,41 +90,9 @@ angular.module('baseService', [])
                 },
                 //courseRank是这周的第几节课，比如这周的第2(1)节数分大课
                 updateOne: function(course, weekday, start, courseLength, courseRank) {
-                    var isConflict = false;
-                    var _this = this;
                     for (var i = 0; i < courseLength; i++) {
-
-                        if (this.data[weekday][start + i] != 0) {
-                            isConflict = true;
-                        }
-                    }
-                    console.log(isConflict);
-                    if (!isConflict) {
-                        for (var i = 0; i < courseLength; i++) {
-                            courseModel.data[weekday][start + i] = course;
-                            courseModel.data[weekday][start + i].rank = courseRank;
-                        }
-                    } else {
-                        //冲突课程名的数组
-
-                        var conflictName = [];
-                        var conflictCourse = [];
-                        for (var i = 0; i < courseLength; i++) {
-                            if (conflictName.indexOf(this.data[weekday][start + i]['课程名称']) == -1 && this.data[weekday][start + i] != 0) {
-                                conflictName.push(this.data[weekday][start + i]['课程名称']);
-                                conflictCourse.push(this.data[weekday][start + i]);
-                            }
-                        }
-                        console.log(conflictName);
-                        var name = conflictName.length > 1 ? conflictName.join('》、《') : conflictName[0];
-                        if (confirm('这门课与《' + name + '》冲突，是否替换？')) {
-                            //删除之前的课
-                            conflictCourse.forEach(function(course) {
-                                _this.remove(course);
-                                console.log(course);
-                            });
-                            this.update(course);
-                        }
+                        courseModel.data[weekday][start + i] = course;
+                        courseModel.data[weekday][start + i].rank = courseRank;
                     }
 
                 },
@@ -113,6 +103,9 @@ angular.module('baseService', [])
                         var parseResult = timeParser(time);
                         _this.removeOne(course, parseResult);
                     })
+                    var data_ = this.data;
+                    localStorage.courseModelData = JSON.stringify(data_);
+                    $rootScope.$broadcast('courseModelUpdate', data_);
                 },
                 removeOne: function(course, parseResult) {
                     var weekday = parseResult.weekday;
@@ -121,9 +114,6 @@ angular.module('baseService', [])
                             this.data[weekday][i] = 0;
                         }
                     }
-                    var data_ = this.data;
-                    localStorage.courseModelData = JSON.stringify(data_);
-                    $rootScope.$broadcast('courseModelUpdate', data_);
                 },
 
                 check: function(courseID) {
@@ -158,7 +148,6 @@ angular.module('baseService', [])
                     var data_ = this.data;
                     localStorage.collectionModelData = JSON.stringify(data_);
                     $rootScope.$broadcast('collectionUpdate', data_);
-                    console.log(this.data);
                 },
                 remove: function(courseID) {
                     for (var i = 0; i < this.data.length; i++) {
@@ -190,14 +179,19 @@ angular.module('baseService', [])
                     }
                 }
                 if (specification.courseID) {
+
                     if (course['选课序号'].trim().indexOf(specification.courseID.trim()) == -1) {
                         return false;
                     }
                 }
-                if(specification.time){
+                if (specification.time) {
                     var timeArr = course['时间'].split('{time}');
-                    for(var i =0;i<timeArr.length;i++){
-                        if(judgeTime(specification.time.start,specification.time.end,timeArr[i].trim())){
+                    for (var i = 0; i < timeArr.length; i++) {
+                        //《宪法学》没有时间
+                        if(timeArr[i].trim().length ===0){
+                            return true;
+                        }
+                        if (judgeTime(specification.time.start, specification.time.end, timeArr[i].trim())) {
                             return true;
                         }
                     }
@@ -207,10 +201,12 @@ angular.module('baseService', [])
             }
 
             function search(specification) {
-                if (!(specification.time.length || specification.keywords.length || specification.courseID.length || specification.category.length)) {
+                if (specification.category.length === 0) {
                     return [];
                 }
-
+                if (specification.keywords.length === 0 && specification.category.length === 9) {
+                    return [];
+                }
 
                 var result = [];
                 if (specification.category.length > 0) {
@@ -387,12 +383,10 @@ angular.module('starkAPP')
                     }
                     course.text = course.isInCourseTable?'已加入课表':'加入课表';
                 });
-                console.log($scope);
             }
             refreshen();
             $scope.$on('collectionUpdate',function(data){
                 refreshen();
-                console.log($scope);
             });
             $scope.$on('courseModelUpdate',function(data){
                 refreshen();
@@ -639,6 +633,34 @@ angular.module('starkAPP')
 
             })
 
+            $scope.moreSearchShow = false;
+            $scope.keywords = '';
+
+            function resetCertainCategory() {
+                $scope.certainCategory = {
+                    '二专课程': true,
+                    '军事理论': true,
+                    '大学外语': true,
+                    '文科专业课': true,
+                    '模块课程': true,
+                    '理科课程': true,
+                    '留学生': true,
+                    '美育': true,
+                    '计算机': true,
+                }
+            }
+
+            function resetCertainTime() {
+                $scope.certainTime = {
+                    startDay: '一',
+                    endDay: '六',
+                    startCourse: '1',
+                    endCourse: '13'
+                }
+            }
+            resetCertainTime();
+            resetCertainCategory();
+
             $scope.close = function() {
                 var e = e || window.event;
                 if (/bg/.test(e.target.className)) {
@@ -650,24 +672,31 @@ angular.module('starkAPP')
             }
 
             $scope.kwChange = function() {
-                if (/^[a-zA-Z]/.test($scope.keywords[0])) {
+                var category = [];
+                var time = {
+                    start: $scope.certainTime.startDay + ' ' + $scope.certainTime.startCourse,
+                    end: $scope.certainTime.endDay + ' ' + $scope.certainTime.endCourse,
+                };
+                for (var item in $scope.certainCategory) {
+                    if ($scope.certainCategory[item]) {
+                        category.push(item);
+                    }
+                }
+                if ($scope.keywords.length > 0 && /^[a-zA-Z]/.test($scope.keywords[0])) {
                     //选课号
                     var params = {
-                        category: [],
+                        category: category,
                         keywords: '',
                         courseID: $scope.keywords,
-                        // time: {
-                        //     start:'五 1',
-                        //     end:'五 13'
-                        // }
+                        time: time
                     }
                     $scope.result = BaseService.search(params);
                 } else {
                     var params = {
-                        category: [],
+                        category: category,
                         keywords: $scope.keywords,
                         courseID: '',
-                        time: ''
+                        time: time
                     }
                     $scope.result = BaseService.search(params);
                 }
@@ -711,8 +740,8 @@ angular.module('starkAPP')
             $scope.collectionUpdate = function() {
                 BaseService.collectionModel.update(this.detail);
             }
-            $scope.showMoreSearch = function() {
-                $scope.moreSearchShow = true;
+            $scope.moreSearch = function() {
+                $scope.moreSearchShow = !$scope.moreSearchShow;
             }
         }
     ]);

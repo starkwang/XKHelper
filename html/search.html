@@ -3,18 +3,59 @@
     <div class="search-box" ng-show="searchShow">
       <div class="search-bar">
         <div style="overflow:hidden">
-          <div class="icon"><i class="iconfont icon-magnifier"></i></div>
+          <div class="icon"><i class="iconfont icon-search"></i></div>
           <input type="text" name="" id="" class="input" placeholder="课程名称/选课号/教师姓名" ng-change="kwChange()" ng-model="keywords">
-          <div class="more"><i class="iconfont icon-chevrondown" ng-click="showMoreSearch()"></i>更多条件</div>
+          <div class="more" ng-click="moreSearch()"><i class="iconfont icon-down" ng-class="{'active':moreSearchShow}"></i>更多条件</div>
         </div>
       </div>
       <div class="more-search" ng-show="moreSearchShow">
-        
+        <div class="certain-category">
+          <p>限定类别</p>
+          <input type="checkbox" ng-model="certainCategory['大学外语']" ng-change="kwChange()">大学外语
+          <input type="checkbox" ng-model="certainCategory['二专课程']" ng-change="kwChange()">二专课程
+          <input type="checkbox" ng-model="certainCategory['文科专业课']" ng-change="kwChange()">文科专业课
+          <input type="checkbox" ng-model="certainCategory['军事理论']" ng-change="kwChange()">军事理论
+          <input type="checkbox" ng-model="certainCategory['理科课程']" ng-change="kwChange()">理科课程
+          <input type="checkbox" ng-model="certainCategory['模块课程']" ng-change="kwChange()">模块课程
+          <input type="checkbox" ng-model="certainCategory['留学生']" ng-change="kwChange()">留学生
+          <input type="checkbox" ng-model="certainCategory['美育']" ng-change="kwChange()">美育
+          <input type="checkbox" ng-model="certainCategory['计算机']" ng-change="kwChange()">计算机
+        </div>
+        <div>
+          <p>限定时间</p>
+          从
+          <select ng-model="certainTime.startDay" ng-change="kwChange()">
+            <option value="一">周一</option>
+            <option value="二">周二</option>
+            <option value="三">周三</option>
+            <option value="四">周四</option>
+            <option value="五">周五</option>
+            <option value="六">周六</option>
+          </select>
+          第
+          <input type="text" placeholder="1~13" ng-model="certainTime.startCourse" ng-change="kwChange()">
+          节课<br/>
+          到
+          <select ng-model="certainTime.endDay" ng-change="kwChange()">
+            <option value="一">周一</option>
+            <option value="二">周二</option>
+            <option value="三">周三</option>
+            <option value="四">周四</option>
+            <option value="五">周五</option>
+            <option value="六">周六</option>
+          </select>
+          第
+          <input type="text" placeholder="1~13" ng-model="certainTime.endCourse" ng-change="kwChange()">
+          节课
+        </div>
       </div>
       <div class="result" ng-show="resultShow">
         <div class="list">
           <ul>
-            <li ng-repeat="course in result" ng-mouseover="mouseover()" ><p class="name">{{course['课程名称']}}</p><p class="teacher">{{course['教师']}}</p></li>
+            <li ng-repeat="course in result" ng-mouseover="mouseover()">
+              <p class="name">{{course['课程名称']}}</p>
+              <p class="teacher">{{course['教师']}}</p>
+            </li>
           </ul>
         </div>
         <div class="detail">

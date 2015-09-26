@@ -28,12 +28,34 @@ angular.module('baseService', [])
                 update: function(course) {
                     var timeCollection = course['时间'].split('{time}');
                     var _this = this;
+                    var conflictName = [];
+                    var conflictCourse = [];
                     for (var i = 0; i < timeCollection.length; i++) {
                         var parseResult = timeParser(timeCollection[i]);
                         var weekday = parseResult.weekday;
                         var start = parseResult.start;
                         var courseLength = parseResult.length;
-                        var courseRank = i + 1 - 1;
+                        for (var i = 0; i < courseLength; i++) {
+                            if (conflictName.indexOf(this.data[weekday][start + i]['课程名称']) == -1 && this.data[weekday][start + i] != 0) {
+                                conflictName.push(this.data[weekday][start + i]['课程名称']);
+                                conflictCourse.push(this.data[weekday][start + i]);
+                            }
+                        }
+                    }
+                    var name = conflictName.length > 1 ? conflictName.join('》、《') : conflictName[0];
+                    if (conflictName.length > 0 && confirm('这门课与《' + name + '》冲突，是否替换？')) {
+                        //删除之前的课
+                        conflictCourse.forEach(function(course) {
+                            _this.remove(course);
+                        });
+                        this.update(course);
+                    }
+                    for (var i = 0; i < timeCollection.length; i++) {
+                        var parseResult = timeParser(timeCollection[i]);
+                        var weekday = parseResult.weekday;
+                        var start = parseResult.start;
+                        var courseLength = parseResult.length;
+                        var courseRank = i;
                         _this.updateOne(course, weekday, start, courseLength, courseRank);
                     }
                     var data_ = this.data;
@@ -43,41 +65,9 @@ angular.module('baseService', [])
                 },
                 //courseRank是这周的第几节课，比如这周的第2(1)节数分大课
                 updateOne: function(course, weekday, start, courseLength, courseRank) {
-                    var isConflict = false;
-                    var _this = this;
                     for (var i = 0; i < courseLength; i++) {
-
-                        if (this.data[weekday][start + i] != 0) {
-                            isConflict = true;
-                        }
-                    }
-                    console.log(isConflict);
-                    if (!isConflict) {
-                        for (var i = 0; i < courseLength; i++) {
-                            courseModel.data[weekday][start + i] = course;
-                            courseModel.data[weekday][start + i].rank = courseRank;
-                        }
-                    } else {
-                        //冲突课程名的数组
-
-                        var conflictName = [];
-                        var conflictCourse = [];
-                        for (var i = 0; i < courseLength; i++) {
-                            if (conflictName.indexOf(this.data[weekday][start + i]['课程名称']) == -1 && this.data[weekday][start + i] != 0) {
-                                conflictName.push(this.data[weekday][start + i]['课程名称']);
-                                conflictCourse.push(this.data[weekday][start + i]);
-                            }
-                        }
-                        console.log(conflictName);
-                        var name = conflictName.length > 1 ? conflictName.join('》、《') : conflictName[0];
-                        if (confirm('这门课与《' + name + '》冲突，是否替换？')) {
-                            //删除之前的课
-                            conflictCourse.forEach(function(course) {
-                                _this.remove(course);
-                                console.log(course);
-                            });
-                            this.update(course);
-                        }
+                        courseModel.data[weekday][start + i] = course;
+                        courseModel.data[weekday][start + i].rank = courseRank;
                     }
 
                 },
@@ -88,6 +78,9 @@ angular.module('baseService', [])
                         var parseResult = timeParser(time);
                         _this.removeOne(course, parseResult);
                     })
+                    var data_ = this.data;
+                    localStorage.courseModelData = JSON.stringify(data_);
+                    $rootScope.$broadcast('courseModelUpdate', data_);
                 },
                 removeOne: function(course, parseResult) {
                     var weekday = parseResult.weekday;
@@ -96,9 +89,6 @@ angular.module('baseService', [])
                             this.data[weekday][i] = 0;
                         }
                     }
-                    var data_ = this.data;
-                    localStorage.courseModelData = JSON.stringify(data_);
-                    $rootScope.$broadcast('courseModelUpdate', data_);
                 },
 
                 check: function(courseID) {
@@ -133,7 +123,6 @@ angular.module('baseService', [])
                     var data_ = this.data;
                     localStorage.collectionModelData = JSON.stringify(data_);
                     $rootScope.$broadcast('collectionUpdate', data_);
-                    console.log(this.data);
                 },
                 remove: function(courseID) {
                     for (var i = 0; i < this.data.length; i++) {
@@ -165,14 +154,19 @@ angular.module('baseService', [])
                     }
                 }
                 if (specification.courseID) {
+
                     if (course['选课序号'].trim().indexOf(specification.courseID.trim()) == -1) {
                         return false;
                     }
                 }
-                if(specification.time){
+                if (specification.time) {
                     var timeArr = course['时间'].split('{time}');
-                    for(var i =0;i<timeArr.length;i++){
-                        if(judgeTime(specification.time.start,specification.time.end,timeArr[i].trim())){
+                    for (var i = 0; i < timeArr.length; i++) {
+                        //《宪法学》没有时间
+                        if(timeArr[i].trim().length ===0){
+                            return true;
+                        }
+                        if (judgeTime(specification.time.start, specification.time.end, timeArr[i].trim())) {
                             return true;
                         }
                     }
@@ -182,10 +176,12 @@ angular.module('baseService', [])
             }
 
             function search(specification) {
-                if (!(specification.time.length || specification.keywords.length || specification.courseID.length || specification.category.length)) {
+                if (specification.category.length === 0) {
                     return [];
                 }
-
+                if (specification.keywords.length === 0 && specification.category.length === 9) {
+                    return [];
+                }
 
                 var result = [];
                 if (specification.category.length > 0) {
