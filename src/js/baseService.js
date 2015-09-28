@@ -154,7 +154,6 @@ angular.module('baseService', [])
                     }
                 }
                 if (specification.courseID) {
-
                     if (course['选课序号'].trim().indexOf(specification.courseID.trim()) == -1) {
                         return false;
                     }
@@ -163,7 +162,7 @@ angular.module('baseService', [])
                     var timeArr = course['时间'].split('{time}');
                     for (var i = 0; i < timeArr.length; i++) {
                         //《宪法学》没有时间
-                        if(timeArr[i].trim().length ===0){
+                        if (timeArr[i].trim().length === 0) {
                             return true;
                         }
                         if (judgeTime(specification.time.start, specification.time.end, timeArr[i].trim())) {
@@ -179,7 +178,7 @@ angular.module('baseService', [])
                 if (specification.category.length === 0) {
                     return [];
                 }
-                if (specification.keywords.length === 0 && specification.category.length === 9) {
+                if (specification.keywords.length === 0 && specification.courseID.length === 0 && specification.category.length === 9) {
                     return [];
                 }
 
