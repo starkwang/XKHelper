@@ -79,4 +79,22 @@
       <p class="total-credit">总学分：{{totalCredit}}</p>
     </div>
   </div>
+
+  <div class="course-total" ng-controller="courseTotalController">
+    <div class="head">考试时间</div>
+    <div class="body">
+      <table>
+        <thead>
+          <th>课程名称</th>
+          <th>考试时间</th>
+        </th>
+        <tbody>
+          <tr ng-repeat="course in list track by $index">
+            <td>{{course['课程名称']}}</td>
+            <td>{{course['考试时间'] || '无数据'}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

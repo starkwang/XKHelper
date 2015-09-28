@@ -113,7 +113,7 @@
     .course-total .body table th, .course-total .body table td {
       padding: 5px 20px;
       text-align: center; }
-    .course-total .body table tr:hover {
+    .course-total .body table tbody tr:hover {
       background: #ddd; }
   .course-total .body .total-credit {
     float: right;
