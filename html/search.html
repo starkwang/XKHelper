@@ -52,7 +52,7 @@
       <div class="result" ng-show="resultShow">
         <div class="list">
           <ul>
-            <li ng-repeat="course in result" ng-mouseover="mouseover()">
+            <li ng-repeat="course in result" ng-mouseover="mouseover()" ng-click="mouseover()">
               <p class="name">{{course['课程名称']}}</p>
               <p class="teacher">{{course['教师']}}</p>
             </li>
