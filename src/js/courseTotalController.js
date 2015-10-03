@@ -1,4 +1,4 @@
-//搜索结果
+//课程清单、考试时间
 angular.module('starkAPP')
     .controller('courseTotalController', ['$scope', 'BaseService',
         function($scope, BaseService) {

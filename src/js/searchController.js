@@ -1,4 +1,4 @@
-//侧边搜索栏
+//搜索
 angular.module('starkAPP')
     .controller('searchController', ['$scope', 'BaseService', '$timeout', '$location',
         function($scope, BaseService, $timeout, $location) {

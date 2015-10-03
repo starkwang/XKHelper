@@ -1,3 +1,4 @@
+//全部课程
 angular.module('starkAPP')
     .controller('allController', ['$scope', '$rootScope', 'BaseService', '$timeout', '$location',
         function($scope, $rootScope, BaseService, $timeout, $location) {

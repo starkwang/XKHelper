@@ -1,4 +1,4 @@
-//侧边搜索栏
+//收藏夹
 angular.module('starkAPP')
     .controller('collectionController', ['$scope', '$rootScope','BaseService','$timeout','$location',
         function($scope, $rootScope,BaseService, $timeout,$location) {

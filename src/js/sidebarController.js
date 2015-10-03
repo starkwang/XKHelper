@@ -1,4 +1,4 @@
-//侧边搜索栏
+//侧边栏
 angular.module('starkAPP')
     .controller('sidebarController', ['$scope', '$rootScope', 'BaseService', '$timeout', '$location',
         function($scope, $rootScope, BaseService, $timeout, $location) {
