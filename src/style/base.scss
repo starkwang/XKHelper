@@ -352,3 +352,6 @@ body {
     }
   }
 }
+.chrome-hack{
+  -webkit-transform: translateZ(0);
+}

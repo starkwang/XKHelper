@@ -149,15 +149,15 @@ angular.module('baseService', [])
 
             function matchCourse(specification, course) {
                 if (specification.keywords) {
-                    if (course['课程名称'].trim().indexOf(specification.keywords.trim()) == -1 && course['教师'].trim().indexOf(specification.keywords.trim()) == -1) {
+                    if (course['课程名称'].trim().indexOf(specification.keywords.trim()) == -1 && course['教师'].trim().indexOf(specification.keywords.trim()) == -1 && course['选课序号'].trim().indexOf(specification.keywords.trim()) == -1) {
                         return false;
                     }
                 }
-                if (specification.courseID) {
-                    if (course['选课序号'].trim().indexOf(specification.courseID.trim()) == -1) {
-                        return false;
-                    }
-                }
+                // if (specification.courseID) {
+                //     if (course['选课序号'].trim().indexOf(specification.courseID.trim()) == -1) {
+                //         return false;
+                //     }
+                // }
                 if (specification.time) {
                     var timeArr = course['时间'].split('{time}');
                     for (var i = 0; i < timeArr.length; i++) {
@@ -178,7 +178,7 @@ angular.module('baseService', [])
                 if (specification.category.length === 0) {
                     return [];
                 }
-                if (specification.keywords.length === 0 && specification.courseID.length === 0 && specification.category.length === 9) {
+                if (specification.keywords.length === 0 && specification.category.length === 9) {
                     return [];
                 }
 

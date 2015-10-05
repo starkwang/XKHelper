@@ -175,15 +175,15 @@ angular.module('baseService', [])
 
             function matchCourse(specification, course) {
                 if (specification.keywords) {
-                    if (course['课程名称'].trim().indexOf(specification.keywords.trim()) == -1 && course['教师'].trim().indexOf(specification.keywords.trim()) == -1) {
+                    if (course['课程名称'].trim().indexOf(specification.keywords.trim()) == -1 && course['教师'].trim().indexOf(specification.keywords.trim()) == -1 && course['选课序号'].trim().indexOf(specification.keywords.trim()) == -1) {
                         return false;
                     }
                 }
-                if (specification.courseID) {
-                    if (course['选课序号'].trim().indexOf(specification.courseID.trim()) == -1) {
-                        return false;
-                    }
-                }
+                // if (specification.courseID) {
+                //     if (course['选课序号'].trim().indexOf(specification.courseID.trim()) == -1) {
+                //         return false;
+                //     }
+                // }
                 if (specification.time) {
                     var timeArr = course['时间'].split('{time}');
                     for (var i = 0; i < timeArr.length; i++) {
@@ -204,7 +204,7 @@ angular.module('baseService', [])
                 if (specification.category.length === 0) {
                     return [];
                 }
-                if (specification.keywords.length === 0 && specification.courseID.length === 0 && specification.category.length === 9) {
+                if (specification.keywords.length === 0 && specification.category.length === 9) {
                     return [];
                 }
 
@@ -317,6 +317,7 @@ angular.module('baseService', [])
         return filter;
     });
 
+//全部课程
 angular.module('starkAPP')
     .controller('allController', ['$scope', '$rootScope', 'BaseService', '$timeout', '$location',
         function($scope, $rootScope, BaseService, $timeout, $location) {
@@ -369,7 +370,7 @@ angular.module('starkAPP')
         }
     ]);
 
-//侧边搜索栏
+//收藏夹
 angular.module('starkAPP')
     .controller('collectionController', ['$scope', '$rootScope','BaseService','$timeout','$location',
         function($scope, $rootScope,BaseService, $timeout,$location) {
@@ -592,7 +593,7 @@ angular.module('starkAPP')
         }
     ]);
 
-//搜索结果
+//课程清单、考试时间
 angular.module('starkAPP')
     .controller('courseTotalController', ['$scope', 'BaseService',
         function($scope, BaseService) {
@@ -620,7 +621,7 @@ angular.module('starkAPP')
         }
     ]);
 
-//侧边搜索栏
+//搜索
 angular.module('starkAPP')
     .controller('searchController', ['$scope', 'BaseService', '$timeout', '$location',
         function($scope, BaseService, $timeout, $location) {
@@ -682,24 +683,12 @@ angular.module('starkAPP')
                         category.push(item);
                     }
                 }
-                if ($scope.keywords.length > 0 && /^[a-zA-Z]/.test($scope.keywords[0])) {
-                    //选课号
-                    var params = {
-                        category: category,
-                        keywords: '',
-                        courseID: $scope.keywords,
-                        time: time
-                    }
-                    $scope.result = BaseService.search(params);
-                } else {
-                    var params = {
-                        category: category,
-                        keywords: $scope.keywords,
-                        courseID: '',
-                        time: time
-                    }
-                    $scope.result = BaseService.search(params);
+                var params = {
+                    category: category,
+                    keywords: $scope.keywords,
+                    time: time
                 }
+                $scope.result = BaseService.search(params);
 
                 if ($scope.result.length > 0) {
                     $scope.resultShow = true;
@@ -746,7 +735,7 @@ angular.module('starkAPP')
         }
     ]);
 
-//侧边搜索栏
+//侧边栏
 angular.module('starkAPP')
     .controller('sidebarController', ['$scope', '$rootScope', 'BaseService', '$timeout', '$location',
         function($scope, $rootScope, BaseService, $timeout, $location) {

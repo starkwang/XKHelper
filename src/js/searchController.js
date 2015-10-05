@@ -60,24 +60,12 @@ angular.module('starkAPP')
                         category.push(item);
                     }
                 }
-                if ($scope.keywords.length > 0 && /^[a-zA-Z]/.test($scope.keywords[0])) {
-                    //选课号
-                    var params = {
-                        category: category,
-                        keywords: '',
-                        courseID: $scope.keywords,
-                        time: time
-                    }
-                    $scope.result = BaseService.search(params);
-                } else {
-                    var params = {
-                        category: category,
-                        keywords: $scope.keywords,
-                        courseID: '',
-                        time: time
-                    }
-                    $scope.result = BaseService.search(params);
+                var params = {
+                    category: category,
+                    keywords: $scope.keywords,
+                    time: time
                 }
+                $scope.result = BaseService.search(params);
 
                 if ($scope.result.length > 0) {
                     $scope.resultShow = true;
