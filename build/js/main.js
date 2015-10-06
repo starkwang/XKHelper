@@ -175,7 +175,13 @@ angular.module('baseService', [])
 
             function matchCourse(specification, course) {
                 if (specification.keywords) {
-                    if (course['课程名称'].trim().indexOf(specification.keywords.trim()) == -1 && course['教师'].trim().indexOf(specification.keywords.trim()) == -1 && course['选课序号'].trim().indexOf(specification.keywords.trim()) == -1) {
+                    // if (course['课程名称'].trim().indexOf(specification.keywords.trim()) == -1 && 
+                    //     course['教师'].trim().indexOf(specification.keywords.trim()) == -1 && 
+                    //     course['选课序号'].trim().indexOf(specification.keywords.trim()) == -1) {
+                    //     return false;
+                    // }
+                    var reg = new RegExp(specification.keywords.trim(),'i');
+                    if (!reg.test(course['课程名称'])&&!reg.test(course['教师'])&&!reg.test(course['选课序号'])) {
                         return false;
                     }
                 }
