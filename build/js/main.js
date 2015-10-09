@@ -15,8 +15,11 @@ var starkAPP = angular.module('starkAPP', [
                 .when('/all/', {
                     templateUrl: './html/all.html'
                 })
-                .when('/collection/',{
-                    templateUrl:'./html/collection.html'
+                .when('/collection/', {
+                    templateUrl: './html/collection.html'
+                })
+                .when('/forum/', {
+                    templateUrl: '/html/forum.html'
                 })
                 .otherwise({
                     redirectTo: '/main/'
@@ -632,6 +635,14 @@ angular.module('starkAPP')
         }
     ]);
 
+//课程清单、考试时间
+angular.module('starkAPP')
+    .controller('forumController', ['$scope', 'BaseService',
+        function($scope, BaseService) {
+            
+        }
+    ]);
+
 //搜索
 angular.module('starkAPP')
     .controller('searchController', ['$scope', 'BaseService', '$timeout', '$location',
@@ -751,16 +762,9 @@ angular.module('starkAPP')
     .controller('sidebarController', ['$scope', '$rootScope', 'BaseService', '$timeout', '$location',
         function($scope, $rootScope, BaseService, $timeout, $location) {
             function refreshen() {
-                $scope.mainIsActive = $scope.allIsActive = $scope.collectionIsActive = false;
-                if ($location.path() == '/main/') {
-                    $scope.mainIsActive = true;
-                }
-                if ($location.path() == '/all/') {
-                    $scope.allIsActive = true;
-                }
-                if ($location.path() == '/collection/') {
-                    $scope.collectionIsActive = true;
-                }
+                $scope.active = {};
+                var path = $location.path().split('/')[1];
+                $scope.active[path+'IsActive'] = true;
             }
 
             refreshen();

@@ -15,8 +15,11 @@ var starkAPP = angular.module('starkAPP', [
                 .when('/all/', {
                     templateUrl: './html/all.html'
                 })
-                .when('/collection/',{
-                    templateUrl:'./html/collection.html'
+                .when('/collection/', {
+                    templateUrl: './html/collection.html'
+                })
+                .when('/forum/', {
+                    templateUrl: '/html/forum.html'
                 })
                 .otherwise({
                     redirectTo: '/main/'

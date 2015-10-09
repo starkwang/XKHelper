@@ -1,10 +1,11 @@
 <div ng-controller="sidebarController">
   <ul>
     <li class="title">XKHelper</li>
-    <li class="li" ng-class="{active:mainIsActive}"><i class="iconfont icon-table"></i><a ng-click="changeURL('/main/')">我的课表</a></li>
-    <li class="li" ng-class="{active:collectionIsActive}"><i class="iconfont icon-collection"></i><a ng-click="changeURL('/collection/')">收藏夹</a></li>
+    <li class="li" ng-class="{active:active.mainIsActive}"><i class="iconfont icon-table"></i><a ng-click="changeURL('/main/')">我的课表</a></li>
+    <li class="li" ng-class="{active:active.collectionIsActive}"><i class="iconfont icon-collection"></i><a ng-click="changeURL('/collection/')">收藏夹</a></li>
     <li class="li" ng-click="showSearch()"><i class="iconfont icon-search"></i>搜索</li>
-    <li class="li" ng-class="{active:allIsActive}"><i class="iconfont icon-list"></i><a ng-click="changeURL('/all/')">所有课程</a></li>
+    <li class="li" ng-class="{active:active.allIsActive}"><i class="iconfont icon-list"></i><a ng-click="changeURL('/all/')">所有课程</a></li>
+    <li class="li" ng-class="{active:active.forumIsActive}"><i class="iconfont icon-list"></i><a ng-click="changeURL('/forum/')">课程论坛</a></li>
   </ul>
 </div>
 
