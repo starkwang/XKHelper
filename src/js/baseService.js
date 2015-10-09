@@ -43,12 +43,17 @@ angular.module('baseService', [])
                         }
                     }
                     var name = conflictName.length > 1 ? conflictName.join('》、《') : conflictName[0];
-                    if (conflictName.length > 0 && confirm('这门课与《' + name + '》冲突，是否替换？')) {
-                        //删除之前的课
-                        conflictCourse.forEach(function(course) {
-                            _this.remove(course);
-                        });
-                        this.update(course);
+                    if (conflictName.length > 0) {
+                        if (confirm('这门课与《' + name + '》冲突，是否替换？')) {
+                            //删除之前的课
+                            conflictCourse.forEach(function(course) {
+                                _this.remove(course);
+                            });
+                            this.update(course);
+                        }else{
+                            return;
+                        }
+
                     }
                     for (var i = 0; i < timeCollection.length; i++) {
                         var parseResult = timeParser(timeCollection[i]);
@@ -154,8 +159,8 @@ angular.module('baseService', [])
                     //     course['选课序号'].trim().indexOf(specification.keywords.trim()) == -1) {
                     //     return false;
                     // }
-                    var reg = new RegExp(specification.keywords.trim(),'i');
-                    if (!reg.test(course['课程名称'])&&!reg.test(course['教师'])&&!reg.test(course['选课序号'])) {
+                    var reg = new RegExp(specification.keywords.trim(), 'i');
+                    if (!reg.test(course['课程名称']) && !reg.test(course['教师']) && !reg.test(course['选课序号'])) {
                         return false;
                     }
                 }
