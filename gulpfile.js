@@ -12,7 +12,7 @@ var gulp = require('gulp'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
     connect = require('gulp-connect');;
-gulp.task('default', ['clean', 'scripts', 'libs', 'sass', 'sass:watch', 'testImagemin', 'watch', 'webserver']);
+gulp.task('default', ['clean', 'scripts', 'libs', 'sass', 'sass:watch', 'Imagemin', 'watch', 'webserver']);
 gulp.task('scripts', function() {
     return gulp.src([ 'src/js/app.js','src/js/*Service.js', 'src/js/*Controller.js'])
         .pipe(jshint())
@@ -59,7 +59,7 @@ gulp.task('sass:watch', function() {
 gulp.task('webserver', function() {
     connect.server();
 });
-gulp.task('testImagemin', function() {
+gulp.task('Imagemin', function() {
     gulp.src('src/img/*.{png,jpg,gif,ico}')
         .pipe(imagemin())
         .pipe(gulp.dest('build/img'));
