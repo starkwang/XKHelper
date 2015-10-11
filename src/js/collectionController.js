@@ -27,5 +27,18 @@ angular.module('starkAPP')
             $scope.remove = function(){
                 BaseService.collectionModel.remove(this.course['选课序号']);
             }
+
+            $scope.copy = function(){
+
+            }
+            setTimeout(function() {
+                $(".copy-button").zclip({
+                    path: 'http://localhost:8080/build/ZeroClipboard.swf',
+                    copy: function() {
+                        console.log(this);
+                        return 'asfsailkfjas'
+                    }
+                });
+            },1000);
         }
     ]);

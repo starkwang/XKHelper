@@ -5,12 +5,12 @@ angular.module('starkAPP')
             function refreshen() {
                 $scope.active = {};
                 var path = $location.path().split('/')[1];
-                $scope.active[path+'IsActive'] = true;
+                $scope.active[path + 'IsActive'] = true;
             }
 
             refreshen();
-            
-            $scope.changeURL = function(url){
+
+            $scope.changeURL = function(url) {
                 $location.url(url);
                 refreshen();
             }
