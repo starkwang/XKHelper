@@ -2323,7 +2323,7 @@ Copyright (c) 2015 Daniel Eden
 .collection {
   background: #fff;
   position: relative;
-  box-shadow: 5px 6px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   margin: 20px 20px; }
   .collection table {
     width: 100%; }
@@ -2382,10 +2382,32 @@ Copyright (c) 2015 Daniel Eden
       border: 2px solid #df3e3e;
       color: #df3e3e; }
 
+.forum .searchbox {
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 40px;
+  background-color: #fff;
+  overflow: hidden;
+  height: auto;
+  border-radius: 4px; }
+  .forum .searchbox .forum-search {
+    width: 500px;
+    display: block;
+    border: 0;
+    outline: 0;
+    font-size: 30px;
+    padding: 10px;
+    float: left; }
+  .forum .searchbox i {
+    font-size: 30px;
+    float: left;
+    line-height: 56px;
+    margin-left: 10px; }
+
 .category {
   background: #fff;
   position: relative;
-  box-shadow: 5px 6px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   margin: 20px 20px; }
   .category h1 {
     text-align: center;
@@ -2550,14 +2572,14 @@ Copyright (c) 2015 Daniel Eden
   animation: 0.5s bounceIn;
   z-index: 10; }
 
-.course-table .detail-bg.ng-hide-remove {
+.course-table .detail-bg.ng-hide-remove, .course-table .qrcode-bg.ng-hide-remove {
   -webkit-animation: 0.5s fadeIn;
   -moz-animation: 0.5s fadeIn;
   -o-animation: 0.5s fadeIn;
   animation: 0.5s fadeIn;
   z-index: 10; }
 
-.course-table .detail-bg.ng-hide-add {
+.course-table .detail-bg.ng-hide-add, .course-table .qrcode-bg.ng-hide-add {
   -webkit-animation: 0.5s fadeOut;
   -moz-animation: 0.5s fadeOut;
   -o-animation: 0.5s fadeOut;
@@ -2607,7 +2629,7 @@ html,
 body {
   height: 100%;
   font-family: "微软雅黑" !important;
-  background: #55a997; }
+  background: #66cccc; }
 
 #bg {
   width: 100%;
@@ -2740,7 +2762,7 @@ body {
   top: 10%;
   width: 800px;
   margin-left: -400px;
-  background: #dfdfdf;
+  background: #eeeeee;
   box-shadow: 5px 6px 25px rgba(0, 0, 0, 0.7);
   border-radius: 10px; }
   .search .search-box .search-bar {
@@ -2777,7 +2799,7 @@ body {
       font-size: 30px;
       outline: none;
       border: 0;
-      background: #dfdfdf; }
+      background: #eeeeee; }
     .search .search-box .search-bar .more {
       cursor: pointer; }
   .search .search-box .more-search {
@@ -2825,7 +2847,7 @@ body {
           color: #777;
           margin-left: 10px; }
       .search .search-box .result .list li:hover {
-        background-color: #0044b5;
+        background-color: #66cccc;
         color: #fff; }
     .search .search-box .result .detail {
       width: 379px;

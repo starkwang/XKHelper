@@ -9,7 +9,7 @@ html,
 body {
   height: 100%;
   font-family: "微软雅黑" !important;
-  background: rgb(85, 169, 151);
+  background: #66cccc;
 }
 
 #bg {
@@ -171,7 +171,7 @@ body {
     top: 10%;
     width: 800px;
     margin-left: -400px;
-    background: rgb(223, 223, 223);
+    background: #eeeeee;
     box-shadow: 5px 6px 25px rgba(0, 0, 0, 0.7);
     border-radius: 10px;
     .search-bar {
@@ -214,7 +214,7 @@ body {
         font-size: 30px;
         outline: none;
         border: 0;
-        background: rgb(223, 223, 223);
+        background: #eeeeee;
       }
       .more {
         cursor: pointer;
@@ -272,7 +272,7 @@ body {
           }
         }
         li:hover {
-          background-color: rgb(0, 68, 181);
+          background-color: #66cccc;
           color: #fff;
         }
       }

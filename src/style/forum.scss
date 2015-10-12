@@ -1,0 +1,26 @@
+.forum {
+    .searchbox {
+        width: 600px;
+        margin: 0 auto;
+        margin-top: 40px;
+        background-color: #fff;
+        overflow: hidden;
+        height: auto;
+        border-radius: 4px;
+        .forum-search {
+            width: 500px;
+            display: block;
+            border: 0;
+            outline: 0;
+            font-size: 30px;
+            padding: 10px;
+            float: left;
+        }
+        i{
+            font-size: 30px;
+            float: left;
+            line-height: 56px;
+            margin-left: 10px
+        }
+    }
+}

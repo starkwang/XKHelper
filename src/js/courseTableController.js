@@ -186,5 +186,37 @@ angular.module('starkAPP')
                 BaseService.courseModel.remove($scope.detail);
             }
 
+            $scope.saveToPhone = function() {
+                var course_data = {
+                    courses: BaseService.courseModel.getCourseData(),
+                    "day-content":["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
+                    "line-color":"#fff",
+                    "background-color":"#fff",
+                    "width":480,
+                    "height":960,
+                    "font-size":24,
+                    "info-font-size":20,
+                    "header-font-size":30,
+                    "siderbar-font-size":24
+                };
+                var data = JSON.stringify(course_data);
+                console.log(data);
+                BaseService.saveToPhone({
+                    "course_data": data,
+                }).then(function(result) {
+                    $scope.qrcode = true;
+                    var url = 'http://stu.fudan.edu.cn/xk/img/' + result.data;
+                    console.log(url);
+                    $('.qrcode').qrcode({
+                        width: 200,
+                        height: 200,
+                        text: url
+                    })
+                });
+            }
+
+            $scope.hideQrcode = function(){
+                $scope.qrcode = false;
+            }
         }
     ]);

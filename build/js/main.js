@@ -28,8 +28,8 @@ var starkAPP = angular.module('starkAPP', [
     ]);
 
 angular.module('baseService', [])
-    .factory('BaseService', ['$rootScope',
-        function($rootScope) {
+    .factory('BaseService', ['$rootScope', '$http',
+        function($rootScope, $http) {
             String.prototype.trim = function() {　　
                 return this.replace(/(^\s*)|(\s*$)/g, "");　　
             };
@@ -60,14 +60,16 @@ angular.module('baseService', [])
                     var conflictName = [];
                     var conflictCourse = [];
                     for (var i = 0; i < timeCollection.length; i++) {
+                        console.log('check');
                         var parseResult = timeParser(timeCollection[i]);
                         var weekday = parseResult.weekday;
                         var start = parseResult.start;
                         var courseLength = parseResult.length;
-                        for (var i = 0; i < courseLength; i++) {
-                            if (conflictName.indexOf(this.data[weekday][start + i]['课程名称']) == -1 && this.data[weekday][start + i] != 0) {
-                                conflictName.push(this.data[weekday][start + i]['课程名称']);
-                                conflictCourse.push(this.data[weekday][start + i]);
+                        for (var j = 0; j < courseLength; j++) {
+                            console.log(this.data[weekday][start + j]);
+                            if (this.data[weekday][start + j] != 0 && conflictName.indexOf(this.data[weekday][start + j]['课程名称']) == -1) {
+                                conflictName.push(this.data[weekday][start + j]['课程名称']);
+                                conflictCourse.push(this.data[weekday][start + j]);
                             }
                         }
                     }
@@ -79,7 +81,7 @@ angular.module('baseService', [])
                                 _this.remove(course);
                             });
                             this.update(course);
-                        }else{
+                        } else {
                             return;
                         }
 
@@ -135,6 +137,37 @@ angular.module('baseService', [])
                         })
                     })
                     return IDlist.indexOf(courseID) != -1;
+                },
+
+                getCourseData: function() {
+                    var courses = [];
+                    var ID = [];
+                    var colorBox = ['#66CCFF','#FF9900','#99CC33','#FF6666','#33CC99','#336699','#CCCC44','#339933'];
+                    var colorCounter = 0;
+                    this.data.forEach(function(weekday) {
+                        weekday.forEach(function(course) {
+                            console.log(course);
+                            if (course && ID.indexOf(course['选课序号']) === -1) {
+                                var time = course['时间'].split('{time}');
+                                time.forEach(function(time) {
+                                    var item = {
+                                        name: course['课程名称'],
+                                        day: timeParser(time).weekday,
+                                        section: time.split(' ')[1],
+                                        info: course['教室'] + '('+course['教师']+')',
+                                        "background-color":colorBox[colorCounter]
+                                    }
+                                    courses.push(item);
+                                })
+                                colorCounter++;
+                                if(colorCounter === colorBox.length){
+                                    colorCounter = 0;
+                                }
+                                ID.push(course['选课序号'])
+                            }
+                        });
+                    });
+                    return courses;
                 }
             };
 
@@ -183,21 +216,11 @@ angular.module('baseService', [])
 
             function matchCourse(specification, course) {
                 if (specification.keywords) {
-                    // if (course['课程名称'].trim().indexOf(specification.keywords.trim()) == -1 && 
-                    //     course['教师'].trim().indexOf(specification.keywords.trim()) == -1 && 
-                    //     course['选课序号'].trim().indexOf(specification.keywords.trim()) == -1) {
-                    //     return false;
-                    // }
                     var reg = new RegExp(specification.keywords.trim(), 'i');
                     if (!reg.test(course['课程名称']) && !reg.test(course['教师']) && !reg.test(course['选课序号'])) {
                         return false;
                     }
                 }
-                // if (specification.courseID) {
-                //     if (course['选课序号'].trim().indexOf(specification.courseID.trim()) == -1) {
-                //         return false;
-                //     }
-                // }
                 if (specification.time) {
                     var timeArr = course['时间'].split('{time}');
                     for (var i = 0; i < timeArr.length; i++) {
@@ -298,16 +321,21 @@ angular.module('baseService', [])
 
             function compareTime(time1, time2) {
                 //'一 2','一 3'
-                //time1比time2更早的话，返回true
+                //time1比time2更早或者相等的话，返回true
                 var weekday1 = chToNumber(time1.trim().split(' ')[0]);
                 var weekday2 = chToNumber(time2.trim().split(' ')[0]);
                 var No1 = parseInt(time1.trim().split(' ')[1]);
                 var No2 = parseInt(time2.trim().split(' ')[1]);
                 if (weekday1 === weekday2) {
-                    return No1 < No2;
+                    return No1 <= No2;
                 } else {
                     return weekday1 < weekday2;
                 }
+            }
+
+            //生成图片
+            var saveToPhone = function(data) {
+                return $http.post('/xk/api/', data);
             }
 
             var service = {
@@ -315,7 +343,8 @@ angular.module('baseService', [])
                 timeParser: timeParser,
                 courseModel: courseModel,
                 collectionModel: collectionModel,
-                judgeTime: judgeTime
+                judgeTime: judgeTime,
+                saveToPhone: saveToPhone
             };
             return service;
         }
@@ -413,19 +442,6 @@ angular.module('starkAPP')
             $scope.remove = function(){
                 BaseService.collectionModel.remove(this.course['选课序号']);
             }
-
-            $scope.copy = function(){
-
-            }
-            setTimeout(function() {
-                $(".copy-button").zclip({
-                    path: 'http://localhost:8080/build/ZeroClipboard.swf',
-                    copy: function() {
-                        console.log(this);
-                        return 'asfsailkfjas'
-                    }
-                });
-            },1000);
         }
     ]);
 
@@ -617,6 +633,38 @@ angular.module('starkAPP')
                 BaseService.courseModel.remove($scope.detail);
             }
 
+            $scope.saveToPhone = function() {
+                var course_data = {
+                    courses: BaseService.courseModel.getCourseData(),
+                    "day-content":["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
+                    "line-color":"#fff",
+                    "background-color":"#fff",
+                    "width":480,
+                    "height":960,
+                    "font-size":24,
+                    "info-font-size":20,
+                    "header-font-size":30,
+                    "siderbar-font-size":24
+                };
+                var data = JSON.stringify(course_data);
+                console.log(data);
+                BaseService.saveToPhone({
+                    "course_data": data,
+                }).then(function(result) {
+                    $scope.qrcode = true;
+                    var url = 'http://stu.fudan.edu.cn/xk/img/' + result.data;
+                    console.log(url);
+                    $('.qrcode').qrcode({
+                        width: 200,
+                        height: 200,
+                        text: url
+                    })
+                });
+            }
+
+            $scope.hideQrcode = function(){
+                $scope.qrcode = false;
+            }
         }
     ]);
 

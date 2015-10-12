@@ -1,6 +1,12 @@
 <div class="content">
   <div class="course-table" ng-controller="courseTableController">
-    <div class="head"></div>
+    <div class="qrcode-bg" ng-show="qrcode" ng-click="hideQrcode()">
+      <div class="qrcode"></div>
+      <p>用手机扫描二维码，然后保存图片</p>
+    </div>
+    <div class="head">我的课表
+      <button ng-click="saveToPhone()" class="save">存至手机</button>
+    </div>
     <div class="body">
       <table>
         <thead>
@@ -48,15 +54,16 @@
         <h1>{{detail['课程名称']}}</h1>
         <p class="">{{detail['选课序号']}}</p>
         <p class="main-info">{{detail['教师']}}</p>
-        <p class="main-info">{{detail['时间'] | timeFilter}}<br/>{{detail['教室']}}</p>
+        <p class="main-info">{{detail['时间'] | timeFilter}}
+          <br/>{{detail['教室']}}</p>
         <p class="">人数：{{detail['人数']}}</p>
-        <p class="">限制条件：<br/>{{detail['选课限制条件']||'无'}}</p>
+        <p class="">限制条件：
+          <br/>{{detail['选课限制条件']||'无'}}</p>
         <p class="">{{detail['考试时间']}}</p>
         <button class="remove" ng-click="removeCourse()"><i class="iconfont icon-remove"></i>删除</button>
       </div>
     </div>
   </div>
-
   <div class="course-total" ng-controller="courseTotalController">
     <div class="head">课程清单</div>
     <div class="body">
@@ -66,20 +73,19 @@
           <th>课程名称</th>
           <th>教师姓名</th>
           <th>学分</th>
-        </th>
-        <tbody>
-          <tr ng-repeat="course in list track by $index">
-            <td>{{course['选课序号']}}</td>
-            <td>{{course['课程名称']}}</td>
-            <td>{{course['教师']}}</td>
-            <td>{{course['学分']}}</td>
-          </tr>
-        </tbody>
+          </th>
+          <tbody>
+            <tr ng-repeat="course in list track by $index">
+              <td>{{course['选课序号']}}</td>
+              <td>{{course['课程名称']}}</td>
+              <td>{{course['教师']}}</td>
+              <td>{{course['学分']}}</td>
+            </tr>
+          </tbody>
       </table>
       <p class="total-credit">总学分：{{totalCredit}}</p>
     </div>
   </div>
-
   <div class="course-total" ng-controller="courseTotalController">
     <div class="head">考试时间</div>
     <div class="body">
@@ -87,13 +93,13 @@
         <thead>
           <th>课程名称</th>
           <th>考试时间</th>
-        </th>
-        <tbody>
-          <tr ng-repeat="course in list track by $index">
-            <td>{{course['课程名称']}}</td>
-            <td>{{course['考试时间'] || '无数据'}}</td>
-          </tr>
-        </tbody>
+          </th>
+          <tbody>
+            <tr ng-repeat="course in list track by $index">
+              <td>{{course['课程名称']}}</td>
+              <td>{{course['考试时间'] || '无数据'}}</td>
+            </tr>
+          </tbody>
       </table>
     </div>
   </div>

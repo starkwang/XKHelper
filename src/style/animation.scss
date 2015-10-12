@@ -90,14 +90,14 @@
     animation: 0.5s bounceIn;
     z-index: 10;
   }
-  .detail-bg.ng-hide-remove {
+  .detail-bg.ng-hide-remove,.qrcode-bg.ng-hide-remove{
     -webkit-animation: 0.5s fadeIn;
     -moz-animation: 0.5s fadeIn;
     -o-animation: 0.5s fadeIn;
     animation: 0.5s fadeIn;
     z-index: 10;
   }
-  .detail-bg.ng-hide-add {
+  .detail-bg.ng-hide-add,.qrcode-bg.ng-hide-add{
     -webkit-animation: 0.5s fadeOut;
     -moz-animation: 0.5s fadeOut;
     -o-animation: 0.5s fadeOut;
