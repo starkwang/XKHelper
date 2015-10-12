@@ -312,6 +312,7 @@ body {
           -o-transition: all 0.1s;
           -webkit-transition: all 0.1s;
           -moz-transition: all 0.1s;
+          box-shadow:1px 1px 4px rgba(0,0,0,0.8);
         }
         .update.isInCourseTable {
           background-color: #aaa;
@@ -341,6 +342,7 @@ body {
           -o-transition: all 0.1s;
           -webkit-transition: all 0.1s;
           -moz-transition: all 0.1s;
+          box-shadow:1px 1px 4px rgba(0,0,0,0.8);
         }
         .box.isInCollection {
           background-color: #aaa;

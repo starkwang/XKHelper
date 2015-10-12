@@ -5,13 +5,62 @@
       <input type="text" class="forum-search" placeholder="课程名称/老师姓名">
     </div>
     <div class="comment">
-        <div class="cover">
-            <p>点击此处可分享你的上课心得（已有999条评论）</p>
-            <button>+</button>
+      <div class="cover" ng-click="showComment()" ng-class="{'comment-open':commentShow}">
+        <p>{{commentTitle}}</p>
+        <button ng-hide="commentShow">+</button>
+      </div>
+      <div class="comment-box" ng-show="commentShow">
+        <div class="body">
+          <div>
+            <input type="text" placeholder="课程名" required>
+            <input type="text" placeholder="老师名" required>
+            <input type="text" placeholder="评分" required>
+          </div>
+          <textarea placeholder="说点什么吧..." id="" cols="30" rows="10" required></textarea>
+          <button class="submit">提交</button>
         </div>
-        <div class="comment-box">
-            
+      </div>
+    </div>
+    <div class="livecomment">
+      <div class="head">近期评论</div>
+      <div class="body">
+        <div class="item">
+          <p class="name">数学分析A</p>
+          <p class="teacher">陈纪修</p>
+          <p class="abstract">这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论...</p>
+          <p class="time">2015.12.18</p>
         </div>
+        <div class="item">
+          <p class="name">数学分析A</p>
+          <p class="teacher">陈纪修</p>
+          <p class="abstract">这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论...</p>
+          <p class="time">2015.12.18</p>
+        </div>
+        <div class="item">
+          <p class="name">数学分析A</p>
+          <p class="teacher">陈纪修</p>
+          <p class="abstract">这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论...</p>
+          <p class="time">2015.12.18</p>
+        </div>
+        <div class="item">
+          <p class="name">数学分析A</p>
+          <p class="teacher">陈纪修</p>
+          <p class="abstract">这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论...</p>
+          <p class="time">2015.12.18</p>
+        </div>
+        <div class="item">
+          <p class="name">数学分析A</p>
+          <p class="teacher">陈纪修</p>
+          <p class="abstract">这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论...</p>
+          <p class="time">2015.12.18</p>
+        </div>
+        <div class="item">
+          <p class="name">数学分析A</p>
+          <p class="teacher">陈纪修</p>
+          <p class="abstract">这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论...</p>
+          <p class="time">2015.12.18</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

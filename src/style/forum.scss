@@ -1,12 +1,20 @@
 .forum {
+    >div {
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        background-color: #fff;
+        margin-top: 20px;
+        border-radius: 4px;
+    }
+    margin: 0 90px;
+    padding-top: 20px;
     .searchbox {
         width: 600px;
         margin: 0 auto;
-        margin-top: 40px;
         background-color: #fff;
         overflow: hidden;
         height: auto;
         border-radius: 4px;
+        border: 1px solid #ddd;
         .forum-search {
             width: 500px;
             display: block;
@@ -15,12 +23,146 @@
             font-size: 30px;
             padding: 10px;
             float: left;
+            transition: all 0.3s;
         }
-        i{
+        i {
             font-size: 30px;
             float: left;
             line-height: 56px;
             margin-left: 10px
+        }
+    }
+    .comment {
+        .cover {
+            margin: 0 auto;
+            width: 500px;
+            padding: 10px;
+            cursor: pointer;
+            p {
+                font-size: 20px;
+                float: left;
+            }
+            button {
+                float: left;
+                background-color: #fff;
+                outline: none;
+                border: 1px solid #aaa;
+                color: #aaa;
+                border-radius: 100%;
+                height: 20px;
+                width: 20px;
+                font-size: 12px;
+                line-height: 18px;
+            }
+            overflow: hidden;
+        }
+        .cover.comment-open {
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+            margin: 0 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .comment-box {
+            overflow: hidden;
+            div {
+                padding: 10px;
+                width: 720px;
+                margin: 0 auto;
+                overflow: hidden;
+                input {
+                    float: left;
+                    width: 200px;
+                    height: 40px;
+                    margin: 0 20px;
+                    font-size: 20px;
+                    outline: none;
+                    border: 2px solid #ddd;
+                    padding: 10px;
+                    border-radius: 30px;
+                    color: #0099cc;
+                    transition: all 0.8s;
+                    text-align: center;
+                }
+                input:hover,
+                input:valid {
+                    border: 2px solid #0099cc;
+                }
+            }
+            textarea {
+                outline: none;
+                border: 2px solid #ddd;
+                width: 600px;
+                margin: 20px auto;
+                display: block;
+                border-radius: 15px;
+                padding: 15px;
+                font-size: 16px;
+            }
+            textarea:hover,
+            textarea:valid {
+                border: 2px solid #0099cc;
+            }
+            button{
+                outline: none;
+                border:0;
+                width: 50px;
+                height: 50px;
+                border-radius:100%;
+                background-color:#0099cc;
+                border:2px solid #0099cc;
+                color: #fff;
+                font-size: 14px;
+                margin: 0 auto;
+                display: block;
+                box-shadow:1px 1px 4px rgba(0,0,0,0.8);
+                cursor: pointer;
+                transition: all 0.3s;
+            }
+            button:hover{
+                background-color:#fff;
+                color: #0099cc;
+            }
+        }
+    }
+    .livecomment {
+        .head {
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+        }
+        .body {
+            overflow: hidden;
+            .item {
+                float: left;
+                padding: 10px 10px;
+                border-top: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                cursor: pointer;
+                transition: all 0.3s;
+                p {
+                    margin-bottom: 8px;
+                }
+                .name {
+                    font-size: 18px;
+                }
+                .teacher {
+                    font-size: 14px;
+                    color: #999;
+                }
+                .time {
+                    color: #999;
+                    margin-bottom: 0;
+                }
+            }
+            .item:hover {
+                box-shadow: 2px 2px 25px rgba(0, 0, 0, 0.5);
+                background-color: #eee;
+            }
         }
     }
 }

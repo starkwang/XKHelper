@@ -2348,7 +2348,8 @@ Copyright (c) 2015 Daniel Eden
       transition: all 0.1s;
       -o-transition: all 0.1s;
       -webkit-transition: all 0.1s;
-      -moz-transition: all 0.1s; }
+      -moz-transition: all 0.1s;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8); }
     .collection table .update.isInCourseTable {
       background-color: #aaa !important; }
     .collection table .update:hover {
@@ -2374,7 +2375,8 @@ Copyright (c) 2015 Daniel Eden
       transition: all 0.1s;
       -o-transition: all 0.1s;
       -webkit-transition: all 0.1s;
-      -moz-transition: all 0.1s; }
+      -moz-transition: all 0.1s;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8); }
       .collection table .remove i {
         font-size: 18px; }
     .collection table .remove:hover {
@@ -2382,27 +2384,145 @@ Copyright (c) 2015 Daniel Eden
       border: 2px solid #df3e3e;
       color: #df3e3e; }
 
-.forum .searchbox {
-  width: 600px;
-  margin: 0 auto;
-  margin-top: 40px;
-  background-color: #fff;
-  overflow: hidden;
-  height: auto;
-  border-radius: 4px; }
-  .forum .searchbox .forum-search {
+.forum {
+  margin: 0 90px;
+  padding-top: 20px; }
+  .forum > div {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+    margin-top: 20px;
+    border-radius: 4px; }
+  .forum .searchbox {
+    width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    overflow: hidden;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #ddd; }
+    .forum .searchbox .forum-search {
+      width: 500px;
+      display: block;
+      border: 0;
+      outline: 0;
+      font-size: 30px;
+      padding: 10px;
+      float: left;
+      transition: all 0.3s; }
+    .forum .searchbox i {
+      font-size: 30px;
+      float: left;
+      line-height: 56px;
+      margin-left: 10px; }
+  .forum .comment .cover {
+    margin: 0 auto;
     width: 500px;
-    display: block;
-    border: 0;
-    outline: 0;
-    font-size: 30px;
     padding: 10px;
-    float: left; }
-  .forum .searchbox i {
-    font-size: 30px;
-    float: left;
-    line-height: 56px;
-    margin-left: 10px; }
+    cursor: pointer;
+    overflow: hidden; }
+    .forum .comment .cover p {
+      font-size: 20px;
+      float: left; }
+    .forum .comment .cover button {
+      float: left;
+      background-color: #fff;
+      outline: none;
+      border: 1px solid #aaa;
+      color: #aaa;
+      border-radius: 100%;
+      height: 20px;
+      width: 20px;
+      font-size: 12px;
+      line-height: 18px; }
+  .forum .comment .cover.comment-open {
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    margin: 0 0;
+    width: 100%;
+    box-sizing: border-box; }
+  .forum .comment .comment-box {
+    overflow: hidden; }
+    .forum .comment .comment-box div {
+      padding: 10px;
+      width: 720px;
+      margin: 0 auto;
+      overflow: hidden; }
+      .forum .comment .comment-box div input {
+        float: left;
+        width: 200px;
+        height: 40px;
+        margin: 0 20px;
+        font-size: 20px;
+        outline: none;
+        border: 2px solid #ddd;
+        padding: 10px;
+        border-radius: 30px;
+        color: #0099cc;
+        transition: all 0.8s;
+        text-align: center; }
+      .forum .comment .comment-box div input:hover,
+      .forum .comment .comment-box div input:valid {
+        border: 2px solid #0099cc; }
+    .forum .comment .comment-box textarea {
+      outline: none;
+      border: 2px solid #ddd;
+      width: 600px;
+      margin: 20px auto;
+      display: block;
+      border-radius: 15px;
+      padding: 15px;
+      font-size: 16px; }
+    .forum .comment .comment-box textarea:hover,
+    .forum .comment .comment-box textarea:valid {
+      border: 2px solid #0099cc; }
+    .forum .comment .comment-box button {
+      outline: none;
+      border: 0;
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+      background-color: #0099cc;
+      border: 2px solid #0099cc;
+      color: #fff;
+      font-size: 14px;
+      margin: 0 auto;
+      display: block;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+      cursor: pointer;
+      transition: all 0.3s; }
+    .forum .comment .comment-box button:hover {
+      background-color: #fff;
+      color: #0099cc; }
+  .forum .livecomment .head {
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd; }
+  .forum .livecomment .body {
+    overflow: hidden; }
+    .forum .livecomment .body .item {
+      float: left;
+      padding: 10px 10px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      cursor: pointer;
+      transition: all 0.3s; }
+      .forum .livecomment .body .item p {
+        margin-bottom: 8px; }
+      .forum .livecomment .body .item .name {
+        font-size: 18px; }
+      .forum .livecomment .body .item .teacher {
+        font-size: 14px;
+        color: #999; }
+      .forum .livecomment .body .item .time {
+        color: #999;
+        margin-bottom: 0; }
+    .forum .livecomment .body .item:hover {
+      box-shadow: 2px 2px 25px rgba(0, 0, 0, 0.5);
+      background-color: #eee; }
 
 .category {
   background: #fff;
@@ -2615,6 +2735,20 @@ Copyright (c) 2015 Daniel Eden
   z-index: 10; }
 
 .content .handle-bg.ng-hide-add {
+  -webkit-animation: 0.5s fadeOut;
+  -moz-animation: 0.5s fadeOut;
+  -o-animation: 0.5s fadeOut;
+  animation: 0.5s fadeOut;
+  z-index: 10; }
+
+.forum .ng-hide-remove {
+  -webkit-animation: 0.5s fadeIn;
+  -moz-animation: 0.5s fadeIn;
+  -o-animation: 0.5s fadeIn;
+  animation: 0.5s fadeIn;
+  z-index: 10; }
+
+.forum .ng-hide-add {
   -webkit-animation: 0.5s fadeOut;
   -moz-animation: 0.5s fadeOut;
   -o-animation: 0.5s fadeOut;
@@ -2881,7 +3015,8 @@ body {
         transition: all 0.1s;
         -o-transition: all 0.1s;
         -webkit-transition: all 0.1s;
-        -moz-transition: all 0.1s; }
+        -moz-transition: all 0.1s;
+        box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8); }
       .search .search-box .result .detail .update.isInCourseTable {
         background-color: #aaa; }
       .search .search-box .result .detail .update.isInCourseTable:hover {
@@ -2906,7 +3041,8 @@ body {
         transition: all 0.1s;
         -o-transition: all 0.1s;
         -webkit-transition: all 0.1s;
-        -moz-transition: all 0.1s; }
+        -moz-transition: all 0.1s;
+        box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8); }
       .search .search-box .result .detail .box.isInCollection {
         background-color: #aaa; }
       .search .search-box .result .detail .box.isInCollection:hover {
