@@ -129,6 +129,7 @@
         }
     }
     .livecomment {
+        margin-bottom:20px;
         .head {
             padding: 10px;
             font-size: 20px;
@@ -138,12 +139,12 @@
         .body {
             overflow: hidden;
             .item {
-                float: left;
                 padding: 10px 10px;
                 border-top: 1px solid #ddd;
                 border-bottom: 1px solid #ddd;
                 cursor: pointer;
                 transition: all 0.3s;
+                position:relative;
                 p {
                     margin-bottom: 8px;
                 }
@@ -157,6 +158,59 @@
                 .time {
                     color: #999;
                     margin-bottom: 0;
+                }
+                .rank{
+                    position: absolute;
+                    top:10px;
+                    right:10px;
+                    color: #ff6666;
+                    font-size:18px;
+                }
+            }
+            .item:hover {
+                box-shadow: 2px 2px 25px rgba(0, 0, 0, 0.5);
+                background-color: #eee;
+            }
+        }
+    }
+
+    .search-result{
+        margin-bottom:20px;
+        .head {
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+        }
+        .body {
+            overflow: hidden;
+            .item {
+                padding: 10px 10px;
+                border-top: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                cursor: pointer;
+                transition: all 0.3s;
+                position:relative;
+                p {
+                    margin-bottom: 8px;
+                }
+                .name {
+                    font-size: 18px;
+                }
+                .teacher {
+                    font-size: 14px;
+                    color: #999;
+                }
+                .time {
+                    color: #999;
+                    margin-bottom: 0;
+                }
+                .rank{
+                    position: absolute;
+                    top:10px;
+                    right:10px;
+                    color: #ff6666;
+                    font-size:18px;
                 }
             }
             .item:hover {

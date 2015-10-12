@@ -2,7 +2,7 @@
   <div class="forum">
     <div class="searchbox">
       <i class="iconfont icon-search"></i>
-      <input type="text" class="forum-search" placeholder="课程名称/老师姓名">
+      <input type="text" class="forum-search" placeholder="课程名称/老师姓名" ng-change="search()" ng-model="keywords">
     </div>
     <div class="comment">
       <div class="cover" ng-click="showComment()" ng-class="{'comment-open':commentShow}">
@@ -21,44 +21,70 @@
         </div>
       </div>
     </div>
-    <div class="livecomment">
+    <div class="livecomment" ng-hide="isSearch">
       <div class="head">近期评论</div>
       <div class="body">
         <div class="item">
           <p class="name">数学分析A</p>
           <p class="teacher">陈纪修</p>
+          <p class="rank">4.5</p>
           <p class="abstract">这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论...</p>
           <p class="time">2015.12.18</p>
         </div>
         <div class="item">
           <p class="name">数学分析A</p>
           <p class="teacher">陈纪修</p>
+          <p class="rank">4.5</p>
           <p class="abstract">这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论...</p>
           <p class="time">2015.12.18</p>
         </div>
         <div class="item">
           <p class="name">数学分析A</p>
           <p class="teacher">陈纪修</p>
+          <p class="rank">4.5</p>
           <p class="abstract">这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论...</p>
           <p class="time">2015.12.18</p>
         </div>
         <div class="item">
           <p class="name">数学分析A</p>
           <p class="teacher">陈纪修</p>
+          <p class="rank">4.5</p>
           <p class="abstract">这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论...</p>
           <p class="time">2015.12.18</p>
         </div>
         <div class="item">
           <p class="name">数学分析A</p>
           <p class="teacher">陈纪修</p>
+          <p class="rank">4.5</p>
           <p class="abstract">这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论...</p>
           <p class="time">2015.12.18</p>
         </div>
         <div class="item">
           <p class="name">数学分析A</p>
           <p class="teacher">陈纪修</p>
+          <p class="rank">4.5</p>
           <p class="abstract">这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论这是评论...</p>
           <p class="time">2015.12.18</p>
+        </div>
+      </div>
+    </div>
+    <div class="search-result" ng-show="isSearch">
+      <div class="head">搜索结果</div>
+      <div class="body">
+        <div class="item">
+          <p class="name">数学分析A</p>
+          <p class="teacher">陈纪修</p>
+          <p class="rank">4.5</p>
+        </div>
+        <div class="item">
+          <p class="name">数学分析A</p>
+          <p class="teacher">陈纪修</p>
+          <p class="rank">4.5</p>
+        </div>
+        <div class="item">
+          <p class="name">数学分析A</p>
+          <p class="teacher">陈纪修</p>
+          <p class="rank">4.5</p>
         </div>
       </div>
     </div>

@@ -2496,33 +2496,76 @@ Copyright (c) 2015 Daniel Eden
     .forum .comment .comment-box button:hover {
       background-color: #fff;
       color: #0099cc; }
-  .forum .livecomment .head {
-    padding: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    border-bottom: 1px solid #ddd; }
-  .forum .livecomment .body {
-    overflow: hidden; }
-    .forum .livecomment .body .item {
-      float: left;
-      padding: 10px 10px;
-      border-top: 1px solid #ddd;
-      border-bottom: 1px solid #ddd;
-      cursor: pointer;
-      transition: all 0.3s; }
-      .forum .livecomment .body .item p {
-        margin-bottom: 8px; }
-      .forum .livecomment .body .item .name {
-        font-size: 18px; }
-      .forum .livecomment .body .item .teacher {
-        font-size: 14px;
-        color: #999; }
-      .forum .livecomment .body .item .time {
-        color: #999;
-        margin-bottom: 0; }
-    .forum .livecomment .body .item:hover {
-      box-shadow: 2px 2px 25px rgba(0, 0, 0, 0.5);
-      background-color: #eee; }
+  .forum .livecomment {
+    margin-bottom: 20px; }
+    .forum .livecomment .head {
+      padding: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      border-bottom: 1px solid #ddd; }
+    .forum .livecomment .body {
+      overflow: hidden; }
+      .forum .livecomment .body .item {
+        padding: 10px 10px;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        cursor: pointer;
+        transition: all 0.3s;
+        position: relative; }
+        .forum .livecomment .body .item p {
+          margin-bottom: 8px; }
+        .forum .livecomment .body .item .name {
+          font-size: 18px; }
+        .forum .livecomment .body .item .teacher {
+          font-size: 14px;
+          color: #999; }
+        .forum .livecomment .body .item .time {
+          color: #999;
+          margin-bottom: 0; }
+        .forum .livecomment .body .item .rank {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          color: #ff6666;
+          font-size: 18px; }
+      .forum .livecomment .body .item:hover {
+        box-shadow: 2px 2px 25px rgba(0, 0, 0, 0.5);
+        background-color: #eee; }
+  .forum .search-result {
+    margin-bottom: 20px; }
+    .forum .search-result .head {
+      padding: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      border-bottom: 1px solid #ddd; }
+    .forum .search-result .body {
+      overflow: hidden; }
+      .forum .search-result .body .item {
+        padding: 10px 10px;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        cursor: pointer;
+        transition: all 0.3s;
+        position: relative; }
+        .forum .search-result .body .item p {
+          margin-bottom: 8px; }
+        .forum .search-result .body .item .name {
+          font-size: 18px; }
+        .forum .search-result .body .item .teacher {
+          font-size: 14px;
+          color: #999; }
+        .forum .search-result .body .item .time {
+          color: #999;
+          margin-bottom: 0; }
+        .forum .search-result .body .item .rank {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          color: #ff6666;
+          font-size: 18px; }
+      .forum .search-result .body .item:hover {
+        box-shadow: 2px 2px 25px rgba(0, 0, 0, 0.5);
+        background-color: #eee; }
 
 .category {
   background: #fff;

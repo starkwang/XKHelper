@@ -19,7 +19,10 @@ var starkAPP = angular.module('starkAPP', [
                     templateUrl: './html/collection.html'
                 })
                 .when('/forum/', {
-                    templateUrl: '/html/forum.html'
+                    templateUrl: './html/forum.html'
+                })
+                .when('/forum/course/', {
+                    templateUrl: './html/forum_class.html'
                 })
                 .otherwise({
                     redirectTo: '/main/'
@@ -442,6 +445,7 @@ angular.module('starkAPP')
             $scope.remove = function(){
                 BaseService.collectionModel.remove(this.course['选课序号']);
             }
+            
         }
     ]);
 
@@ -705,6 +709,14 @@ angular.module('starkAPP')
             $scope.showComment = function(){
                 $scope.commentShow = true;
                 $scope.commentTitle = '发表评论';
+            }
+
+            $scope.search = function(){
+                if($scope.keywords.length>0){
+                    $scope.isSearch = true;
+                    return;
+                }
+                $scope.isSearch = false;
             }
         }
     ]);

@@ -27,5 +27,6 @@ angular.module('starkAPP')
             $scope.remove = function(){
                 BaseService.collectionModel.remove(this.course['选课序号']);
             }
+            
         }
     ]);

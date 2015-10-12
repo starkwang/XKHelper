@@ -8,5 +8,13 @@ angular.module('starkAPP')
                 $scope.commentShow = true;
                 $scope.commentTitle = '发表评论';
             }
+
+            $scope.search = function(){
+                if($scope.keywords.length>0){
+                    $scope.isSearch = true;
+                    return;
+                }
+                $scope.isSearch = false;
+            }
         }
     ]);
