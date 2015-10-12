@@ -28,5 +28,7 @@ angular.module('starkAPP')
                 BaseService.collectionModel.remove(this.course['选课序号']);
             }
             
+
+            var clipboard = new Clipboard('.copy');
         }
     ]);
