@@ -22,7 +22,7 @@ var starkAPP = angular.module('starkAPP', [
                     templateUrl: './html/forum.html'
                 })
                 .when('/forum/course/', {
-                    templateUrl: './html/forum_class.html'
+                    templateUrl: './html/forum_course.html'
                 })
                 .otherwise({
                     redirectTo: '/main/'

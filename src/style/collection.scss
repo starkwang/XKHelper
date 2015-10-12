@@ -1,75 +1,102 @@
 .collection {
-  background: #fff;
-  position: relative;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  margin: 20px 20px;
-  table {
-    width:100%;
-    tr{
-      border: 1px solid #ddd;
-      text-align: center;
+    background: #fff;
+    position: relative;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    margin: 20px 20px;
+    table {
+        width: 100%;
+        tr {
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+        th,
+        td {
+            padding: 5px;
+        }
+        .update {
+            background-color: #00ae68;
+            border: 0;
+            outline: 0;
+            color: #fff;
+            height: 26px;
+            width: 100px;
+            box-sizing: border-box;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.1s;
+            -o-transition: all 0.1s;
+            -webkit-transition: all 0.1s;
+            -moz-transition: all 0.1s;
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+        }
+        .update.isInCourseTable {
+            background-color: #aaa !important;
+        }
+        .update:hover {
+            background-color: rgba(255, 255, 255, 0);
+            border: 2px solid #00ae68;
+            color: #00ae68;
+        }
+        .update.isInCourseTable:hover {
+            background-color: #00ae68;
+            border: 0;
+            color: #fff;
+        }
+        .remove {
+            background-color: rgb(223, 62, 62);
+            border: 0;
+            outline: 0;
+            color: #fff;
+            height: 26px;
+            width: 100px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.1s;
+            -o-transition: all 0.1s;
+            -webkit-transition: all 0.1s;
+            -moz-transition: all 0.1s;
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+            i {
+                font-size: 18px;
+            }
+        }
+        .remove:hover {
+            background-color: rgba(255, 255, 255, 0);
+            border: 2px solid rgb(223, 62, 62);
+            color: rgb(223, 62, 62);
+        }
+        .copy {
+            background-color: #66ccff;
+            border: 0;
+            outline: 0;
+            color: #fff;
+            height: 26px;
+            width: 100px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.1s;
+            -o-transition: all 0.1s;
+            -webkit-transition: all 0.1s;
+            -moz-transition: all 0.1s;
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+            i {
+                font-size: 18px;
+            }
+        }
+        .copy:hover {
+            background-color: rgba(255, 255, 255, 0);
+            border: 2px solid #66ccff;
+            color: #66ccff;
+        }
     }
-    tr:hover{
-        background-color:#ddd;
-    }
-    th,td{
-        padding: 5px;
-    }
-    .update {
-      background-color: #00ae68;
-      border: 0;
-      outline: 0;
-      color: #fff;
-      height: 26px;
-      width: 100px;
-      box-sizing: border-box;
-      font-size: 18px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: all 0.1s;
-      -o-transition: all 0.1s;
-      -webkit-transition: all 0.1s;
-      -moz-transition: all 0.1s;
-      box-shadow:1px 1px 4px rgba(0,0,0,0.8);
-    }
-    .update.isInCourseTable {
-      background-color: #aaa !important;
-    }
-    .update:hover {
-      background-color: rgba(255, 255, 255, 0);
-      border: 2px solid #00ae68;
-      color: #00ae68;
-    }
-    .update.isInCourseTable:hover {
-      background-color: #00ae68;
-      border: 0;
-      color: #fff;
-    }
-    .remove {
-      background-color: rgb(223,62,62);
-      border: 0;
-      outline: 0;
-      color: #fff;
-      height: 26px;
-      width: 100px;
-      margin-top:5px;
-      box-sizing: border-box;
-      font-size: 18px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: all 0.1s;
-      -o-transition: all 0.1s;
-      -webkit-transition: all 0.1s;
-      -moz-transition: all 0.1s;
-      box-shadow:1px 1px 4px rgba(0,0,0,0.8);
-      i{
-        font-size: 18px;
-      }
-    }
-    .remove:hover {
-      background-color: rgba(255, 255, 255, 0);
-      border: 2px solid rgb(223,62,62);
-      color: rgb(223,62,62);
-    }
-  }
 }

@@ -135,13 +135,19 @@
             font-size: 20px;
             font-weight: bold;
             border-bottom: 1px solid #ddd;
+            overflow: visible;
         }
         .body {
+            padding-top: 10px;
+            padding-bottom:10px;
             overflow: hidden;
+            width: 700px;
+            margin: 0 auto;
             .item {
                 padding: 10px 10px;
-                border-top: 1px solid #ddd;
-                border-bottom: 1px solid #ddd;
+                width: 328px;
+                float: left;
+                border: 1px solid #ddd;
                 cursor: pointer;
                 transition: all 0.3s;
                 position:relative;

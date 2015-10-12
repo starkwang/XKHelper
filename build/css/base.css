@@ -2332,7 +2332,8 @@ Copyright (c) 2015 Daniel Eden
       text-align: center; }
     .collection table tr:hover {
       background-color: #ddd; }
-    .collection table th, .collection table td {
+    .collection table th,
+    .collection table td {
       padding: 5px; }
     .collection table .update {
       background-color: #00ae68;
@@ -2383,6 +2384,29 @@ Copyright (c) 2015 Daniel Eden
       background-color: rgba(255, 255, 255, 0);
       border: 2px solid #df3e3e;
       color: #df3e3e; }
+    .collection table .copy {
+      background-color: #66ccff;
+      border: 0;
+      outline: 0;
+      color: #fff;
+      height: 26px;
+      width: 100px;
+      margin-top: 5px;
+      box-sizing: border-box;
+      font-size: 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.1s;
+      -o-transition: all 0.1s;
+      -webkit-transition: all 0.1s;
+      -moz-transition: all 0.1s;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8); }
+      .collection table .copy i {
+        font-size: 18px; }
+    .collection table .copy:hover {
+      background-color: rgba(255, 255, 255, 0);
+      border: 2px solid #66ccff;
+      color: #66ccff; }
 
 .forum {
   margin: 0 90px;
@@ -2502,13 +2526,19 @@ Copyright (c) 2015 Daniel Eden
       padding: 10px;
       font-size: 20px;
       font-weight: bold;
-      border-bottom: 1px solid #ddd; }
+      border-bottom: 1px solid #ddd;
+      overflow: visible; }
     .forum .livecomment .body {
-      overflow: hidden; }
+      padding-top: 10px;
+      padding-bottom: 10px;
+      overflow: hidden;
+      width: 700px;
+      margin: 0 auto; }
       .forum .livecomment .body .item {
         padding: 10px 10px;
-        border-top: 1px solid #ddd;
-        border-bottom: 1px solid #ddd;
+        width: 328px;
+        float: left;
+        border: 1px solid #ddd;
         cursor: pointer;
         transition: all 0.3s;
         position: relative; }

@@ -22,7 +22,7 @@ var starkAPP = angular.module('starkAPP', [
                     templateUrl: './html/forum.html'
                 })
                 .when('/forum/course/', {
-                    templateUrl: './html/forum_class.html'
+                    templateUrl: './html/forum_course.html'
                 })
                 .otherwise({
                     redirectTo: '/main/'
@@ -709,8 +709,13 @@ angular.module('starkAPP')
 
             $scope.commentTitle = '点击此处可分享你的上课心得（已有999条评论）';
             $scope.showComment = function(){
-                $scope.commentShow = true;
-                $scope.commentTitle = '发表评论';
+                $scope.commentShow = !$scope.commentShow;
+                if($scope.commentShow){
+                    $scope.commentTitle = '发表评论';
+                }else{
+                    $scope.commentTitle = '点击此处可分享你的上课心得（已有999条评论）';
+                }
+                
             }
 
             $scope.search = function(){
@@ -720,6 +725,18 @@ angular.module('starkAPP')
                 }
                 $scope.isSearch = false;
             }
+
+            $scope.open = function(){
+                window.open('/#/forum/course/');
+            }
+        }
+    ]);
+
+//课程论坛详情页
+angular.module('starkAPP')
+    .controller('forumCourseController', ['$scope', 'BaseService',
+        function($scope, BaseService) {
+
         }
     ]);
 

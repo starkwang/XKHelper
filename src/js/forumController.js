@@ -5,8 +5,13 @@ angular.module('starkAPP')
 
             $scope.commentTitle = '点击此处可分享你的上课心得（已有999条评论）';
             $scope.showComment = function(){
-                $scope.commentShow = true;
-                $scope.commentTitle = '发表评论';
+                $scope.commentShow = !$scope.commentShow;
+                if($scope.commentShow){
+                    $scope.commentTitle = '发表评论';
+                }else{
+                    $scope.commentTitle = '点击此处可分享你的上课心得（已有999条评论）';
+                }
+                
             }
 
             $scope.search = function(){
@@ -15,6 +20,10 @@ angular.module('starkAPP')
                     return;
                 }
                 $scope.isSearch = false;
+            }
+
+            $scope.open = function(){
+                window.open('/#/forum/course/');
             }
         }
     ]);
