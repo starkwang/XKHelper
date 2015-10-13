@@ -39,8 +39,8 @@ angular.module('starkAPP')
             resetCertainTime();
             resetCertainCategory();
 
-            $scope.close = function() {
-                var e = e || window.event;
+            $scope.close = function($event) {
+                var e = $event;
                 if (/bg/.test(e.target.className)) {
                     $scope.searchShow = false;
                     $timeout(function() {

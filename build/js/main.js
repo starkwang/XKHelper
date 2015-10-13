@@ -647,8 +647,8 @@ angular.module('starkAPP')
                     "background-color":"#fff",
                     "width":480,
                     "height":960,
-                    "font-size":24,
-                    "info-font-size":20,
+                    "font-size":36,
+                    "info-font-size":30,
                     "header-font-size":30,
                     "siderbar-font-size":24
                 };
@@ -781,8 +781,8 @@ angular.module('starkAPP')
             resetCertainTime();
             resetCertainCategory();
 
-            $scope.close = function() {
-                var e = e || window.event;
+            $scope.close = function($event) {
+                var e = $event;
                 if (/bg/.test(e.target.className)) {
                     $scope.searchShow = false;
                     $timeout(function() {
