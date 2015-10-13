@@ -2474,6 +2474,14 @@ Copyright (c) 2015 Daniel Eden
       width: 720px;
       margin: 0 auto;
       overflow: hidden; }
+      .forum .comment .comment-box div .name, .forum .comment .comment-box div .teacher {
+        color: #0099cc;
+        font-size: 20px;
+        width: 200px;
+        height: 40px;
+        padding-left: 50px; }
+      .forum .comment .comment-box div .teacher {
+        font-size: 16px; }
       .forum .comment .comment-box div input {
         float: left;
         width: 200px;
@@ -2494,7 +2502,7 @@ Copyright (c) 2015 Daniel Eden
       outline: none;
       border: 2px solid #ddd;
       width: 600px;
-      margin: 20px auto;
+      margin: 10px auto;
       display: block;
       border-radius: 15px;
       padding: 15px;
@@ -2561,6 +2569,32 @@ Copyright (c) 2015 Daniel Eden
       .forum .livecomment .body .item:hover {
         box-shadow: 2px 2px 25px rgba(0, 0, 0, 0.5);
         background-color: #eee; }
+  .forum .course-info {
+    margin-bottom: 10px;
+    overflow: hidden; }
+    .forum .course-info div {
+      width: 50%;
+      float: left;
+      padding-left: 100px;
+      box-sizing: border-box; }
+    .forum .course-info .info p {
+      padding: 10px; }
+    .forum .course-info .info .name {
+      font-size: 30px; }
+    .forum .course-info .info .teacher {
+      font-size: 24px;
+      color: #999; }
+    .forum .course-info .info .rank {
+      font-size: 24px;
+      color: #ff6666; }
+    .forum .course-info .rank-info p {
+      padding: 10px; }
+    .forum .course-info .rank-info td {
+      padding: 2px;
+      padding-left: 10px;
+      color: #aaa; }
+      .forum .course-info .rank-info td font {
+        color: #ff6666; }
   .forum .search-result {
     margin-bottom: 20px; }
     .forum .search-result .head {
