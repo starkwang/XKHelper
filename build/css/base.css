@@ -3216,3 +3216,163 @@ hr {
 /* 让非ie浏览器默认也显示垂直滚动条，防止因滚动条引起的闪烁 */
 html {
   overflow-y: scroll; }
+
+body {
+  background: linear-gradient(to bottom, #DCDCDC 0%, #A5A5A5 100%);
+  font-family: 'Source Han Sans', 'Source Han Sans CN', 'Open Sans', 'Lucida Grande', 'Segoe UI', Helvetica, Arial, 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif !important; }
+
+.sidebar .title {
+  font-size: 16px;
+  letter-spacing: 2px;
+  padding-bottom: 18px;
+  color: #777; }
+
+.logo-container {
+  background: #F6F6F6; }
+
+.sidebar ul {
+  text-align: center; }
+
+.sidebar .logo {
+  margin: 20px 0 10px;
+  max-width: 90px; }
+
+.sidebar {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.43);
+  background: linear-gradient(to bottom, #4E4E4E 0%, #313131 100%); }
+
+.sidebar .li {
+  font-size: 15px;
+  text-align: left;
+  font-weight: 100; }
+
+.sidebar .li i {
+  margin-right: 10px; }
+
+.logo-container {
+  background: #F6F6F6; }
+
+.content {
+  margin-left: 180px; }
+
+.sidebar {
+  width: 180px; }
+
+.course-table .head {
+  padding: 10px;
+  font-weight: normal;
+  background: linear-gradient(to bottom, #9C9C9C 0%, #BDBDBD 100%);
+  color: white;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.52); }
+
+.course-table .head .save {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.38);
+  background-color: #FF4242; }
+
+thead {
+  background: #F9F9F9; }
+
+td#counter {
+  font-weight: bold;
+  background: #f9f9f9; }
+
+.course-table .body table td {
+  font-size: 14px;
+  padding: 2px 6px; }
+
+.course-table .body table td {
+  border: 2px solid rgba(0, 0, 0, 0.04); }
+
+.course-table .body table td[line="9"], .course-table .body table td[line="4"] {
+  border-bottom: 2px solid #FBA8A8; }
+
+.course-table .detail {
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 0 6px 21px rgba(0, 0, 0, 0.4);
+  border: 1px solid #bbb;
+  background: #f5f5f5; }
+
+.course-table .detail p {
+  line-height: 1.2em; }
+
+.course-table .detail .remove {
+  font-size: 15px;
+  font-weight: 100;
+  height: 32px; }
+
+.course-table .detail .remove i {
+  padding: 0 3px; }
+
+.course-total .head {
+  padding: 10px;
+  font-weight: normal;
+  background: linear-gradient(to bottom, #9C9C9C 0%, #BDBDBD 100%);
+  color: #FFF;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.52); }
+
+.course-table .qrcode-bg .qrcode {
+  padding: 12px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); }
+
+.course-table .qrcode-bg p {
+  margin-top: 30px;
+  text-shadow: 0 0 10px #000; }
+
+.search .search-box {
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.46), 0 4px 30px rgba(0, 0, 0, 0.3); }
+
+.search .search-box .search-bar .input {
+  font-size: 24px; }
+
+.search .search-box .search-bar {
+  border-bottom: none;
+  line-height: 46px; }
+
+.search .search-box .search-bar .more i {
+  margin-right: 7px; }
+
+.search .search-box .result .detail .box, .search .search-box .result .detail .update {
+  height: 36px;
+  width: 120px;
+  box-shadow: none;
+  font-weight: 100;
+  margin: 10px 2px 0; }
+
+.search .search-box .result .detail .box, .search .search-box .result .detail .update {
+  height: 36px;
+  width: 120px;
+  box-shadow: none;
+  font-weight: 100;
+  margin: 10px 2px 0; }
+
+.search .search-box .result .list li:hover {
+  background-color: #C7C7C7; }
+
+.search .search-box .more-search div p {
+  font-size: 18px;
+  margin-bottom: 10px; }
+
+.search .search-box .more-search div {
+  padding: 10px; }
+
+.course-table, .course-total, .collection {
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.8); }
+
+tr {
+  cursor: default; }
+
+.collection table .update, .collection table .remove, .collection table .copy {
+  box-shadow: 0 0;
+  height: 32px;
+  margin: 0 2px;
+  vertical-align: bottom;
+  font-size: 15px; }
+
+.collection table .update:hover, .collection table .remove:hover, .collection table .copy:hover {
+  background-color: #fff; }
