@@ -6,7 +6,8 @@ angular.module('starkAPP')
 
             $scope.$on('courseModelUpdate', function(event, data) {
                 refreshen(data);
-            });   
+            });
+
             function refreshen(data) {
                 var list = [];
                 var idList = [];

@@ -154,7 +154,7 @@ angular.module('starkAPP')
             $scope.showDetail = function(weekday, No, $event) {
                 
                 var e = e || window.event || $event;
-                console.log($event,e);
+                //console.log($event,e);
                 if (BaseService.courseModel.data[weekday][No] === 0) {
                     return;
                 }
@@ -173,13 +173,18 @@ angular.module('starkAPP')
                     if(e.layerY != undefined){
                         top = e.layerY - 100 < 0 ? 0 : e.layerY - 100;
                     }else{
-                        top=100;
+                        top= e.clientY+$('#bg')[0].scrollTop-100;
                     }
                     var left = (weekday + 1) * 15 + 10;
                     $scope.detailPosition = "top:" + top + "px;left:" + left + "%;";
                 }
                 if (weekday === 3 || weekday === 4 || weekday === 5) {
-                    var top = e.layerY - 100 < 0 ? 0 : e.layerY - 100;
+                    var top;
+                    if(e.layerY != undefined){
+                        top = e.layerY - 100 < 0 ? 0 : e.layerY - 100;
+                    }else{
+                        top= e.clientY+$('#bg')[0].scrollTop-100;
+                    }
                     var right = (6 - weekday) * 15;
                     $scope.detailPosition = "top:" + top + "px;right:" + right + "%;";
                 }
