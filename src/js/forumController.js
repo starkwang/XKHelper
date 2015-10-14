@@ -23,7 +23,7 @@ angular.module('starkAPP')
             }
 
             $scope.open = function(){
-                window.open('/#/forum/course/');
+                window.open('http://stu.fudan.edu.cn/xk/#/forum/course/');
             }
         }
     ]);

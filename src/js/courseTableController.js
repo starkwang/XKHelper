@@ -151,8 +151,10 @@ angular.module('starkAPP')
                 }
             }
 
-            $scope.showDetail = function(weekday, No) {
-                var e = e || window.event;
+            $scope.showDetail = function(weekday, No, $event) {
+                
+                var e = e || window.event || $event;
+                console.log($event,e);
                 if (BaseService.courseModel.data[weekday][No] === 0) {
                     return;
                 }
@@ -167,7 +169,12 @@ angular.module('starkAPP')
                 }
 
                 if (weekday === 0 || weekday === 1 || weekday === 2) {
-                    var top = e.layerY - 100 < 0 ? 0 : e.layerY - 100;
+                    var top;
+                    if(e.layerY != undefined){
+                        top = e.layerY - 100 < 0 ? 0 : e.layerY - 100;
+                    }else{
+                        top=100;
+                    }
                     var left = (weekday + 1) * 15 + 10;
                     $scope.detailPosition = "top:" + top + "px;left:" + left + "%;";
                 }
@@ -189,15 +196,15 @@ angular.module('starkAPP')
             $scope.saveToPhone = function() {
                 var course_data = {
                     courses: BaseService.courseModel.getCourseData(),
-                    "day-content":["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
-                    "line-color":"#fff",
-                    "background-color":"#fff",
-                    "width":480,
-                    "height":960,
-                    "font-size":36,
-                    "info-font-size":30,
-                    "header-font-size":30,
-                    "siderbar-font-size":24
+                    "day-content": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+                    "line-color": "#fff",
+                    "background-color": "#fff",
+                    "width": 480,
+                    "height": 960,
+                    "font-size": 36,
+                    "info-font-size": 30,
+                    "header-font-size": 30,
+                    "siderbar-font-size": 24
                 };
                 var data = JSON.stringify(course_data);
                 console.log(data);
@@ -206,7 +213,7 @@ angular.module('starkAPP')
                 }).then(function(result) {
                     $scope.qrcode = true;
                     var url = 'http://stu.fudan.edu.cn/xk/img/' + result.data;
-                    console.log(url);
+                    $('.qrcode').html('');
                     $('.qrcode').qrcode({
                         width: 200,
                         height: 200,
@@ -215,7 +222,7 @@ angular.module('starkAPP')
                 });
             }
 
-            $scope.hideQrcode = function(){
+            $scope.hideQrcode = function() {
                 $scope.qrcode = false;
             }
         }
