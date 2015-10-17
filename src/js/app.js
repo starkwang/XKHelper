@@ -4,7 +4,8 @@ var starkAPP = angular.module('starkAPP', [
         'ngRoute',
         'ngAnimate',
         'routeStyles',
-        'baseService'
+        'baseService',
+        'clipBoard'
     ])
     .config(['$compileProvider', '$routeProvider', '$locationProvider',
         function($compileProvider, $routeProvider, $locationProvider) {

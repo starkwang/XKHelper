@@ -14,7 +14,7 @@ var gulp = require('gulp'),
     connect = require('gulp-connect');;
 gulp.task('default', ['clean', 'scripts', 'libs', 'sass', 'sass:watch', 'Imagemin', 'watch', 'webserver']);
 gulp.task('scripts', function() {
-    return gulp.src([ 'src/js/app.js','src/js/*Service.js', 'src/js/*Controller.js'])
+    return gulp.src([ 'src/js/ngClipBoard.js','src/js/app.js','src/js/*Service.js', 'src/js/*Controller.js'])
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
         .pipe(concat('main.js'))
@@ -29,7 +29,7 @@ gulp.task('scripts', function() {
         }));
 });
 gulp.task('libs', function() {
-    return gulp.src(['src/lib/csv.min.js','src/lib/fastclick.js', 'src/lib/data.js','src/lib/clipboard.min.js', 'src/lib/jquery.js','src/lib/jquery-qrcode.js','src/lib/angular.min.js', 'src/lib/angular-route.min.js', 'src/lib/angular-css.js','src/lib/angular-animate.min.js'])
+    return gulp.src(['src/lib/csv.min.js','src/lib/fastclick.js', 'src/lib/data.js', 'src/lib/jquery.js','src/lib/jquery-qrcode.js','src/lib/angular.min.js', 'src/lib/angular-route.min.js', 'src/lib/angular-css.js','src/lib/angular-animate.min.js'])
         .pipe(concat('lib.js'))
         .pipe(gulp.dest('build/lib'))
         .pipe(rename({

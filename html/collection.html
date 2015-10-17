@@ -21,7 +21,7 @@
           <td>
             <button ng-click="addCourse()" class="update" ng-class="{true: 'isInCourseTable'}[course.isInCourseTable]" ng-disabled="course.isInCourseTable">{{course.text}}</button>
             <button ng-click="remove()" class="remove"><i class="iconfont icon-remove"></i>移除</button>
-            <button class="copy" data-clipboard-action="copy" data-clipboard-text="{{course['选课序号']}}">复制序号</button>
+            <button class="copy" clip-board-text="{{course['选课序号']}}" clip-board>复制序号</button>
           </td>
         </tr>
       </tbody>
