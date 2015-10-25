@@ -46,10 +46,12 @@ gulp.task('sass', function() {
     gulp.src(['src/style/animate.scss','src/style/collection.scss','src/style/forum.scss','src/style/all.scss','src/style/animation.scss','src/style/base.scss','src/style/reset.scss','src/style/ui-override.scss'])
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(concat('base.css'))
+        .pipe(minifycss())
         .pipe(gulp.dest('build/css'));
     gulp.src(['src/style/main.scss'])
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(concat('main.css'))
+        .pipe(minifycss())
         .pipe(gulp.dest('build/css'));
 });
 
