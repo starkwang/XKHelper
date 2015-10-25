@@ -1,6 +1,6 @@
 //搜索
-angular.module('starkAPP')
-    .controller('searchController', ['$scope', 'BaseService', '$timeout', '$location',
+var starkAPP = require('./app.js');
+starkAPP.controller('searchController', ['$scope', 'BaseService', '$timeout', '$location',
         function($scope, BaseService, $timeout, $location) {
             $scope.$on('showSearch', function() {
                 $('.search').css('z-index', '100');
@@ -116,3 +116,4 @@ angular.module('starkAPP')
             }
         }
     ]);
+module.exports = starkAPP;

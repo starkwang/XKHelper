@@ -1,3 +1,4 @@
+var angular = require('angular');
 angular.module('baseService', [])
     .factory('BaseService', ['$rootScope', '$http',
         function($rootScope, $http) {
@@ -113,7 +114,7 @@ angular.module('baseService', [])
                 getCourseData: function() {
                     var courses = [];
                     var ID = [];
-                    var colorBox = ['#66CCFF','#FF9900','#99CC33','#FF6666','#33CC99','#336699','#CCCC44','#339933'];
+                    var colorBox = ['#66CCFF', '#FF9900', '#99CC33', '#FF6666', '#33CC99', '#336699', '#CCCC44', '#339933'];
                     var colorCounter = 0;
                     this.data.forEach(function(weekday) {
                         weekday.forEach(function(course) {
@@ -125,13 +126,13 @@ angular.module('baseService', [])
                                         name: course['课程名称'],
                                         day: timeParser(time).weekday,
                                         section: time.split(' ')[1],
-                                        info: course['教室'] + '('+course['教师']+')',
-                                        "background-color":colorBox[colorCounter]
+                                        info: course['教室'] + '(' + course['教师'] + ')',
+                                        "background-color": colorBox[colorCounter]
                                     }
                                     courses.push(item);
                                 })
                                 colorCounter++;
-                                if(colorCounter === colorBox.length){
+                                if (colorCounter === colorBox.length) {
                                     colorCounter = 0;
                                 }
                                 ID.push(course['选课序号'])
@@ -330,3 +331,4 @@ angular.module('baseService', [])
         };
         return filter;
     });
+module.exports = angular;

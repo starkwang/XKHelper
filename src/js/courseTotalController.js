@@ -1,6 +1,6 @@
 //课程清单、考试时间
-angular.module('starkAPP')
-    .controller('courseTotalController', ['$scope', 'BaseService',
+var starkAPP = require('./app.js');
+starkAPP.controller('courseTotalController', ['$scope', 'BaseService',
         function($scope, BaseService) {
             refreshen(BaseService.courseModel.data);
 
@@ -26,3 +26,4 @@ angular.module('starkAPP')
             }
         }
     ]);
+module.exports = starkAPP;

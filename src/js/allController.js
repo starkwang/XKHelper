@@ -1,6 +1,6 @@
 //全部课程
-angular.module('starkAPP')
-    .controller('allController', ['$scope', '$rootScope', 'BaseService', '$timeout', '$location',
+var starkAPP = require('./app.js')
+starkAPP.controller('allController', ['$scope', '$rootScope', 'BaseService', '$timeout', '$location',
         function($scope, $rootScope, BaseService, $timeout, $location) {
             var data = [];
             for (name in COURSE_DATA) {
@@ -50,3 +50,4 @@ angular.module('starkAPP')
 
         }
     ]);
+module.exports = starkAPP;

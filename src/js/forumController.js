@@ -1,6 +1,6 @@
 //课程论坛
-angular.module('starkAPP')
-    .controller('forumController', ['$scope', 'BaseService',
+var starkAPP = require('./app.js');
+starkAPP.controller('forumController', ['$scope', 'BaseService',
         function($scope, BaseService) {
 
             $scope.commentTitle = '点击此处可分享你的上课心得（已有999条评论）';
@@ -27,3 +27,4 @@ angular.module('starkAPP')
             }
         }
     ]);
+module.exports = starkAPP;

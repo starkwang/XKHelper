@@ -1,3 +1,4 @@
+var angular = require('angular');
 angular.module('clipBoard', [])
     .directive('clipBoard', function() {
         /*!
@@ -705,3 +706,4 @@ angular.module('clipBoard', [])
             }
         }
     });
+module.exports = angular;

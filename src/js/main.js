@@ -1,0 +1,21 @@
+require('./allController.js');
+require('./animateModule.js');
+require('./app.js')
+require('./baseService.js');
+require('./collectionController.js');
+require('./courseTableController.js');
+require('./courseTotalController.js');
+require('./forumController.js');
+require('./forumCourseController.js');
+require('./ngClipBoard.js');
+require('./searchController.js');
+require('./sidebarController.js');
+require("!style!css!sass!../style/all.scss");
+// require('../style/animate.scss');
+// require('../style/animation.scss');
+// require('../style/base.scss');
+// require('../style/collection.scss');
+// require('../style/forum.scss');
+// require('../style/main.scss');
+// require('../style/reset.scss');
+// require('../style/ui-override.scss');

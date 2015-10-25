@@ -1,7 +1,8 @@
 //课程论坛详情页
-angular.module('starkAPP')
-    .controller('forumCourseController', ['$scope', 'BaseService',
+var starkAPP = require('./app.js');
+starkAPP.controller('forumCourseController', ['$scope', 'BaseService',
         function($scope, BaseService) {
 
         }
     ]);
+module.exports = starkAPP;

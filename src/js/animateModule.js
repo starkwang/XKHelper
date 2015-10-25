@@ -1,6 +1,6 @@
 //课表
-angular.module('starkAPP')
-    .animation('.hide-animation', function() {
+var starkAPP = require('./app.js');
+starkAPP.animation('.hide-animation', function() {
         return {
             beforeAddClass: function(element, className, done) {
                 if (className === 'ng-hide') {
@@ -23,3 +23,4 @@ angular.module('starkAPP')
             }
         };
     });
+module.exports = starkAPP;

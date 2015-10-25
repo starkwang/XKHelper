@@ -1,6 +1,6 @@
 //收藏夹
-angular.module('starkAPP')
-    .controller('collectionController', ['$scope', '$rootScope','BaseService','$timeout','$location',
+var starkAPP = require('./app.js');
+starkAPP.controller('collectionController', ['$scope', '$rootScope','BaseService','$timeout','$location',
         function($scope, $rootScope,BaseService, $timeout,$location) {
             function refreshen(){
                 $scope.courses = BaseService.collectionModel.data;
@@ -29,3 +29,4 @@ angular.module('starkAPP')
             }
         }
     ]);
+module.exports = starkAPP;

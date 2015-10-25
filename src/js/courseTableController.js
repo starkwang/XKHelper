@@ -1,6 +1,6 @@
 //课表
-angular.module('starkAPP')
-    .controller('courseTableController', ['$scope', 'BaseService', '$timeout',
+var starkAPP = require('./app.js');
+starkAPP.controller('courseTableController', ['$scope', 'BaseService', '$timeout',
         function($scope, BaseService, $timeout) {
 
             refreshen(BaseService.courseModel.data);
@@ -232,3 +232,4 @@ angular.module('starkAPP')
             }
         }
     ]);
+module.exports = starkAPP;

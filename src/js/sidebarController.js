@@ -1,6 +1,6 @@
 //侧边栏
-angular.module('starkAPP')
-    .controller('sidebarController', ['$scope', '$rootScope', 'BaseService', '$timeout', '$location',
+var starkAPP = require('./app.js');
+starkAPP.controller('sidebarController', ['$scope', '$rootScope', 'BaseService', '$timeout', '$location',
         function($scope, $rootScope, BaseService, $timeout, $location) {
             function refreshen() {
                 $scope.active = {};
@@ -20,3 +20,4 @@ angular.module('starkAPP')
             }
         }
     ]);
+module.exports = starkAPP;

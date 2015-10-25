@@ -1,4 +1,5 @@
 'use strict';
+var angular = require('angular');
 document.documentElement.style.overflowY = 'hidden';
 var starkAPP = angular.module('starkAPP', [
         'ngRoute',
@@ -30,3 +31,4 @@ var starkAPP = angular.module('starkAPP', [
                 });
         }
     ]);
+module.exports = starkAPP;
