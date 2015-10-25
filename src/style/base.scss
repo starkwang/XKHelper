@@ -8,10 +8,9 @@ a:hover {
 html,
 body {
   height: 100%;
-  font-family: "微软雅黑" !important;
+  font-family: 'Avenir Next', 'Avenir', 'Helvetica Neue', 'Helvetica', 'Lantinghei SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', 'STHeiti', 'WenQuanYi Micro Hei', 'SimSun', 'sans-serif'!important;
   background: #66cccc;
 }
-
 #bg {
   width: 100%;
   background-size: cover;
@@ -286,6 +285,7 @@ body {
         h1 {
           font-size: 24px;
           padding: 5px;
+          font-weight:500;
         }
         p {
           padding: 5px;
@@ -294,7 +294,7 @@ body {
         }
         .main-info {
           font-size: 18px;
-          font-weight: bold;
+          font-weight: 500;
           color: #000;
         }
         .update {

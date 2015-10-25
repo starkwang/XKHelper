@@ -2686,7 +2686,7 @@ Copyright (c) 2015 Daniel Eden
     .category .handle .name {
       text-align: center;
       font-size: 20px;
-      font-weight: bold;
+      font-weight: 500;
       padding: 5px; }
     .category .handle .teacher {
       text-align: center;
@@ -2869,7 +2869,7 @@ a:hover {
 html,
 body {
   height: 100%;
-  font-family: "微软雅黑" !important;
+  font-family: "Avenir Next", "Avenir", "Helvetica Neue", "Helvetica", "Lantinghei SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", "SimSun", "sans-serif" !important;
   background: #66cccc; }
 
 #bg {
@@ -3099,14 +3099,15 @@ body {
       box-sizing: border-box; }
       .search .search-box .result .detail h1 {
         font-size: 24px;
-        padding: 5px; }
+        padding: 5px;
+        font-weight: 500; }
       .search .search-box .result .detail p {
         padding: 5px;
         font-size: 14px;
         color: #777; }
       .search .search-box .result .detail .main-info {
         font-size: 18px;
-        font-weight: bold;
+        font-weight: 500;
         color: #000; }
       .search .search-box .result .detail .update {
         background-color: #00ae68;
@@ -3252,8 +3253,7 @@ html {
   overflow-y: scroll; }
 
 body {
-  background: linear-gradient(to bottom, #DCDCDC 0%, #A5A5A5 100%);
-  font-family: 'Source Han Sans', 'Source Han Sans CN', 'Open Sans', 'Lucida Grande', 'Segoe UI', Helvetica, Arial, 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif !important; }
+  background: linear-gradient(to bottom, #DCDCDC 0%, #A5A5A5 100%); }
 
 .sidebar .title {
   font-size: 16px;
@@ -3374,14 +3374,6 @@ td#counter {
 .search .search-box .result .detail .box, .search .search-box .result .detail .update {
   height: 36px;
   width: 120px;
-  box-shadow: none;
-  font-weight: 100;
-  margin: 10px 2px 0; }
-
-.search .search-box .result .detail .box, .search .search-box .result .detail .update {
-  height: 36px;
-  width: 120px;
-  box-shadow: none;
   font-weight: 100;
   margin: 10px 2px 0; }
 
@@ -3402,7 +3394,6 @@ tr {
   cursor: default; }
 
 .collection table .update, .collection table .remove, .collection table .copy {
-  box-shadow: 0 0;
   height: 32px;
   margin: 0 2px;
   vertical-align: bottom;

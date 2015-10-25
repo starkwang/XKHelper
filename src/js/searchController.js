@@ -95,10 +95,15 @@ angular.module('starkAPP')
                 refreshenDetail($scope.detail['选课序号']);
             }
             $scope.$on('courseModelUpdate', function() {
-                refreshenDetail($scope.detail['选课序号']);
+                if ($scope.detail) {
+                    refreshenDetail($scope.detail['选课序号']);
+                }
+
             });
             $scope.$on('collectionUpdate', function() {
-                refreshenDetail($scope.detail['选课序号']);
+                if ($scope.detail) {
+                    refreshenDetail($scope.detail['选课序号']);
+                }
             });
             $scope.courseUpdate = function() {
                 BaseService.courseModel.update(this.detail);

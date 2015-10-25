@@ -108,11 +108,12 @@
       padding: 8px 5px;
       font-size: 20px;
       text-align: center;
-      border-bottom: 1px solid #aaa; }
+      border-bottom: 1px solid #aaa;
+      font-weight: 500; }
     .course-table .detail .main-info {
       color: #000;
       font-size: 16px;
-      font-weight: bolder; }
+      font-weight: 500; }
     .course-table .detail .remove {
       background-color: #df3e3e;
       margin: 5px 5px;

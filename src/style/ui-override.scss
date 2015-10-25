@@ -1,6 +1,6 @@
 body {
 background: linear-gradient(to bottom, #DCDCDC 0%, #A5A5A5 100%);
-font-family: 'Source Han Sans', 'Source Han Sans CN', 'Open Sans', 'Lucida Grande', 'Segoe UI', Helvetica, Arial, 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif !important;
+//font-family: 'Source Han Sans', 'Source Han Sans CN', 'Open Sans', 'Lucida Grande', 'Segoe UI', Helvetica, Arial, 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif !important;
 }
 
 .sidebar .title {
@@ -145,17 +145,7 @@ td#counter {
 .search .search-box .result .detail .box, .search .search-box .result .detail .update {
 	    height: 36px;
 	        width: 120px;
-	            box-shadow: none;
-	                font-weight: 100;
-	                    margin: 10px 2px 0;
-}
-
-
-
-.search .search-box .result .detail .box, .search .search-box .result .detail .update {
-	    height: 36px;
-	        width: 120px;
-	            box-shadow: none;
+	            //box-shadow: none;
 	                font-weight: 100;
 	                    margin: 10px 2px 0;
 }
@@ -182,7 +172,7 @@ tr {
 }
 
 .collection table .update, .collection table .remove, .collection table .copy {
-	    box-shadow: 0 0;
+	    //box-shadow: 0 0;
 	        height: 32px;
 	            margin: 0 2px;
 	                vertical-align: bottom;
