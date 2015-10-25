@@ -1,3 +1,4 @@
+var angular = require('angular');
 angular.module('clipBoard', [])
     .directive('clipBoard', function() {
         /*!
@@ -705,8 +706,9 @@ angular.module('clipBoard', [])
             }
         }
     });
-
+module.exports = angular;
 'use strict';
+var angular = require('angular');
 document.documentElement.style.overflowY = 'hidden';
 var starkAPP = angular.module('starkAPP', [
         'ngRoute',
@@ -738,7 +740,9 @@ var starkAPP = angular.module('starkAPP', [
                 });
         }
     ]);
+module.exports = starkAPP;
 
+var angular = require('angular');
 angular.module('baseService', [])
     .factory('BaseService', ['$rootScope', '$http',
         function($rootScope, $http) {
@@ -854,7 +858,7 @@ angular.module('baseService', [])
                 getCourseData: function() {
                     var courses = [];
                     var ID = [];
-                    var colorBox = ['#66CCFF','#FF9900','#99CC33','#FF6666','#33CC99','#336699','#CCCC44','#339933'];
+                    var colorBox = ['#66CCFF', '#FF9900', '#99CC33', '#FF6666', '#33CC99', '#336699', '#CCCC44', '#339933'];
                     var colorCounter = 0;
                     this.data.forEach(function(weekday) {
                         weekday.forEach(function(course) {
@@ -866,13 +870,13 @@ angular.module('baseService', [])
                                         name: course['课程名称'],
                                         day: timeParser(time).weekday,
                                         section: time.split(' ')[1],
-                                        info: course['教室'] + '('+course['教师']+')',
-                                        "background-color":colorBox[colorCounter]
+                                        info: course['教室'] + '(' + course['教师'] + ')',
+                                        "background-color": colorBox[colorCounter]
                                     }
                                     courses.push(item);
                                 })
                                 colorCounter++;
-                                if(colorCounter === colorBox.length){
+                                if (colorCounter === colorBox.length) {
                                     colorCounter = 0;
                                 }
                                 ID.push(course['选课序号'])
@@ -1071,10 +1075,11 @@ angular.module('baseService', [])
         };
         return filter;
     });
+module.exports = angular;
 
 //全部课程
-angular.module('starkAPP')
-    .controller('allController', ['$scope', '$rootScope', 'BaseService', '$timeout', '$location',
+var starkAPP = require('./app.js')
+starkAPP.controller('allController', ['$scope', '$rootScope', 'BaseService', '$timeout', '$location',
         function($scope, $rootScope, BaseService, $timeout, $location) {
             var data = [];
             for (name in COURSE_DATA) {
@@ -1124,10 +1129,10 @@ angular.module('starkAPP')
 
         }
     ]);
-
+module.exports = starkAPP;
 //收藏夹
-angular.module('starkAPP')
-    .controller('collectionController', ['$scope', '$rootScope','BaseService','$timeout','$location',
+var starkAPP = require('./app.js');
+starkAPP.controller('collectionController', ['$scope', '$rootScope','BaseService','$timeout','$location',
         function($scope, $rootScope,BaseService, $timeout,$location) {
             function refreshen(){
                 $scope.courses = BaseService.collectionModel.data;
@@ -1156,10 +1161,11 @@ angular.module('starkAPP')
             }
         }
     ]);
+module.exports = starkAPP;
 
 //课表
-angular.module('starkAPP')
-    .controller('courseTableController', ['$scope', 'BaseService', '$timeout',
+var starkAPP = require('./app.js');
+starkAPP.controller('courseTableController', ['$scope', 'BaseService', '$timeout',
         function($scope, BaseService, $timeout) {
 
             refreshen(BaseService.courseModel.data);
@@ -1391,10 +1397,10 @@ angular.module('starkAPP')
             }
         }
     ]);
-
+module.exports = starkAPP;
 //课程清单、考试时间
-angular.module('starkAPP')
-    .controller('courseTotalController', ['$scope', 'BaseService',
+var starkAPP = require('./app.js');
+starkAPP.controller('courseTotalController', ['$scope', 'BaseService',
         function($scope, BaseService) {
             refreshen(BaseService.courseModel.data);
 
@@ -1420,10 +1426,10 @@ angular.module('starkAPP')
             }
         }
     ]);
-
+module.exports = starkAPP;
 //课程论坛
-angular.module('starkAPP')
-    .controller('forumController', ['$scope', 'BaseService',
+var starkAPP = require('./app.js');
+starkAPP.controller('forumController', ['$scope', 'BaseService',
         function($scope, BaseService) {
 
             $scope.commentTitle = '点击此处可分享你的上课心得（已有999条评论）';
@@ -1450,18 +1456,18 @@ angular.module('starkAPP')
             }
         }
     ]);
-
+module.exports = starkAPP;
 //课程论坛详情页
-angular.module('starkAPP')
-    .controller('forumCourseController', ['$scope', 'BaseService',
+var starkAPP = require('./app.js');
+starkAPP.controller('forumCourseController', ['$scope', 'BaseService',
         function($scope, BaseService) {
 
         }
     ]);
-
+module.exports = starkAPP;
 //搜索
-angular.module('starkAPP')
-    .controller('searchController', ['$scope', 'BaseService', '$timeout', '$location',
+var starkAPP = require('./app.js');
+starkAPP.controller('searchController', ['$scope', 'BaseService', '$timeout', '$location',
         function($scope, BaseService, $timeout, $location) {
             $scope.$on('showSearch', function() {
                 $('.search').css('z-index', '100');
@@ -1577,10 +1583,10 @@ angular.module('starkAPP')
             }
         }
     ]);
-
+module.exports = starkAPP;
 //侧边栏
-angular.module('starkAPP')
-    .controller('sidebarController', ['$scope', '$rootScope', 'BaseService', '$timeout', '$location',
+var starkAPP = require('./app.js');
+starkAPP.controller('sidebarController', ['$scope', '$rootScope', 'BaseService', '$timeout', '$location',
         function($scope, $rootScope, BaseService, $timeout, $location) {
             function refreshen() {
                 $scope.active = {};
@@ -1600,3 +1606,4 @@ angular.module('starkAPP')
             }
         }
     ]);
+module.exports = starkAPP;

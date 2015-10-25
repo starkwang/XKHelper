@@ -12,7 +12,7 @@ var gulp = require('gulp'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
     connect = require('gulp-connect');;
-gulp.task('default', ['clean', 'scripts', 'libs', 'sass', 'sass:watch', 'Imagemin', 'watch', 'webserver']);
+gulp.task('default', [ 'scripts', 'libs', 'sass', 'sass:watch', 'Imagemin', 'watch', 'webserver']);
 gulp.task('scripts', function() {
     return gulp.src([ 'src/js/ngClipBoard.js','src/js/app.js','src/js/*Service.js', 'src/js/*Controller.js'])
         .pipe(jshint())

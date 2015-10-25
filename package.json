@@ -1,7 +1,9 @@
 {
   "name": "XKHelper",
   "version": "0.0.1",
-  "dependencies": {},
+  "dependencies": {
+    "angular": "^1.4.7"
+  },
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.0.1",
@@ -17,6 +19,9 @@
     "gulp-rename": "^1.2.2",
     "gulp-ruby-sass": "^2.0.0",
     "gulp-sass": "^2.0.4",
-    "gulp-uglify": "^1.4.1"
+    "gulp-uglify": "^1.4.1",
+    "node-sass": "^3.4.0",
+    "sass-loader": "^3.0.0",
+    "webpack": "^1.12.2"
   }
 }
