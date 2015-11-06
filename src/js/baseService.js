@@ -31,13 +31,11 @@ angular.module('baseService', [])
                     var conflictName = [];
                     var conflictCourse = [];
                     for (var i = 0; i < timeCollection.length; i++) {
-                        console.log('check');
                         var parseResult = timeParser(timeCollection[i]);
                         var weekday = parseResult.weekday;
                         var start = parseResult.start;
                         var courseLength = parseResult.length;
                         for (var j = 0; j < courseLength; j++) {
-                            console.log(this.data[weekday][start + j]);
                             if (this.data[weekday][start + j] != 0 && conflictName.indexOf(this.data[weekday][start + j]['课程名称']) == -1) {
                                 conflictName.push(this.data[weekday][start + j]['课程名称']);
                                 conflictCourse.push(this.data[weekday][start + j]);
@@ -117,7 +115,6 @@ angular.module('baseService', [])
                     var colorCounter = 0;
                     this.data.forEach(function(weekday) {
                         weekday.forEach(function(course) {
-                            console.log(course);
                             if (course && ID.indexOf(course['选课序号']) === -1) {
                                 var time = course['时间'].split('{time}');
                                 time.forEach(function(time) {

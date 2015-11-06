@@ -10,19 +10,46 @@
       </div>
       <div class="more-search" ng-show="moreSearchShow">
         <div class="certain-category">
-          <p>限定类别</p>
-          <input type="checkbox" ng-model="certainCategory['大学外语']" ng-change="kwChange()">大学外语
-          <input type="checkbox" ng-model="certainCategory['二专课程']" ng-change="kwChange()">二专课程
-          <input type="checkbox" ng-model="certainCategory['文科专业课']" ng-change="kwChange()">文科专业课
-          <input type="checkbox" ng-model="certainCategory['军事理论']" ng-change="kwChange()">军事理论
-          <input type="checkbox" ng-model="certainCategory['理科课程']" ng-change="kwChange()">理科课程
-          <input type="checkbox" ng-model="certainCategory['模块课程']" ng-change="kwChange()">模块课程
-          <input type="checkbox" ng-model="certainCategory['留学生']" ng-change="kwChange()">留学生
-          <input type="checkbox" ng-model="certainCategory['美育']" ng-change="kwChange()">美育
-          <input type="checkbox" ng-model="certainCategory['计算机']" ng-change="kwChange()">计算机
+          <h1 class="title">限定类别</h1>
+          <p>
+            <input type="checkbox" ng-model="certainCategory['大学外语']" ng-change="kwChange()" id="cb1">
+            <label for="cb1">大学外语</label>
+          </p>
+          <p>
+            <input type="checkbox" ng-model="certainCategory['二专课程']" ng-change="kwChange()" id="cb2">
+            <label for="cb2">二专课程</label>
+          </p>
+          <p>
+            <input type="checkbox" ng-model="certainCategory['文科专业课']" ng-change="kwChange()" id="cb3">
+            <label for="cb3">文科专业课</label>
+          </p>
+          <p>
+            <input type="checkbox" ng-model="certainCategory['军事理论']" ng-change="kwChange()" id="cb4">
+            <label for="cb4">军事理论</label>
+          </p>
+          <p>
+            <input type="checkbox" ng-model="certainCategory['理科课程']" ng-change="kwChange()" id="cb5">
+            <label for="cb5">理科课程</label>
+          </p>
+          <p>
+            <input type="checkbox" ng-model="certainCategory['模块课程']" ng-change="kwChange()" id="cb6">
+            <label for="cb6">模块课程</label>
+          </p>
+          <p>
+            <input type="checkbox" ng-model="certainCategory['留学生']" ng-change="kwChange()" id="cb7">
+            <label for="cb7">留学生</label>
+          </p>
+          <p>
+            <input type="checkbox" ng-model="certainCategory['美育']" ng-change="kwChange()" id="cb8">
+            <label for="cb8">美育</label>
+          </p>
+          <p>
+            <input type="checkbox" ng-model="certainCategory['计算机']" ng-change="kwChange()" id="cb9">
+            <label for="cb9">计算机</label>
+          </p>
         </div>
-        <div>
-          <p>限定时间</p>
+        <div class="certain-time">
+          <p class="title">限定时间</p>
           从
           <select ng-model="certainTime.startDay" ng-change="kwChange()">
             <option value="一">周一</option>
@@ -33,9 +60,8 @@
             <option value="六">周六</option>
           </select>
           第
-          <input type="text" placeholder="1~13" ng-model="certainTime.startCourse" ng-change="kwChange()">
-          节课<br/>
-          到
+          <input type="text" placeholder="1~13" ng-model="certainTime.startCourse" ng-change="kwChange()"> 节课
+          <br/> 到
           <select ng-model="certainTime.endDay" ng-change="kwChange()">
             <option value="一">周一</option>
             <option value="二">周二</option>
@@ -45,8 +71,7 @@
             <option value="六">周六</option>
           </select>
           第
-          <input type="text" placeholder="1~13" ng-model="certainTime.endCourse" ng-change="kwChange()">
-          节课
+          <input type="text" placeholder="1~13" ng-model="certainTime.endCourse" ng-change="kwChange()"> 节课
         </div>
       </div>
       <div class="result" ng-show="resultShow">

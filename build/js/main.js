@@ -772,13 +772,11 @@ angular.module('baseService', [])
                     var conflictName = [];
                     var conflictCourse = [];
                     for (var i = 0; i < timeCollection.length; i++) {
-                        console.log('check');
                         var parseResult = timeParser(timeCollection[i]);
                         var weekday = parseResult.weekday;
                         var start = parseResult.start;
                         var courseLength = parseResult.length;
                         for (var j = 0; j < courseLength; j++) {
-                            console.log(this.data[weekday][start + j]);
                             if (this.data[weekday][start + j] != 0 && conflictName.indexOf(this.data[weekday][start + j]['课程名称']) == -1) {
                                 conflictName.push(this.data[weekday][start + j]['课程名称']);
                                 conflictCourse.push(this.data[weekday][start + j]);
@@ -858,7 +856,6 @@ angular.module('baseService', [])
                     var colorCounter = 0;
                     this.data.forEach(function(weekday) {
                         weekday.forEach(function(course) {
-                            console.log(course);
                             if (course && ID.indexOf(course['选课序号']) === -1) {
                                 var time = course['时间'].split('{time}');
                                 time.forEach(function(time) {
@@ -1573,7 +1570,23 @@ angular.module('starkAPP')
                 BaseService.collectionModel.update(this.detail);
             }
             $scope.moreSearch = function() {
+                if ($scope.moreSearchShow) {
+                    resetCertainCategory();
+                } else {
+                    $scope.certainCategory = {
+                        '二专课程': false,
+                        '军事理论': false,
+                        '大学外语': false,
+                        '文科专业课': false,
+                        '模块课程': false,
+                        '理科课程': false,
+                        '留学生': false,
+                        '美育': false,
+                        '计算机': false,
+                    }
+                }
                 $scope.moreSearchShow = !$scope.moreSearchShow;
+
             }
         }
     ]);

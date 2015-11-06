@@ -1,16 +1,31 @@
+$deepth-1:0 2px 5px 0 rgba(0, 0, 0, 0.16),
+0 2px 10px 0 rgba(0, 0, 0, 0.12);
+$deepth-2:0 8px 17px 0 rgba(0, 0, 0, 0.2),
+0 6px 20px 0 rgba(0, 0, 0, 0.19);
+$deepth-3:0 12px 15px 0 rgba(0, 0, 0, 0.24),
+0 17px 50px 0 rgba(0, 0, 0, 0.19);
+$deepth-4:0 16px 28px 0 rgba(0, 0, 0, 0.22),
+0 25px 55px 0 rgba(0, 0, 0, 0.21);
+$deepth-5:0 27px 24px 0 rgba(0, 0, 0, 0.2),
+0 40px 77px 0 rgba(0, 0, 0, 0.22);
 .collection {
     background: #fff;
     position: relative;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: $deepth-2;
     margin: 20px 20px;
     table {
         width: 100%;
         tr {
-            border: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
             text-align: center;
         }
-        tr:hover {
-            background-color: #ddd;
+        thead{
+            background-color:#54555a;
+            color: #fff;
+
+        }
+        th{
+            font-weight: 400;
         }
         th,
         td {
@@ -27,24 +42,25 @@
             font-size: 18px;
             border-radius: 4px;
             cursor: pointer;
-            transition: all 0.1s;
-            -o-transition: all 0.1s;
-            -webkit-transition: all 0.1s;
-            -moz-transition: all 0.1s;
-            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+            transition: all 0.2s;
+            -o-transition: all 0.2s;
+            -webkit-transition: all 0.2s;
+            -moz-transition: all 0.2s;
+            box-shadow: $deepth-1;
         }
         .update.isInCourseTable {
             background-color: #aaa !important;
+            box-shadow:none;
         }
         .update:hover {
-            background-color: rgba(255, 255, 255, 0);
-            border: 2px solid #00ae68;
-            color: #00ae68;
+            box-shadow:$deepth-2;
+            background-color:lighten(#00ae68,5%);
         }
         .update.isInCourseTable:hover {
             background-color: #00ae68;
             border: 0;
             color: #fff;
+            box-shadow:none;
         }
         .remove {
             background-color: rgb(223, 62, 62);
@@ -62,15 +78,14 @@
             -o-transition: all 0.1s;
             -webkit-transition: all 0.1s;
             -moz-transition: all 0.1s;
-            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+            box-shadow: $deepth-1;
             i {
                 font-size: 18px;
             }
         }
         .remove:hover {
-            background-color: rgba(255, 255, 255, 0);
-            border: 2px solid rgb(223, 62, 62);
-            color: rgb(223, 62, 62);
+            box-shadow:$deepth-2;
+            background-color:lighten(#e93e3e,5%);
         }
         .copy {
             background-color: #66ccff;
@@ -88,15 +103,14 @@
             -o-transition: all 0.1s;
             -webkit-transition: all 0.1s;
             -moz-transition: all 0.1s;
-            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+            box-shadow: $deepth-1;
             i {
                 font-size: 18px;
             }
         }
         .copy:hover {
-            background-color: rgba(255, 255, 255, 0);
-            border: 2px solid #66ccff;
-            color: #66ccff;
+            box-shadow:$deepth-2;
+            background-color:lighten(#66ccff,5%);
         }
     }
 }

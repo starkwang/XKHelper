@@ -112,7 +112,23 @@ angular.module('starkAPP')
                 BaseService.collectionModel.update(this.detail);
             }
             $scope.moreSearch = function() {
+                if ($scope.moreSearchShow) {
+                    resetCertainCategory();
+                } else {
+                    $scope.certainCategory = {
+                        '二专课程': false,
+                        '军事理论': false,
+                        '大学外语': false,
+                        '文科专业课': false,
+                        '模块课程': false,
+                        '理科课程': false,
+                        '留学生': false,
+                        '美育': false,
+                        '计算机': false,
+                    }
+                }
                 $scope.moreSearchShow = !$scope.moreSearchShow;
+
             }
         }
     ]);
