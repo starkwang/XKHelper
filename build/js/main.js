@@ -711,6 +711,7 @@ document.documentElement.style.overflowY = 'hidden';
 var starkAPP = angular.module('starkAPP', [
         'ngRoute',
         'ngAnimate',
+        'infinite-scroll',
         'routeStyles',
         'baseService',
         'clipBoard'
@@ -957,19 +958,35 @@ angular.module('baseService', [])
                 var result = [];
                 if (specification.category.length > 0) {
                     specification.category.forEach(function(category) {
+                        /*
                         COURSE_DATA[category].forEach(function(course) {
                             if (matchCourse(specification, course)) {
                                 result.push(course);
                             }
                         });
+                        */
+                        //========== index search
+                        var searchRes = COURSE_DATA_INDEX[category].search(specification.keywords);
+                        searchRes.forEach(function (item) {
+                            result.push(COURSE_DATA[category][item.ref]);
+                        });
+                        //==========
                     });
                 } else {
                     for (var i in COURSE_DATA) {
+                        /*
                         COURSE_DATA[i].forEach(function(course) {
                             if (matchCourse(specification, course)) {
                                 result.push(course);
                             }
                         });
+                        */
+                        //========== index search
+                        var searchRes = COURSE_DATA_INDEX[i].search(specification.keywords);
+                        searchRes.forEach(function (item) {
+                            result.push(COURSE_DATA[i][item.ref]);
+                        });
+                        //==========
                     }
                 }
                 return result;
@@ -1471,6 +1488,9 @@ angular.module('starkAPP')
 
             $scope.moreSearchShow = false;
             $scope.keywords = '';
+            $scope.result = [];
+            $scope._result = [];
+            $scope.resultCnt = 0;
 
             function resetCertainCategory() {
                 $scope.certainCategory = {
@@ -1522,8 +1542,10 @@ angular.module('starkAPP')
                     category: category,
                     keywords: $scope.keywords,
                     time: time
-                }
-                $scope.result = BaseService.search(params);
+                };
+                $scope._result = BaseService.search(params);
+                $scope.result = $scope._result.slice(0, 10);
+                $scope.resultCnt = 10;
 
                 if ($scope.result.length > 0) {
                     $scope.resultShow = true;
@@ -1531,6 +1553,16 @@ angular.module('starkAPP')
                     $scope.resultShow = false;
                 }
             }
+
+            $scope.loadMore = function () {
+                $timeout(function () {
+                    for (var i = 0; i < 10; ++i) {
+                        if ($scope.resultCnt >= $scope._result.length)
+                            return;
+                        $scope.result.push($scope._result[$scope.resultCnt++]);
+                    }
+                });
+            };
 
             function refreshenDetail(id) {
                 if (BaseService.courseModel.check(id)) {

@@ -3,6 +3,7 @@ document.documentElement.style.overflowY = 'hidden';
 var starkAPP = angular.module('starkAPP', [
         'ngRoute',
         'ngAnimate',
+        'infinite-scroll',
         'routeStyles',
         'baseService',
         'clipBoard'

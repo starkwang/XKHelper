@@ -1,4 +1,5 @@
-var COURSE_DATA = {};
+var COURSE_DATA       = {};
+var COURSE_DATA_INDEX = {};
 
 var temp_data = '选课序号,课程名称,学分,教师,职称,人数,教室,时间,备注,考试时间,选课限制条件\r\n\
 MATH120001.01,高等数学A(上）,5.0,徐惠平,副教授,100,H3308,一 3-4 ,上海市精品课程,"考试日期：2015-12-30\r\n\
@@ -4881,7 +4882,7 @@ ENGL110070.05,大学英语III,2.0,朱彦,,35,Z2103,一 1-2 ,,"考试日期：201
 考试时间：13:00-15:00",大学英语教学部\r\n\
 ENGL110055.01,学术英语（医学）,2.0,蔡和兵,讲师,35,F2202,四 1-2 ,建议修完大学英语III,"考试日期：2015-12-17\r\n\
 \r\n\
-考试时间：08:00-09:40",大学英语教学部 '
+考试时间：08:00-09:40",大学英语教学部 ';
 
 COURSE_DATA['大学外语'] = new CSV(temp_data, {
     header: true
@@ -5290,7 +5291,7 @@ temp_data = '选课序号,课程名称,学分,教师,职称,人数,教室,时间
 考试时间：09:55-11:35",哲学学院 \r\n\
 916.089.1.01,《圣经》与西方宗教传统,2.0,王新生,教授,10,H3108,二 3-4,数理逻辑与科学哲学(二专),,"考试日期：2015-12-15\r\n\
 \r\n\
-考试时间：09:55-11:35",哲学学院 '
+考试时间：09:55-11:35",哲学学院 ';
 
 COURSE_DATA['二专课程'] = new CSV(temp_data, {
     header: true
@@ -5452,7 +5453,7 @@ COMP110037.07,VB程序设计,2.0,马颖琦,高级讲师,71,H4505,四 6-9 ,非自
 考试时间：08:00-22:00",计算机科学技术学院 ,15\r\n\
 COMP110042.01,Python程序设计,2.0,张向东,讲师,89,H4501,四 6-9 ,,"考试日期：2015-12-19\r\n\
 \r\n\
-考试时间：08:00-22:00",计算机科学技术学院,'
+考试时间：08:00-22:00",计算机科学技术学院,';
 
 COURSE_DATA['计算机'] = new CSV(temp_data, {
     header: true
@@ -5503,7 +5504,7 @@ NDEC110002.14,军事理论,1.0,赵亮,助理研究员,100,H3401,五 8-9 ,军事�
 考试时间：18:30-20:30"\r\n\
 NDEC110002.15,军事理论,1.0,,,500,H院系自主,二 11-12 ,军事理论教研室,慕课,"考试日期：\r\n\
 \r\n\
-考试时间：-"'
+考试时间：-"';
 
 COURSE_DATA['军事理论'] = new CSV(temp_data, {
     header: true
@@ -5582,13 +5583,13 @@ ICES110012.04,中国概况（上）,2.0,赵雪倩,高级讲师,40,HGD414,三 11-
 考试时间：18:30-20:00",国际文化交流学院 ,15 留学生\r\n\
 ICES110012.05,中国概况（上）,2.0,许金生,副教授,40,HGD414,四 11-12 ,,"考试日期：2016-01-07\r\n\
 \r\n\
-考试时间：18:30-20:00",国际文化交流学院,15 留学生'
+考试时间：18:30-20:00",国际文化交流学院,15 留学生';
 
 COURSE_DATA['留学生'] = new CSV(temp_data, {
     header: true
 }).parse();
 
-temp_data = '选课序号,课程名称,学分,教师,职称,人数,教室,时间,备注,考试时间,开课系,选课限制条件\r\n\
+temp_data         = '选课序号,课程名称,学分,教师,职称,人数,教室,时间,备注,考试时间,开课系,选课限制条件\r\n\
 FINE110001.01,影视剧艺术,2.0,龚金平,副教授,50,H6204,一 8-9 ,上海市精品课程团队,"考试日期：2015-12-24\r\n\
 \r\n\
 考试时间：18:30-20:30",艺术教育中心,\r\n\
@@ -5738,7 +5739,7 @@ FINE110077.01,微影人的自我修养,2.0,许肖潇,讲师,15,H6210,三 8-9 ,�
 考试时间：15:25-17:05",艺术教育中心 ,\r\n\
 FINE110001.02,影视剧艺术,2.0,许肖潇,讲师,50,JB303,一 11-12 ,上海市精品课程团队,"考试日期：2015-12-14\r\n\
 \r\n\
-考试时间：18:30-20:10",艺术教育中心 ,'
+考试时间：18:30-20:10",艺术教育中心 ,';
 COURSE_DATA['美育'] = new CSV(temp_data, {
     header: true
 }).parse();
@@ -9160,7 +9161,7 @@ MUSE130056.01,博物馆教育,2.0,郑奕,副教授,35,H2218,二 3-4 ,,"考试日
 考试时间：-",文物与博物馆学系\r\n\
 MUSE130067.01,环境考古学,2.0,潘艳,讲师,25,HGX405,四 6-7 ,,"考试日期：2015-12-31\r\n\
 \r\n\
-考试时间：13:00-15:00",文物与博物馆学系'
+考试时间：13:00-15:00",文物与博物馆学系';
 
 COURSE_DATA['文科专业课'] = new CSV(temp_data, {
     header: true
@@ -9586,34 +9587,53 @@ IV,ECON119001.03,用经济学智慧解读中国,1,2.0,石磊,教授,100,Z2306,�
 考试时间：9:55-11:55",经济学院,\r\n\
 VII,FINE119008.03,中国戏曲·京剧,1,2.0,章伟国,副教授,100,Z2306,四 8-9,视频教学,"考试日期：2015-12-17\r\n\
 \r\n\
-考试时间：15:25-17:05",艺术教育中心 ,'
+考试时间：15:25-17:05",艺术教育中心 ,';
 
 COURSE_DATA['模块课程'] = new CSV(temp_data, {
     header: true
 }).parse();
 
-
-
 //去重操作
-for (category in COURSE_DATA) {
-    var arr = COURSE_DATA[category];
-    var idArr = [];
-    var newArr = [];
-    arr.forEach(function(course) {
-        idArr.push(course['选课序号']);
-    });
-    for (var i = 0; i < arr.length; i++) {
-        var first = idArr.indexOf(arr[i]['选课序号'])
-        if (first != i) {
-            arr[first]['时间'] += '{time}' + arr[i]['时间'];
-        }else{
-            arr[i].isFirst = true;
+for (var category in COURSE_DATA) {
+    if (COURSE_DATA.hasOwnProperty(category)) {
+        var arr    = COURSE_DATA[category];
+        var idArr  = [];
+        var newArr = [];
+        arr.forEach(function (course) {
+            idArr.push(course['选课序号']);
+        });
+        for (var i = 0; i < arr.length; i++) {
+            var first = idArr.indexOf(arr[i]['选课序号']);
+            if (first != i) {
+                arr[first]['时间'] += '{time}' + arr[i]['时间'];
+            } else {
+                arr[i].isFirst = true;
+            }
         }
+
+        //========== index
+        var temp = COURSE_DATA_INDEX[category] = lunr(function () {
+            this.field('备注');
+            this.field('开课系');
+            this.field('教师');
+            this.field('时间');
+            this.field('职称');
+            this.field('课程名称');
+            this.field('选课序号');
+            this.ref('index');
+        });
+        //==========
+
+        var index = 0;
+        arr.forEach(function (course) {
+            if (course.isFirst) {
+                course.index = index++;
+                newArr.push(course);
+                //========== index
+                temp.add(course);
+                //==========
+            }
+        });
+        COURSE_DATA[category] = newArr;
     }
-    arr.forEach(function(course) {
-        if(course.isFirst){
-            newArr.push(course);
-        }
-    });
-    COURSE_DATA[category] = newArr;
 }
