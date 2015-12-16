@@ -216,19 +216,35 @@ angular.module('baseService', [])
                 var result = [];
                 if (specification.category.length > 0) {
                     specification.category.forEach(function(category) {
+                        /*
                         COURSE_DATA[category].forEach(function(course) {
                             if (matchCourse(specification, course)) {
                                 result.push(course);
                             }
                         });
+                        */
+                        //========== index search
+                        var searchRes = COURSE_DATA_INDEX[category].search(specification.keywords);
+                        searchRes.forEach(function (item) {
+                            result.push(COURSE_DATA[category][item.ref]);
+                        });
+                        //==========
                     });
                 } else {
                     for (var i in COURSE_DATA) {
+                        /*
                         COURSE_DATA[i].forEach(function(course) {
                             if (matchCourse(specification, course)) {
                                 result.push(course);
                             }
                         });
+                        */
+                        //========== index search
+                        var searchRes = COURSE_DATA_INDEX[i].search(specification.keywords);
+                        searchRes.forEach(function (item) {
+                            result.push(COURSE_DATA[i][item.ref]);
+                        });
+                        //==========
                     }
                 }
                 return result;
